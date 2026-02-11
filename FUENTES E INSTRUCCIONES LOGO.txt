@@ -1,0 +1,19 @@
+ Datos para recrear el logo en Word
+Para hacer el logo idéntico en Microsoft Word o cualquier programa de diseño, utiliza estos parámetros:
+
+Tipografía (Fuente):
+
+Nombre: Inter
+Estilo/Peso: Black (o Extra Bold / 900).
+Nota: Si no tienes la fuente "Inter" instalada, puedes descargarla gratis de Google Fonts. Una alternativa común preinstalada que se parece es "Arial Black" o "Calibri" en negrita.
+Colores:
+
+Para "VEX" (Blanco):
+
+HEX: #FFFFFF
+RGB: 255, 255, 255
+Para "LOI" (Azul Turquesa):
+
+HEX: #00C2CB
+RGB: 0, 194, 203
+En Word: Ve a Color de fuente > Más colores > Personalizado y pon los valores RGB (Rojo: 0, Verde: 194, Azul: 203).
