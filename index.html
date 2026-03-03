@@ -478,9 +478,8 @@
                  Obtenga un análisis profundo de su Brand Score y descubra el potencial oculto de su marca en Amazon.
              </p>
              
-             <form action="https://formsubmit.co/sales@vexloi.com" method="POST" class="max-w-lg mx-auto space-y-4 text-left bg-navy-900/50 p-8 rounded-2xl border border-navy-700 backdrop-blur-sm">
+             <form id="contactForm" action="https://formsubmit.co/sales@vexloi.com" method="POST" class="max-w-lg mx-auto space-y-4 text-left bg-navy-900/50 p-8 rounded-2xl border border-navy-700 backdrop-blur-sm">
                 <input type="hidden" name="_subject" value="Nueva Solicitud de Auditoría - Vexloi">
-                <input type="hidden" name="_next" value="./thank-you.html">
                 <input type="hidden" name="_captcha" value="false">
                 <div>
                     <label for="name" class="block text-sm font-medium text-gray-400 mb-1">Nombre y Apellido</label>
@@ -517,6 +516,28 @@
             <p class="mt-12 text-sm text-gray-600">© 2024 Vexloi LLC. Todos los derechos reservados.</p>
         </div>
     </footer>
+
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const btn = this.querySelector('button[type="submit"]');
+            const originalText = btn.innerText;
+            btn.innerText = 'Enviando...';
+            btn.disabled = true;
+
+            fetch('https://formsubmit.co/ajax/sales@vexloi.com', {
+                method: 'POST',
+                body: new FormData(this)
+            })
+            .then(response => window.location.href = './thank-you.html')
+            .catch(error => {
+                console.error('Error:', error);
+                btn.innerText = originalText;
+                btn.disabled = false;
+                alert('Hubo un error al enviar. Por favor intenta nuevamente.');
+            });
+        });
+    </script>
 
 </body>
 </html>
