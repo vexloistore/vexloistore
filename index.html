@@ -1,525 +1,318 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vexloi - Amazon Brand Accelerator</title>
+    <title>Vexloi LLC | Representante de Marcas Premium USA - Latam</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        navy: {
-                            950: '#020c1b',
-                            900: '#0a192f',
-                            800: '#112240',
-                            700: '#233554',
-                        },
-                        cyan: {
-                            bright: '#64ffda',
-                            electric: '#22d3ee',
-                        }
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                    },
-                    animation: {
-                        'float': 'float 6s ease-in-out infinite',
-                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                    },
-                    keyframes: {
-                        float: {
-                            '0%, 100%': { transform: 'translateY(0)' },
-                            '50%': { transform: 'translateY(-20px)' },
-                        }
-                    }
-                }
-            }
-        }
-    </script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap');
+        
+        :root {
+            --spreetail-blue: #00C2CB;
+            --spreetail-dark: #000000;
+            --spreetail-gray: #111111;
+        }
+
         body {
-            background-color: #0a192f;
-            color: #8892b0;
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+            color: #ffffff;
+            background: var(--spreetail-dark);
         }
-        .text-heading { color: #ccd6f6; }
-        .text-highlight { color: #64ffda; }
+
+        .bg-spreetail-blue { background-color: var(--spreetail-blue); }
+        .text-spreetail-blue { color: var(--spreetail-blue); }
         
-        /* Tech Grid Background */
-        .bg-grid-pattern {
-            background-image: linear-gradient(rgba(100, 255, 218, 0.03) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(100, 255, 218, 0.03) 1px, transparent 1px);
-            background-size: 50px 50px;
+        .hero-gradient {
+            background: radial-gradient(circle at 80% 20%, #112233 0%, #000000 60%);
+        }
+
+        .btn-primary {
+            background-color: var(--spreetail-blue);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px -5px rgba(0, 194, 203, 0.4);
+        }
+
+        /* Marcas */
+        .brand-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 2rem;
+            align-items: center;
+        }
+        .brand-item {
+            /* Logos blancos para fondo negro */
+            /*filter: brightness(0) invert(1) contrast(1000%);*/          
+
+            opacity: 0.5;
+            transition: all 0.4s ease;
+        }
+        .brand-item:hover {
+            opacity: 1;
+            transform: translateY(-5px);
+        }
+
+        /* Mapa de Conectividad Avanzado */
+        .map-wrapper {
+            background: var(--spreetail-dark);
+            border-radius: 2rem;
+            position: relative;
+            padding: 4rem 2rem;
+            border: 1px solid rgba(255,255,255,0.05);
         }
         
-        /* Glassmorphism */
-        .glass-card {
-            background: rgba(17, 34, 64, 0.7);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(100, 255, 218, 0.1);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        .city-dot {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: var(--spreetail-blue);
+            border-radius: 50%;
+            box-shadow: 0 0 15px var(--spreetail-blue);
+        }
+        
+        .city-label {
+            position: absolute;
+            color: white;
+            font-size: 10px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            white-space: nowrap;
+        }
+
+        .route-line {
+            stroke-dasharray: 1000;
+            stroke-dashoffset: 1000;
+            animation: flow 4s infinite linear;
+            stroke: var(--spreetail-blue);
+            stroke-width: 1.5;
+            opacity: 0.4;
+        }
+
+        @keyframes flow {
+            to { stroke-dashoffset: 0; }
         }
     </style>
-    
 </head>
-<body class="bg-navy-900 antialiased selection:bg-cyan-electric selection:text-navy-900 overflow-x-hidden">
+<body class="overflow-x-hidden">
 
-    <div class="fixed inset-0 z-[-1] bg-grid-pattern pointer-events-none"></div>
-    
-    <!-- Gradient Orbs -->
-    <div class="fixed top-0 left-0 w-96 h-96 bg-cyan-electric/10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
-    <div class="fixed bottom-0 right-0 w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-3xl translate-x-1/3 translate-y-1/3 pointer-events-none"></div>
-
-    <!-- Navbar (Simplified) -->
-    <nav class="w-full py-6 px-6 md:px-12 flex justify-between items-center glass-card sticky top-0 z-50 border-b-0 border-b-gray-800">
-        <div class="text-2xl font-black tracking-tighter text-heading">VEXLOI<span class="text-cyan-electric">.</span></div>
-        <div class="flex items-center gap-6">
-            <div class="flex items-center gap-2 text-sm font-bold">
-                <a href="index.html" class="text-cyan-electric">EN</a>
-                <span class="text-gray-600">|</span>
-                <a href="index_es.html" class="text-gray-400 hover:text-white transition-colors">ES</a>
+    <!-- Navegación -->
+    <nav class="fixed w-full z-50 bg-black/90 backdrop-blur-lg border-b border-white/10 transition-all duration-300 py-4" id="main-nav">
+        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
+            <div class="text-4xl md:text-5xl font-black tracking-tighter text-white">VEX<span class="text-spreetail-blue">LOI</span></div>
+            <div class="hidden md:flex space-x-10 font-semibold text-gray-300">
+                <a href="#inicio" class="hover:text-spreetail-blue transition">Inicio</a>
+                <a href="#marcas" class="hover:text-spreetail-blue transition">Representaciones</a>
+                <a href="#mapa" class="hover:text-spreetail-blue transition">Conectividad</a>
+                <a href="#servicios" class="hover:text-spreetail-blue transition">Logística</a>
             </div>
-            <a href="#auditoria" class="hidden md:block px-6 py-2 border border-cyan-electric text-cyan-electric rounded hover:bg-cyan-electric/10 transition-all text-sm font-semibold tracking-wide">
-                FREE AUDIT
-            </a>
+            <a href="https://wa.me/17864128760" target="_blank" class="btn-primary text-white px-7 py-2.5 rounded-lg text-sm font-bold">Solicitar Catálogo</a>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <main class="container mx-auto px-6 pt-20 pb-32 md:pt-32 relative">
-        <div class="flex flex-col lg:flex-row items-center gap-16">
-            <div class="lg:w-3/5 z-10">
-                <div class="inline-block px-3 py-1 mb-6 text-xs font-mono text-cyan-electric bg-cyan-electric/10 rounded-full border border-cyan-electric/20">
-                    STRATEGIC AMAZON WHOLESALE
+    <section id="inicio" class="hero-gradient min-h-screen flex items-center pt-24">
+        <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
+            <div data-aos="fade-right">
+                <div class="inline-block bg-teal-900/30 text-spreetail-blue px-4 py-1.5 rounded-lg text-xs font-black uppercase tracking-widest mb-6 border border-teal-900/50">
+                    Partner Oficial de Marcas Premium
                 </div>
-                <h1 class="text-5xl md:text-7xl font-black tracking-tight leading-tight mb-6 text-heading">
-                    Capture the Other 99% <br>
-                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-electric to-blue-500">"Own Your Category"</span>
+                <h1 class="text-6xl md:text-8xl font-black leading-[0.9] mb-8">
+                    Llevamos lo mejor de <span class="text-spreetail-blue">USA</span> a tus manos.
                 </h1>
-                <p class="text-lg md:text-xl text-gray-400 max-w-2xl mb-10 leading-relaxed">
-                    We are an <strong>Amazon Brand Accelerator</strong>. We use capital and data to close the gap between your brand and the market leader. 
-                    <span class="block mt-2 text-cyan-electric">No agency fees. No empty promises.</span>
+                <p class="text-xl text-gray-400 mb-10 leading-relaxed max-w-lg">
+                    Representamos con orgullo a más de **50 marcas premium** de Estados Unidos. Un catálogo diverso diseñado para hacer crecer tu negocio en Latinoamérica con respaldo directo.
                 </p>
-                <div class="flex flex-col sm:flex-row gap-5">
-                    <a href="#auditoria" class="group relative px-8 py-4 bg-cyan-electric text-navy-900 font-bold rounded-lg overflow-hidden transition-all hover:scale-105 shadow-[0_0_20px_rgba(34,211,238,0.3)]">
-                        <span class="relative z-10">Get Your Free Audit</span>
-                        <div class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
-                    </a>
-                    <a href="#modelo" class="px-8 py-4 bg-transparent border border-gray-600 text-heading font-bold rounded-lg hover:border-cyan-electric hover:text-cyan-electric transition-all">
-                        How We Invest
-                    </a>
+                <div class="flex flex-wrap gap-4">
+                    <a href="#marcas" class="btn-primary text-white px-10 py-4 rounded-lg font-bold">Ver Marcas</a>
+                    <a href="#servicios" class="bg-transparent border-2 border-gray-700 text-white px-10 py-4 rounded-lg font-bold hover:bg-white/10 transition">Soluciones Logísticas</a>
                 </div>
             </div>
-            
-            <!-- Visual Element: Market Share Chart -->
-            <div class="lg:w-2/5 relative hidden lg:block">
-                <div class="relative w-full aspect-square animate-float">
-                    <!-- Decorative Elements -->
-                    <div class="absolute inset-0 bg-gradient-to-tr from-cyan-electric/20 to-transparent rounded-3xl blur-2xl"></div>
-                    
-                    <!-- Chart Card -->
-                    <div class="glass-card p-8 rounded-2xl border border-cyan-electric/30 relative z-10 transform rotate-3 hover:rotate-0 transition-transform duration-500 h-full flex flex-col justify-center">
-                        <div class="flex justify-between items-center mb-8">
-                            <h3 class="text-white font-bold text-xl">Market Share</h3>
-                            <div class="h-2 w-2 bg-green-400 rounded-full shadow-[0_0_10px_#4ade80] animate-pulse"></div>
-                        </div>
-                        
-                        <div class="relative w-56 h-56 mx-auto my-12 group">
-                            <!-- Pie Chart using Conic Gradient -->
-                            <div class="w-full h-full rounded-full relative shadow-[0_0_30px_rgba(34,211,238,0.2)] transition-all duration-500 group-hover:scale-105" 
-                                 style="background: conic-gradient(#22d3ee 0% 49%, #233554 49% 99%, #ef4444 99% 100%);">
-                                 <!-- Inner Circle for Donut Effect -->
-                                 <div class="absolute inset-8 bg-navy-900 rounded-full z-10 border border-navy-700 shadow-inner"></div>
-                            </div>
-                            
-                            <!-- Labels with lines -->
-                            <!-- Líder Label -->
-                            <div class="absolute top-1/4 -right-16 text-right pointer-events-none">
-                                <p class="font-bold text-cyan-electric">Leader</p>
-                                <p class="text-xs font-mono text-cyan-electric">49%</p>
-                            </div>
-
-                            <!-- Tu Marca Label -->
-                            <div class="absolute -top-11 left-1/2 -translate-x-1/2 text-center pointer-events-none">
-                                <p class="font-bold text-red-400">Your Brand</p>
-                                <p class="text-xs font-mono text-red-400">1%</p>
-                            </div>
-
-                            <!-- Otros Label -->
-                            <div class="absolute bottom-1/4 -left-16 text-left pointer-events-none">
-                                <p class="font-bold text-gray-500">Others</p>
-                                <p class="text-xs font-mono text-gray-500">50%</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </main>
-
-    <!-- A9 Algorithm Section (Replaces Case Study) -->
-    <section class="py-24 relative overflow-hidden border-y border-navy-800 bg-navy-900/50">
-        <!-- Background Tech Elements -->
-        <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(#22d3ee 1px, transparent 1px); background-size: 30px 30px;"></div>
-        
-        <div class="container mx-auto px-6 relative z-10">
-            <div class="flex flex-col lg:flex-row items-center gap-16">
-                <!-- Left: Explanation -->
-                <div class="lg:w-1/2">
-                    <div class="inline-block px-3 py-1 mb-4 text-xs font-mono text-cyan-electric bg-cyan-electric/10 rounded-full border border-cyan-electric/20">
-                        CORE ENGINE
-                    </div>
-                    <h2 class="text-3xl md:text-5xl font-bold text-heading mb-6">
-                        Decoding the <br>
-                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-electric to-blue-500">A9 Algorithm</span>
-                    </h2>
-                    <p class="text-gray-400 text-lg mb-8 leading-relaxed">
-                        Success on Amazon is not luck, it's math. The A9 algorithm prioritizes products based on specific performance metrics. Our methodology optimizes every variable in the equation.
-                    </p>
-                    
-                    <div class="space-y-6">
-                        <div class="flex items-start gap-4">
-                            <div class="p-3 bg-navy-800 rounded-lg border border-navy-700 text-cyan-electric shadow-[0_0_15px_rgba(34,211,238,0.1)]">
-                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-                            </div>
-                            <div>
-                                <h4 class="text-white font-bold text-lg">Sales Velocity</h4>
-                                <p class="text-sm text-gray-400 mt-1">We inject capital to accelerate sales history, the #1 relevance signal for Amazon.</p>
-                            </div>
-                        </div>
-                        
-                        <div class="flex items-start gap-4">
-                            <div class="p-3 bg-navy-800 rounded-lg border border-navy-700 text-cyan-electric shadow-[0_0_15px_rgba(34,211,238,0.1)]">
-                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                            </div>
-                            <div>
-                                <h4 class="text-white font-bold text-lg">Conversion Rate (CVR)</h4>
-                                <p class="text-sm text-gray-400 mt-1">We optimize listings so every click counts. Higher conversion means higher organic ranking.</p>
-                            </div>
-                        </div>
-
-                        <div class="flex items-start gap-4">
-                            <div class="p-3 bg-navy-800 rounded-lg border border-navy-700 text-cyan-electric shadow-[0_0_15px_rgba(34,211,238,0.1)]">
-                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path></svg>
-                            </div>
-                            <div>
-                                <h4 class="text-white font-bold text-lg">Stock Availability</h4>
-                                <p class="text-sm text-gray-400 mt-1">"Out of Stock" destroys rankings. Our investment ensures perpetual inventory.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Right: Visual Representation -->
-                <div class="lg:w-1/2 relative">
-                    <div class="relative w-full aspect-square max-w-md mx-auto">
-                        <!-- Central Node -->
-                        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-navy-900 rounded-full border-2 border-cyan-electric flex items-center justify-center z-20 shadow-[0_0_30px_rgba(34,211,238,0.2)]">
-                            <span class="text-2xl font-black text-white">A9</span>
-                        </div>
-                        
-                        <!-- Orbiting Nodes -->
-                        <div class="absolute inset-0 animate-spin" style="animation-duration: 20s;">
-                            <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 glass-card rounded-xl border border-cyan-electric/50 flex items-center justify-center transform -rotate-0 shadow-[0_0_15px_rgba(34,211,238,0.3)] bg-navy-900">
-                                <span class="text-xs font-bold text-cyan-electric">PPC</span>
-                            </div>
-                            <div class="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-16 h-16 glass-card rounded-xl border border-cyan-electric/50 flex items-center justify-center transform -rotate-180 shadow-[0_0_15px_rgba(34,211,238,0.3)] bg-navy-900">
-                                <span class="text-xs font-bold text-cyan-electric">SEO</span>
-                            </div>
-                            <div class="absolute left-0 top-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 glass-card rounded-xl border border-cyan-electric/50 flex items-center justify-center transform -rotate-90 shadow-[0_0_15px_rgba(34,211,238,0.3)] bg-navy-900">
-                                <span class="text-xs font-bold text-cyan-electric">FBA</span>
-                            </div>
-                            <div class="absolute right-0 top-1/2 translate-x-1/2 -translate-y-1/2 w-16 h-16 glass-card rounded-xl border border-cyan-electric/50 flex items-center justify-center transform rotate-90 shadow-[0_0_15px_rgba(34,211,238,0.3)] bg-navy-900">
-                                <span class="text-xs font-bold text-cyan-electric">CTR</span>
-                            </div>
-                        </div>
-                        
-                        <!-- Connecting Lines (Static SVG) -->
-                        <svg class="absolute inset-0 w-full h-full pointer-events-none opacity-30" viewBox="0 0 100 100">
-                            <circle cx="50" cy="50" r="35" stroke="#22d3ee" stroke-width="0.5" fill="none" stroke-dasharray="4 4" />
-                            <circle cx="50" cy="50" r="25" stroke="#22d3ee" stroke-width="0.5" fill="none" />
-                        </svg>
-                    </div>
+            <div class="relative" data-aos="zoom-in" data-aos-duration="1500">
+                <div class="rounded-3xl overflow-hidden shadow-2xl border-8 border-gray-800">
+                    <img src="productos.jpeg" alt="Marcas Premium Vexloi" class="w-full h-[600px] object-cover">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Market Comparison Section ("The Gap") -->
-    <section id="gap" class="py-24 relative">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-5xl font-bold text-heading">The Gap to Leadership</h2>
-                <p class="text-gray-400 mt-4 max-w-2xl mx-auto">Visualize the difference between operating and dominating.</p>
+    <!-- Representación de Marcas -->
+    <section id="marcas" class="py-8 bg-black">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-24" data-aos="fade-up">
+                <h4 class="text-spreetail-blue font-black uppercase tracking-widest text-sm mb-4">Nuestro Portfolio</h4>
+                <h2 class="text-5xl font-black mb-8">Representamos +50 <span class="text-gray-600 italic">Marcas Premium</span></h2>
+                <p class="text-gray-400 text-xl max-w-3xl mx-auto leading-relaxed">
+                    No solo compramos, somos el puente oficial. Ponemos a tu alcance un catálogo exclusivo que garantiza originalidad y competitividad en el mercado local.
+                </p>
             </div>
-            
-            <!-- Futuristic Table / Dashboard -->
-            <div class="glass-card rounded-2xl overflow-hidden shadow-2xl border border-navy-700">
-                <div class="grid grid-cols-1 md:grid-cols-4 text-sm">
-                    <!-- Header Row (Hidden on mobile, visible on md) -->
-                    <div class="hidden md:contents font-mono text-cyan-electric uppercase tracking-wider text-xs">
-                        <div class="p-6 bg-navy-800/50 border-b border-navy-700">KPI / Metric</div>
-                        <div class="p-6 bg-navy-800/50 border-b border-navy-700 text-center">Average Brand (1%)</div>
-                        <div class="p-6 bg-navy-800/50 border-b border-navy-700 text-center">Category Leader</div>
-                        <div class="p-6 bg-cyan-electric/10 border-b border-cyan-electric/20 text-center text-white font-bold">Vexloi Effect</div>
-                    </div>
 
-                    <!-- Row 1 -->
-                    <div class="p-6 border-b border-navy-700 font-semibold text-heading flex items-center">Brand Score</div>
-                    <div class="p-6 border-b border-navy-700 text-center flex flex-col justify-center bg-navy-900/30">
-                        <span class="text-red-400 font-mono">350</span>
-                        <span class="text-xs text-gray-500">Low Performance</span>
-                    </div>
-                    <div class="p-6 border-b border-navy-700 text-center flex flex-col justify-center bg-navy-900/30">
-                        <span class="text-green-400 font-mono">950+</span>
-                        <span class="text-xs text-gray-500">Gold Standard</span>
-                    </div>
-                    <div class="p-6 border-b border-cyan-electric/20 bg-cyan-electric/5 text-center flex flex-col justify-center relative overflow-hidden">
-                        <div class="absolute inset-0 bg-cyan-electric/5 animate-pulse-slow"></div>
-                        <span class="text-white font-bold text-lg relative z-10">+850</span>
-                        <span class="text-xs text-cyan-electric relative z-10">Guaranteed Projection</span>
-                    </div>
-
-                    <!-- Row 2 -->
-                    <div class="p-6 border-b border-navy-700 font-semibold text-heading flex items-center">Visual Content</div>
-                    <div class="p-6 border-b border-navy-700 text-center text-gray-500 bg-navy-900/30">Basic Images</div>
-                    <div class="p-6 border-b border-navy-700 text-center text-gray-300 bg-navy-900/30">A+ / Video</div>
-                    <div class="p-6 border-b border-cyan-electric/20 bg-cyan-electric/5 text-center text-white font-semibold">
-                        Cinematic Storytelling
-                    </div>
-
-                    <!-- Row 3 -->
-                    <div class="p-6 border-b border-navy-700 font-semibold text-heading flex items-center">PPC Efficiency (ACoS)</div>
-                    <div class="p-6 border-b border-navy-700 text-center text-red-400 bg-navy-900/30">&gt;40% (Not Profitable)</div>
-                    <div class="p-6 border-b border-navy-700 text-center text-green-400 bg-navy-900/30">&lt;20% (Optimized)</div>
-                    <div class="p-6 border-b border-cyan-electric/20 bg-cyan-electric/5 text-center text-white font-semibold">
-                        &lt;25% (ROAS 4x+)
-                    </div>
-                    
-                    <!-- Row 4 -->
-                    <div class="p-6 font-semibold text-heading flex items-center">Channel Control</div>
-                    <div class="p-6 text-center text-gray-500 bg-navy-900/30">Chaos / Leaks</div>
-                    <div class="p-6 text-center text-gray-300 bg-navy-900/30">Enforced MAP</div>
-                    <div class="p-6 bg-cyan-electric/5 text-center text-white font-semibold">
-                        Total Shielding
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Value Pillars Section -->
-    <section id="pilares" class="py-24">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-heading">Acceleration Pillars</h2>
-                <p class="text-gray-400 mt-4">Technological infrastructure and capital to scale.</p>
-            </div>
-            <div class="grid md:grid-cols-3 gap-8">
-                <!-- Pillar 1 -->
-                <div class="group glass-card p-8 rounded-2xl hover:-translate-y-2 transition-transform duration-300">
-                    <div class="w-12 h-12 bg-navy-800 rounded-lg flex items-center justify-center mb-6 text-cyan-electric group-hover:bg-cyan-electric group-hover:text-navy-900 transition-colors">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
-                    </div>
-                    <h3 class="text-xl font-bold text-heading mb-3">Visual Optimization</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed">We transform listings with professional photography and 3D video. We turn visitors into brand ambassadors.</p>
-                </div>
-                <!-- Pillar 2 -->
-                <div class="group glass-card p-8 rounded-2xl hover:-translate-y-2 transition-transform duration-300">
-                    <div class="w-12 h-12 bg-navy-800 rounded-lg flex items-center justify-center mb-6 text-cyan-electric group-hover:bg-cyan-electric group-hover:text-navy-900 transition-colors">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 002 2h2a2 2 0 002-2z"></path></svg>
-                    </div>
-                    <h3 class="text-xl font-bold text-heading mb-3">Data-Driven Ads</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed">Aggressive management of Amazon Ads based on proprietary algorithms to maximize Opportunity Score.</p>
-                </div>
-                <!-- Pillar 3 -->
-                <div class="group glass-card p-8 rounded-2xl hover:-translate-y-2 transition-transform duration-300">
-                    <div class="w-12 h-12 bg-navy-800 rounded-lg flex items-center justify-center mb-6 text-cyan-electric group-hover:bg-cyan-electric group-hover:text-navy-900 transition-colors">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
-                    </div>
-                    <h3 class="text-xl font-bold text-heading mb-3">Brand Protection</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed">Total protection against unauthorized sellers and price stabilization through inventory control.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Vexloi Solution Section -->
-    <section class="py-24 bg-navy-900 relative border-t border-navy-800">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-heading">The Vexloi Solution</h2>
-                <p class="text-gray-400 mt-4">Growth architecture designed to break the 1% ceiling.</p>
-            </div>
-            
-            <div class="relative">
-                <!-- Connecting Line (Desktop) -->
-                <div class="hidden md:block absolute top-1/2 left-0 w-full h-1 bg-gradient-to-r from-navy-900 via-cyan-electric/30 to-navy-900 -translate-y-1/2 z-0"></div>
+            <div class="brand-grid" data-aos="fade-up">
+                <!-- Juguetes -->
+                <div class="brand-item flex justify-center"><img src="Fisher-price-logo.svg" class="h-10" alt="Fisher Price"></div>
+                <div class="brand-item flex justify-center"><img src="UNO_Logo.svg" class="h-10" alt="UNO"></div>
                 
-                <div class="grid md:grid-cols-3 gap-8 relative z-10">
-                    <!-- Step 1 -->
-                    <div class="glass-card p-8 rounded-2xl border border-gray-700 bg-navy-900/90 text-center hover:-translate-y-2 transition-transform duration-300 group">
-                        <div class="w-16 h-16 mx-auto bg-navy-800 rounded-full border border-gray-600 flex items-center justify-center mb-6 text-gray-400 shadow-lg group-hover:border-cyan-electric group-hover:text-cyan-electric transition-colors">
-                            <span class="text-2xl font-bold">01</span>
-                        </div>
-                        <h3 class="text-xl font-bold text-white mb-3">Diagnosis & Capital</h3>
-                        <p class="text-gray-400 text-sm leading-relaxed">We identify hidden potential and buy your inventory upfront, eliminating your financial risk.</p>
-                    </div>
-                    
-                    <!-- Step 2 -->
-                    <div class="glass-card p-8 rounded-2xl border border-cyan-electric bg-navy-800/90 text-center transform md:scale-110 shadow-[0_0_30px_rgba(34,211,238,0.15)] z-20">
-                        <div class="w-16 h-16 mx-auto bg-cyan-electric rounded-full flex items-center justify-center mb-6 text-navy-900 shadow-[0_0_20px_rgba(34,211,238,0.5)]">
-                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.384-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
-                        </div>
-                        <h3 class="text-xl font-bold text-cyan-electric mb-3">A9 Engineering</h3>
-                        <p class="text-gray-300 text-sm leading-relaxed">We apply algorithmic optimization, aggressive PPC, and premium visual content to detonate sales velocity.</p>
-                    </div>
-                    
-                    <!-- Step 3 -->
-                    <div class="glass-card p-8 rounded-2xl border border-gray-700 bg-navy-900/90 text-center hover:-translate-y-2 transition-transform duration-300 group">
-                        <div class="w-16 h-16 mx-auto bg-navy-800 rounded-full border border-gray-600 flex items-center justify-center mb-6 text-gray-400 shadow-lg group-hover:border-green-500 group-hover:text-green-500 transition-colors">
-                            <span class="text-2xl font-bold">03</span>
-                        </div>
-                        <h3 class="text-xl font-bold text-white mb-3">Niche Dominance</h3>
-                        <p class="text-gray-400 text-sm leading-relaxed">Massive capture of market share, price stabilization, and sustained revenue scaling.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- "Skin in the Game" Model Section -->
-    <section id="modelo" class="py-24 bg-navy-950 relative overflow-hidden">
-        <!-- Background decoration -->
-        <div class="absolute top-0 left-0 w-full h-full bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMSIgY3k9IjEiIHI9IjEiIGZpbGw9InJnYmEoMzQsIDIxMSwgMjM4LCAwLjEpIi8+PC9zdmc+')] opacity-20"></div>
-        
-        <div class="container mx-auto px-6 relative z-10">
-            <div class="max-w-4xl mx-auto">
-                <div class="glass-card p-12 rounded-3xl border border-cyan-electric/30 text-center shadow-[0_0_50px_rgba(34,211,238,0.1)]">
-                    <h2 class="text-3xl md:text-4xl font-bold mb-6 text-white">We are not an Agency <br><span class="text-cyan-electric">We are your Capital Partner</span></h2>
-                    <p class="text-lg text-gray-300 mb-10 max-w-2xl mx-auto">
-                        Traditional agencies charge monthly fees regardless of results. Our model is radically different.
-                    </p>
-                    
-                    <div class="bg-navy-900/80 p-8 rounded-xl border-l-4 border-cyan-electric inline-block text-left max-w-2xl">
-                        <p class="text-xl md:text-2xl font-medium text-gray-200 italic">
-                            "We buy your inventory. If you don't sell, we lose. <span class="text-cyan-electric font-bold not-italic">That is real commitment.</span>"
-                        </p>
-                    </div>
-                    
-                    <div class="mt-10 flex justify-center items-center gap-4 text-sm font-mono text-gray-400">
-                        <span class="flex items-center gap-2"><div class="w-2 h-2 bg-green-500 rounded-full"></div> 0% Monthly Fees</span>
-                        <span class="flex items-center gap-2"><div class="w-2 h-2 bg-green-500 rounded-full"></div> 100% Alignment</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- "The Score" Section -->
-    <section id="score" class="py-24">
-        <div class="container mx-auto px-6">
-            <div class="flex flex-col md:flex-row items-center gap-12">
-                <div class="md:w-1/2">
-                    <h2 class="text-3xl md:text-4xl font-bold mb-6 text-heading">The KPI of the Future: <br><span class="text-cyan-electric">Opportunity Score</span></h2>
-                    <p class="text-gray-400 text-lg leading-relaxed mb-6">
-                        Forget vanity metrics. The Opportunity Score is the real thermometer of growth potential. It measures the gap between market demand and your current capture capacity.
-                    </p>
-                    <p class="text-gray-400 text-lg leading-relaxed">
-                        By 2026, it will be the deciding factor between growing or disappearing. We specialize in maximizing it using predictive algorithms.
-                    </p>
-                </div>
-                <div class="md:w-1/2 flex justify-center">
-                    <!-- Circular Progress / Score Visualization -->
-                    <div class="relative w-64 h-64">
-                        <svg class="w-full h-full transform -rotate-90">
-                            <circle cx="128" cy="128" r="120" stroke="#112240" stroke-width="12" fill="none" />
-                            <circle cx="128" cy="128" r="120" stroke="#22d3ee" stroke-width="12" fill="none" stroke-dasharray="753" stroke-dashoffset="150" stroke-linecap="round" />
-                        </svg>
-                        <div class="absolute inset-0 flex flex-col items-center justify-center">
-                            <span class="text-5xl font-black text-white">92</span>
-                            <span class="text-sm text-cyan-electric font-mono mt-1">OPPORTUNITY SCORE</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Footer for Audit CTA -->
-    <footer id="auditoria" class="py-24 relative overflow-hidden">
-        <div class="absolute inset-0 bg-gradient-to-b from-navy-900 to-navy-950"></div>
-        <div class="container mx-auto px-6 relative z-10 text-center">
-             <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">Ready to Scale?</h2>
-             <p class="text-gray-400 mb-10 max-w-xl mx-auto text-lg">
-                 Get a deep analysis of your Brand Score and discover the hidden potential of your brand on Amazon.
-             </p>
-             
-             <form id="contactForm" action="https://formsubmit.co/sales@vexloi.com" method="POST" class="max-w-lg mx-auto space-y-4 text-left bg-navy-900/50 p-8 rounded-2xl border border-navy-700 backdrop-blur-sm">
-                <input type="hidden" name="_subject" value="Nueva Solicitud de Auditoría - Vexloi">
-                <input type="hidden" name="_captcha" value="false">
-                <div>
-                    <label for="name" class="block text-sm font-medium text-gray-400 mb-1">Full Name</label>
-                    <input type="text" id="name" name="nombre" required class="w-full bg-navy-800 border border-navy-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-cyan-electric focus:ring-1 focus:ring-cyan-electric transition-colors placeholder-gray-600">
-                </div>
-                <div>
-                    <label for="company" class="block text-sm font-medium text-gray-400 mb-1">Company Name</label>
-                    <input type="text" id="company" name="compania" required class="w-full bg-navy-800 border border-navy-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-cyan-electric focus:ring-1 focus:ring-cyan-electric transition-colors placeholder-gray-600">
-                </div>
-                <div>
-                    <label for="website" class="block text-sm font-medium text-gray-400 mb-1">Company Website</label>
-                    <input type="url" id="website" name="website" class="w-full bg-navy-800 border border-navy-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-cyan-electric focus:ring-1 focus:ring-cyan-electric transition-colors placeholder-gray-600">
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                        <label for="email" class="block text-sm font-medium text-gray-400 mb-1">Email</label>
-                        <input type="email" id="email" name="email" required class="w-full bg-navy-800 border border-navy-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-cyan-electric focus:ring-1 focus:ring-cyan-electric transition-colors placeholder-gray-600">
-                    </div>
-                    <div>
-                        <label for="whatsapp" class="block text-sm font-medium text-gray-400 mb-1">Whatsapp</label>
-                        <input type="tel" id="whatsapp" name="whatsapp" class="w-full bg-navy-800 border border-navy-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-cyan-electric focus:ring-1 focus:ring-cyan-electric transition-colors placeholder-gray-600">
-                    </div>
-                </div>
+                <!-- Herramientas -->
+                <div class="brand-item flex justify-center"><img src="DeWalt_Logo.svg" class="h-10" alt="DeWalt"></div>
+                <div class="brand-item flex justify-center"><img src="Makita_Logo.svg" class="h-10" alt="Makita"></div>
+                <div class="brand-item flex justify-center"><img src="Stanley_Hand_Tools_logo.svg" class="h-10" alt="Stanley"></div>
                 
-                <button type="submit" class="w-full bg-cyan-electric text-navy-900 font-bold py-4 px-8 rounded-lg text-lg hover:bg-white hover:scale-105 transition-all duration-300 shadow-[0_0_30px_rgba(34,211,238,0.4)] mt-4">
-                    Request Free Audit
-                </button>
-            </form>
+                <!-- Hogar -->
+                <div class="brand-item flex justify-center"><img src="oster.svg" class="h-10" alt="Oster"></div>
+                
+                
+            </div>
 
-            <p class="mt-8 text-sm text-gray-400">
-                Or contact us directly: <a href="mailto:info@vexloi.com" class="font-semibold text-cyan-electric hover:underline">info@vexloi.com</a>
-            </p>
+            <div class="mt-20 p-12 bg-spreetail-gray rounded-3xl flex flex-col md:flex-row items-center justify-between gap-8" data-aos="zoom-in">
+                <div>
+                    <h3 class="text-3xl font-black mb-2">¿Buscas una marca específica?</h3>
+                    <p class="text-gray-400 font-medium">Accede a nuestro inventario corporativo y precios al por mayor.</p>
+                </div>
+                <a href="https://wa.me/17864128760" target="_blank" class="btn-primary text-white px-10 py-5 rounded-lg font-black shadow-xl shadow-teal-900/50">Contactar un Agente</a>
+            </div>
+        </div>
+    </section>
 
-            <p class="mt-12 text-sm text-gray-600">© 2024 Vexloi LLC. All rights reserved.</p>
+    <!-- Mapa de Conectividad Estratégica -->
+    <section id="mapa" class="py-8 bg-black text-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-20 items-center">
+                <div data-aos="fade-right">
+                    <h2 class="text-5xl font-black mb-8 leading-tight">Distribución Regional desde el <span class="text-spreetail-blue text-6xl">Hub Miami</span></h2>
+                    <p class="text-gray-400 text-xl leading-relaxed mb-10">
+                        Nuestra red logística conecta el inventario de las marcas en Estados Unidos directamente con las principales capitales de Latinoamérica. 
+                        **Eficiencia, trazabilidad y rapidez.**
+                    </p>
+                    <ul class="space-y-6">
+                        <li class="flex gap-4">
+                            <div class="w-8 h-8 rounded-full bg-spreetail-blue flex items-center justify-center font-bold text-sm">1</div>
+                            <p class="text-gray-300 font-medium">Consolidación en nuestras bodegas en Doral, FL.</p>
+                        </li>
+                        <li class="flex gap-4">
+                            <div class="w-8 h-8 rounded-full bg-spreetail-blue flex items-center justify-center font-bold text-sm">2</div>
+                            <p class="text-gray-300 font-medium">Despacho diario a Ciudad de México, Bogotá, Lima y más.</p>
+                        </li>
+                        <li class="flex gap-4">
+                            <div class="w-8 h-8 rounded-full bg-spreetail-blue flex items-center justify-center font-bold text-sm">3</div>
+                            <p class="text-gray-300 font-medium">Entrega local puerta a puerta certificada.</p>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Simulación Mapa Dinámico -->
+                <div class="map-wrapper shadow-2xl" data-aos="zoom-in">
+                    <svg viewBox="0 0 400 600" class="w-full h-full">
+                        <!-- Miami -->
+                        <circle cx="200" cy="50" r="6" fill="#00C2CB" class="glow-dot">
+                            <animate attributeName="r" values="6;9;6" dur="2s" repeatCount="indefinite" />
+                        </circle>
+                        <text x="215" y="55" fill="#00C2CB" class="text-[14px] font-black">MIAMI HQ</text>
+
+                        <!-- Rutas -->
+                        <path d="M200,50 Q100,200 80,280" fill="none" class="route-line" /> <!-- Mexico -->
+                        <path d="M200,50 Q250,250 220,380" fill="none" class="route-line" /> <!-- Bogota -->
+                        <path d="M200,50 Q300,300 280,450" fill="none" class="route-line" /> <!-- Lima -->
+                        <path d="M200,50 Q350,350 320,550" fill="none" class="route-line" /> <!-- Santiago -->
+
+                        <!-- Ciudades -->
+                        <circle cx="80" cy="280" r="4" fill="#fff" />
+                        <text x="20" y="270" fill="#fff" class="text-[10px] opacity-60">CD. MÉXICO</text>
+
+                        <circle cx="220" cy="380" r="4" fill="#fff" />
+                        <text x="235" y="385" fill="#fff" class="text-[10px] opacity-60">BOGOTÁ</text>
+
+                        <circle cx="280" cy="450" r="4" fill="#fff" />
+                        <text x="295" y="455" fill="#fff" class="text-[10px] opacity-60">LIMA</text>
+
+                        <circle cx="320" cy="550" r="4" fill="#fff" />
+                        <text x="240" y="565" fill="#fff" class="text-[10px] opacity-60">SANTIAGO DE CHILE</text>
+                    </svg>
+                    <div class="absolute bottom-10 left-10 right-10 p-6 bg-white/5 backdrop-blur-md rounded-2xl border border-white/10">
+                        <p class="text-xs font-bold text-center text-spreetail-blue uppercase tracking-widest">Monitoreo Real Time Activo</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trayectoria CEO -->
+    <section id="ceo" class="py-8 bg-black overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-20 items-center">
+                <div class="relative" data-aos="fade-right">
+                    <div class="aspect-square bg-spreetail-gray rounded-3xl flex items-center justify-center overflow-hidden border border-white/5">
+                        <img src="juanardila.jpg" alt="Juan Carlos Ardila CEO" class="w-full h-full object-cover mix-blend-multiply opacity-80">
+                    </div>
+                    <div class="absolute -top-10 -left-10 w-40 h-40 bg-teal-900/30 rounded-full -z-10 animate-pulse blur-2xl"></div>
+                </div>
+                <div data-aos="fade-left">
+                    <h4 class="text-spreetail-blue font-black uppercase text-sm mb-4">Experiencia que Respalda</h4>
+                    <h2 class="text-5xl font-black mb-8">Juan Carlos Ardila</h2>
+                    <p class="text-xl text-gray-400 mb-8 leading-relaxed">
+                        Como CEO de **Vexloi LLC**, Juan Carlos Ardila combina más de **20 años de experiencia** en tecnología y comercio global para transformar la manera en que Latinoamérica accede a las marcas de Estados Unidos.
+                    </p>
+                    <p class="text-gray-400 mb-10 leading-relaxed">
+                        Su visión ha permitido que Vexloi pase de ser un courier convencional a un socio de representación y distribución estratégica para empresas que buscan escala y seguridad jurídica.
+                    </p>
+                    <div class="flex gap-12">
+                        <div class="text-center">
+                            <div class="text-4xl font-black text-spreetail-blue">20+</div>
+                            <div class="text-xs font-bold uppercase text-gray-400">Años Sector IT</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-4xl font-black text-spreetail-blue">50+</div>
+                            <div class="text-xs font-bold uppercase text-gray-400">Alianzas Premium</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#050505] py-8 border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:row justify-between items-center gap-12 text-center md:text-left">
+                <div class="flex gap-10 font-bold text-gray-400">
+                    <a href="#marcas" class="hover:text-spreetail-blue">Marcas</a>
+                    <a href="#mapa" class="hover:text-spreetail-blue">Logística</a>
+                    <a href="https://wa.me/17864128760" target="_blank" class="hover:text-spreetail-blue">Soporte</a>
+                </div>
+                <div class="flex gap-4">
+                    <a href="https://wa.me/17864128760" target="_blank" class="w-12 h-12 bg-green-500 text-white rounded-full flex items-center justify-center shadow-lg"><i class="fa-brands fa-whatsapp"></i></a>
+                    <a href="mailto:info@vexloi.com" class="w-12 h-12 bg-gray-600 text-white rounded-full flex items-center justify-center shadow-lg"><i class="fa-solid fa-envelope"></i></a>
+                    <a href="#" class="w-12 h-12 bg-spreetail-blue text-white rounded-full flex items-center justify-center shadow-lg"><i class="fa-brands fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="mt-20 pt-10 border-t border-gray-800 text-center text-xs font-bold text-gray-500 uppercase tracking-widest">
+                <div class="mb-2">8850 NW 36TH, Doral, FL</div>
+                <div class="mb-2">+1 (786) 412-8760 - info@vexloi.com</div>
+                <div>© 2026 VEXLOI LLC | Miami - Colombia - Latam</div>
+            </div>
         </div>
     </footer>
 
     <script>
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const btn = this.querySelector('button[type="submit"]');
-            const originalText = btn.innerText;
-            btn.innerText = 'Sending...';
-            btn.disabled = true;
-
-            fetch('https://formsubmit.co/ajax/sales@vexloi.com', {
-                method: 'POST',
-                body: new FormData(this)
-            })
-            .then(response => window.location.href = './thank-you.html')
-            .catch(error => {
-                console.error('Error:', error);
-                btn.innerText = originalText;
-                btn.disabled = false;
-                alert('There was an error sending. Please try again.');
-            });
+        AOS.init({ duration: 1000, once: true });
+        
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('main-nav');
+            if (window.scrollY > 80) {
+                nav.classList.add('py-2', 'shadow-2xl');
+                nav.classList.remove('py-4');
+            } else {
+                nav.classList.remove('py-2', 'shadow-2xl');
+                nav.classList.add('py-4');
+            }
         });
     </script>
-
 </body>
 </html>
