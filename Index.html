@@ -200,7 +200,11 @@
                     <span class="text-cyan-400">Contacto</span> y Cotizaciones B2B
                 </h2>
                 <div class="max-w-4xl mx-auto glass-card p-8 md:p-12 rounded-lg">
-                    <form action="#" method="POST"> <!-- Puedes cambiar la acción a tu script de backend o a una página de agradecimiento -->
+                    <form id="contactForm" action="https://formsubmit.co/sales@vexloi.com" method="POST">
+                        <input type="hidden" name="_subject" value="Nueva Solicitud desde Vexloi Memorys">
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="hidden" name="_next" value="https://yourdomain.com/thank-you.html"> <!-- Reemplaza con tu URL final -->
+
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                             <div>
                                 <label for="name" class="block text-sm font-medium text-cyan-300 mb-2">Nombre Completo</label>
@@ -208,14 +212,14 @@
                             </div>
                             <div>
                                 <label for="company" class="block text-sm font-medium text-cyan-300 mb-2">Empresa</label>
-                                <input type="text" name="company" id="company" class="w-full bg-slate-900/50 border border-cyan-400/30 rounded-md py-2 px-3 text-white focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent transition">
+                                <input type="text" name="company" id="company" required class="w-full bg-slate-900/50 border border-cyan-400/30 rounded-md py-2 px-3 text-white focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent transition">
                             </div>
                             <div>
                                 <label for="email" class="block text-sm font-medium text-cyan-300 mb-2">Email Corporativo</label>
                                 <input type="email" name="email" id="email" required class="w-full bg-slate-900/50 border border-cyan-400/30 rounded-md py-2 px-3 text-white focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent transition">
                             </div>
                             <div>
-                                <label for="phone" class="block text-sm font-medium text-cyan-300 mb-2">Teléfono (Opcional)</label>
+                                <label for="phone" class="block text-sm font-medium text-cyan-300 mb-2">Teléfono / Whatsapp</label>
                                 <input type="tel" name="phone" id="phone" class="w-full bg-slate-900/50 border border-cyan-400/30 rounded-md py-2 px-3 text-white focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent transition">
                             </div>
                         </div>
@@ -263,6 +267,26 @@
 
         mobileMenuButton.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
+        });
+
+        // Script para el envío del formulario con AJAX
+        const contactForm = document.getElementById('contactForm');
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const btn = this.querySelector('button[type="submit"]');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = 'Enviando...';
+            btn.disabled = true;
+
+            const formData = new FormData(this);
+
+            fetch(this.action, {
+                method: 'POST',
+                body: formData,
+                headers: { 'Accept': 'application/json' }
+            })
+            .then(response => window.location.href = './thank-you.html') // Redirige a tu página de gracias
+            .catch(error => console.error('Error:', error));
         });
     </script>
 

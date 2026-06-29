@@ -5,23 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gracias | Vexloi LLC</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap');
-        body { font-family: 'Inter', sans-serif; background: #000000; color: white; }
-        .text-spreetail-blue { color: #00C2CB; }
-        .btn-primary { background-color: #00C2CB; color: black; }
+        body {
+            background-color: #030712;
+            font-family: 'Inter', sans-serif;
+            background-image: url('https://i.imgur.com/6a2e83h.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        .neon-button {
+            background: linear-gradient(90deg, #00d2ff, #3a7bd5);
+            box-shadow: 0 0 15px #00d2ff, 0 0 25px #00d2ff, inset 0 0 5px rgba(255, 255, 255, 0.5);
+            transition: all 0.3s ease;
+            border: 1px solid #00d2ff;
+        }
     </style>
 </head>
-<body class="flex items-center justify-center min-h-screen text-center px-6">
+<body class="flex items-center justify-center min-h-screen text-center px-6 text-white bg-slate-900/50" style="background: radial-gradient(circle, rgba(3,7,18,0.6) 0%, rgba(3,7,18,1) 70%);">
     <div class="max-w-3xl mx-auto">
-        <div class="w-24 h-24 bg-[#00C2CB]/10 rounded-full flex items-center justify-center mx-auto mb-8 border border-[#00C2CB]/30">
-            <svg class="w-12 h-12 text-[#00C2CB]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
-        </div>
-        <h1 class="text-5xl md:text-7xl font-black mb-6">¡Mensaje <span class="text-spreetail-blue">Enviado!</span></h1>
-        <p class="text-xl text-gray-400 mb-10 max-w-2xl mx-auto leading-relaxed">
-            Hemos recibido tu solicitud correctamente. Nuestro equipo comercial analizará tu perfil y se pondrá en contacto contigo a la brevedad posible.
+        <h1 class="text-5xl md:text-7xl font-black mb-6">¡Solicitud <span class="text-cyan-400">Recibida!</span></h1>
+        <p class="text-xl text-gray-300 mb-10 max-w-2xl mx-auto leading-relaxed">
+            Hemos recibido tu mensaje correctamente. Nuestro equipo de especialistas se pondrá en contacto contigo a la brevedad para atender tu requerimiento.
         </p>
-        <a href="index.html" class="btn-primary px-10 py-4 rounded-lg font-bold hover:bg-white transition-all inline-block shadow-[0_0_30px_rgba(0,194,203,0.3)]">
+        <a href="index.html" class="neon-button inline-block px-10 py-4 rounded-md font-bold text-white uppercase tracking-widest hover:shadow-lg">
             Volver al Inicio
         </a>
     </div>
