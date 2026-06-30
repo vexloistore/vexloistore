@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vexloi LLC - Advanced Data Storage Solutions</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
+    <!-- Animate On Scroll (AOS) Library -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+
+    <style>
+        /* Custom styles to complement Tailwind */
+        body {
+            background-color: #030712;
+            font-family: 'Inter', sans-serif;
+            background-image: url('https://i.imgur.com/6a2e83h.jpg'); /* Futuristic background placeholder */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        /* Glassmorphism effect with neon border */
+        .glass-card {
+            background: rgba(15, 23, 42, 0.3); /* bg-slate-900/30 */
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(0, 210, 255, 0.2);
+            box-shadow: 0 0 20px rgba(0, 210, 255, 0.1);
+        }
+
+        /* CTA button with neon effect */
+        .neon-button {
+            background: linear-gradient(90deg, #00d2ff, #3a7bd5);
+            box-shadow: 0 0 15px #00d2ff, 0 0 25px #00d2ff, inset 0 0 5px rgba(255, 255, 255, 0.5);
+            transition: all 0.3s ease;
+            border: 1px solid #00d2ff;
+        }
+        .neon-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 25px #00d2ff, 0 0 45px #00d2ff, inset 0 0 8px rgba(255, 255, 255, 0.6);
+        }
+
+        /* Hexagon shape for solutions section */
+        .hexagon {
+            clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+        }
+        
+        /* Pulse animation for accents */
+        .neon-pulse {
+            animation: pulse-neon 2s infinite;
+        }
+        @keyframes pulse-neon {
+            0%, 100% {
+                text-shadow: 0 0 5px #00d2ff, 0 0 10px #00d2ff;
+            }
+            50% {
+                text-shadow: 0 0 10px #00d2ff, 0 0 20px #00d2ff;
+            }
+        }
+    </style>
+</head>
+<body class="text-gray-200">
+
+    <!-- ===== HEADER / NAVIGATION ===== -->
+    <header id="header" class="glass-card fixed top-0 left-0 right-0 z-50">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <!-- Logo -->
+            <a href="#" class="text-2xl font-bold tracking-wider text-white">
+                VEXLOI <span class="text-cyan-400">LLC</span>
+            </a>
+
+            <!-- Right side container -->
+            <div class="flex items-center gap-6">
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex items-center space-x-6">
+                    <a href="#hero" class="hover:text-cyan-400 transition duration-300">Home</a>
+                    <a href="#network" class="hover:text-cyan-400 transition duration-300">Corporate Solutions</a>
+                    <a href="#solutions" class="hover:text-cyan-400 transition duration-300">Niche Markets</a>
+                    <a href="#network" class="hover:text-cyan-400 transition duration-300">Distribution Network</a>
+                    <a href="#contact" class="hover:text-cyan-400 transition duration-300">Contact</a>
+                </nav>
+
+                <!-- Language Switcher -->
+                <div class="hidden md:flex items-center gap-2 text-sm font-bold">
+                    <a href="index_es.html" class="text-gray-400 hover:text-white transition-colors">ES</a>
+                    <span class="text-gray-600">|</span>
+                    <span class="text-white cursor-default">EN</span>
+                </div>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-button" class="md:hidden text-white">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
+        </div>
+        
+        <!-- Mobile Menu (Hidden by default) -->
+        <div id="mobile-menu" class="hidden md:hidden bg-slate-900/80 backdrop-blur-md">
+            <a href="#hero" class="block text-center py-3 px-4 text-sm hover:bg-cyan-400/20">Home</a>
+            <a href="#network" class="block text-center py-3 px-4 text-sm hover:bg-cyan-400/20">Corporate Solutions</a>
+            <a href="#solutions" class="block text-center py-3 px-4 text-sm hover:bg-cyan-400/20">Niche Markets</a>
+            <a href="#network" class="block text-center py-3 px-4 text-sm hover:bg-cyan-400/20">Distribution Network</a>
+            <a href="#contact" class="block text-center py-3 px-4 text-sm hover:bg-cyan-400/20">Contact</a>
+             <div class="flex justify-center items-center gap-2 text-sm font-bold py-3">
+                <a href="index_es.html" class="text-gray-400 hover:text-white transition-colors">ES</a>
+                <span class="text-gray-600">|</span>
+                <span class="text-white cursor-default">EN</span>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- ===== HERO SECTION ===== -->
+        <section id="hero" class="min-h-screen flex items-center justify-center text-center pt-24" style="background: radial-gradient(circle, rgba(3,7,18,0.6) 0%, rgba(3,7,18,1) 70%);">
+            <div class="container mx-auto px-6">
+                <h1 class="text-4xl md:text-6xl font-black uppercase tracking-wider text-white leading-tight">
+                    VEXLOI: BRIDGING GLOBAL SCALE WITH <span class="text-cyan-400 neon-pulse">MIAMI’S NICHE MARKET PRECISION.</span>
+                </h1>
+                <p class="mt-6 max-w-3xl mx-auto text-lg md:text-xl text-gray-300">
+                    We revolutionize your company's digital infrastructure. Immediate local supply of mass storage and high-performance memory from the heart of Miami for corporate clients.
+                </p>
+                <a href="#contact" class="neon-button inline-block mt-10 px-10 py-4 rounded-md font-bold text-white uppercase tracking-widest">
+                    Request B2B Quote
+                </a>
+            </div>
+        </section>
+
+        <!-- ===== OUR NETWORK ADVANTAGE SECTION ===== -->
+        <section id="network" class="py-20 md:py-32">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 uppercase tracking-wider">Our <span class="text-cyan-400">Network Advantage</span></h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8" data-aos="fade-up">
+                    <!-- Card 1 -->
+                    <div class="glass-card p-8 rounded-lg text-center transform hover:-translate-y-2 transition-transform duration-300">
+                        <div class="flex justify-center mb-6">
+                            <svg class="h-16 w-16 text-cyan-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2h10a2 2 0 002-2v-1a2 2 0 012-2h1.945M7.737 11l-.54-1.537A1 1 0 018.136 8h7.728a1 1 0 01.938 1.463l-.54 1.537M12 4v4m-4 4a4 4 0 118 0 4 4 0 01-8 0z" /></svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 uppercase text-white">Global Logistics Mesh</h3>
+                        <p class="text-gray-400 text-sm">Direct factory alliance with the world's 10 leading brands (Samsung, WD, SanDisk, Crucial, Seagate, Kingston, Sabrent, Lexar, Silicon Power, PNY).</p>
+                    </div>
+                    <!-- Card 2 -->
+                    <div class="glass-card p-8 rounded-lg text-center transform hover:-translate-y-2 transition-transform duration-300">
+                        <div class="flex justify-center mb-6">
+                            <svg class="h-16 w-16 text-cyan-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 uppercase text-white">Corporate Infrastructure</h3>
+                        <p class="text-gray-400 text-sm">Certified units for 24/7 storage in NAS servers, data centers, and redundant corporate systems.</p>
+                    </div>
+                    <!-- Card 3 -->
+                    <div class="glass-card p-8 rounded-lg text-center transform hover:-translate-y-2 transition-transform duration-300">
+                        <div class="flex justify-center mb-6">
+                            <svg class="h-16 w-16 text-cyan-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 uppercase text-white">Miami Local Fulfillment</h3>
+                        <p class="text-gray-400 text-sm">Real physical inventory in Florida for emergency and immediate deliveries in the local market with legally compliant corporate invoicing.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== INDUSTRY SOLUTIONS SECTION ===== -->
+        <section id="solutions" class="py-20 md:py-32 bg-slate-900/20">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 uppercase tracking-wider">Advanced <span class="text-cyan-400">Solutions Ecosystem</span></h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center" data-aos="fade-up">
+                    <!-- Block 1 -->
+                    <div class="glass-card p-8 rounded-lg flex flex-col items-center justify-center">
+                        <div class="hexagon w-24 h-28 bg-cyan-900/50 flex items-center justify-center mb-4">
+                            <svg class="h-10 w-10 text-cyan-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01" /></svg>
+                        </div>
+                        <h3 class="text-lg font-bold uppercase">Enterprise Data Centers</h3>
+                        <p class="text-sm text-gray-400 mt-2">Focus on Western Digital Gold/Red and Seagate IronWolf.</p>
+                    </div>
+                    <!-- Block 2 -->
+                    <div class="glass-card p-8 rounded-lg flex flex-col items-center justify-center">
+                        <div class="hexagon w-24 h-28 bg-cyan-900/50 flex items-center justify-center mb-4">
+                            <svg class="h-10 w-10 text-cyan-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                        </div>
+                        <h3 class="text-lg font-bold uppercase">High-Performance Computing</h3>
+                        <p class="text-sm text-gray-400 mt-2">Extreme speed NVMe units. Focus on Samsung Pro, Sabrent, and PNY XLR8.</p>
+                    </div>
+                    <!-- Block 3 -->
+                    <div class="glass-card p-8 rounded-lg flex flex-col items-center justify-center">
+                        <div class="hexagon w-24 h-28 bg-cyan-900/50 flex items-center justify-center mb-4">
+                            <svg class="h-10 w-10 text-cyan-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z" /></svg>
+                        </div>
+                        <h3 class="text-lg font-bold uppercase">Office Supply & Distribution</h3>
+                        <p class="text-sm text-gray-400 mt-2">Bulk corporate flash drives and USBs. Focus on Kingston and SanDisk.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== CEO SECTION ===== -->
+        <section id="ceo" class="py-20 md:py-32 overflow-hidden">
+            <div class="container mx-auto px-6">
+                <div class="grid md:grid-cols-2 gap-20 items-center">
+                    <div class="relative" data-aos="fade-right">
+                        <div class="glass-card aspect-square rounded-3xl flex items-center justify-center overflow-hidden p-2">
+                            <img src="juanardila.jpg" alt="Juan Carlos Ardila CEO" class="w-full h-full object-cover rounded-2xl">
+                        </div>
+                        <div class="absolute -top-10 -left-10 w-40 h-40 bg-cyan-900/30 rounded-full -z-10 animate-pulse blur-2xl"></div>
+                    </div>
+                    <div data-aos="fade-left">
+                        <h4 class="text-cyan-400 font-black uppercase text-sm mb-4">Experience That Backs Us</h4>
+                        <h2 class="text-5xl font-black mb-8 text-white">Juan Carlos Ardila</h2>
+                        <p class="text-xl text-gray-300 mb-8 leading-relaxed">
+                            As CEO of **Vexloi LLC**, Juan Carlos Ardila combines over **20 years of experience** in technology and global trade to transform how Latin America accesses US brands.
+                        </p>
+                        <p class="text-gray-400 mb-10 leading-relaxed">
+                            His vision has enabled Vexloi to evolve from a conventional courier to a strategic representation and distribution partner for companies seeking scale and legal security.
+                        </p>
+                        <div class="flex gap-12">
+                            <div class="text-center">
+                                <div class="text-4xl font-black text-cyan-400">20+</div>
+                                <div class="text-xs font-bold uppercase text-gray-400">Years in IT Sector</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-4xl font-black text-cyan-400">10+</div>
+                                <div class="text-xs font-bold uppercase text-gray-400">Premium Alliances</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ===== CONTACT SECTION ===== -->
+        <section id="contact" class="py-20 md:py-32">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 uppercase tracking-wider">
+                    <span class="text-cyan-400">Contact</span> & B2B Quotes
+                </h2>
+                <div class="max-w-4xl mx-auto glass-card p-8 md:p-12 rounded-lg">
+                    <form id="contactForm" action="https://formsubmit.co/sales@vexloi.com" method="POST" data-aos="zoom-in">
+                        <input type="hidden" name="_subject" value="New Request from Vexloi Memorys (EN)">
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="hidden" name="_next" value="https://yourdomain.com/thank-you_en.html"> <!-- Replace with your final URL -->
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                            <div>
+                                <label for="name" class="block text-sm font-medium text-cyan-300 mb-2">Full Name</label>
+                                <input type="text" name="name" id="name" required class="w-full bg-slate-900/50 border border-cyan-400/30 rounded-md py-2 px-3 text-white focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent transition">
+                            </div>
+                            <div>
+                                <label for="company" class="block text-sm font-medium text-cyan-300 mb-2">Company</label>
+                                <input type="text" name="company" id="company" required class="w-full bg-slate-900/50 border border-cyan-400/30 rounded-md py-2 px-3 text-white focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent transition">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-cyan-300 mb-2">Corporate Email</label>
+                                <input type="email" name="email" id="email" required class="w-full bg-slate-900/50 border border-cyan-400/30 rounded-md py-2 px-3 text-white focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent transition">
+                            </div>
+                            <div>
+                                <label for="phone" class="block text-sm font-medium text-cyan-300 mb-2">Phone / Whatsapp</label>
+                                <input type="tel" name="phone" id="phone" class="w-full bg-slate-900/50 border border-cyan-400/30 rounded-md py-2 px-3 text-white focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent transition">
+                            </div>
+                        </div>
+                        <label for="message" class="block text-sm font-medium text-cyan-300 mb-2">How can we help you?</label>
+                        <textarea name="message" id="message" rows="4" required class="w-full bg-slate-900/50 border border-cyan-400/30 rounded-md py-2 px-3 text-white focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent transition mb-6"></textarea>
+                        <div class="text-center"><button type="submit" class="neon-button w-full md:w-auto px-10 py-4 rounded-md font-bold text-white uppercase tracking-widest">Send Request</button></div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer id="footer" class="bg-slate-900/50 border-t border-cyan-400/20 py-12">
+        <div class="container mx-auto px-6 text-center">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
+                <!-- Logo & Copyright -->
+                <div class="md:text-left">
+                    <h4 class="text-xl font-bold text-white">VEXLOI LLC</h4>
+                    <p class="text-sm text-gray-400 mt-2">© 2026 Vexloi LLC. Miami, FL.</p>
+                </div>
+                <!-- Quick Links -->
+                <div class="flex flex-col space-y-2">
+                    <a href="#hero" class="hover:text-cyan-400 transition">Home</a>
+                    <a href="#network" class="hover:text-cyan-400 transition">Distribution Network</a>
+                    <a href="#solutions" class="hover:text-cyan-400 transition">Solutions</a>
+                    <a href="#contact" class="hover:text-cyan-400 transition">Contact</a>
+                </div>
+                <!-- Social Icons -->
+                <div class="flex justify-center md:justify-end space-x-4">
+                    <a href="#" class="text-gray-400 hover:text-cyan-400 transition">
+                        <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" clip-rule="evenodd"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu script
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Initialize AOS
+        AOS.init({ duration: 1000, once: true, offset: 50 });
+
+        // AJAX form submission script
+        const contactForm = document.getElementById('contactForm');
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const btn = this.querySelector('button[type="submit"]');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = 'Sending...';
+            btn.disabled = true;
+
+            const formData = new FormData(this);
+
+            fetch(this.action, {
+                method: 'POST',
+                body: formData,
+                headers: { 'Accept': 'application/json' }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.ok) { // FormSubmit uses 'ok' property
+                    window.location.href = './thank-you_en.html'; // Redirect to your English thank you page
+                } else {
+                    // Handle error if needed
+                    btn.innerHTML = originalText;
+                    btn.disabled = false;
+                    alert('There was an error sending the form. Please try again.');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+            });
+        });
+    </script>
+
+</body>
+</html>
