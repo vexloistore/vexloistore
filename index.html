@@ -283,6 +283,7 @@
                 <!-- Logo & Copyright -->
                 <div class="md:text-left">
                     <h4 class="text-xl font-bold text-white">VEXLOI LLC</h4>
+                    <p class="text-sm text-gray-400 mt-2">email: info@vexloi.com</p>
                     <p class="text-sm text-gray-400 mt-2">© 2026 Vexloi LLC. Miami, FL.</p>
                 </div>
                 <!-- Quick Links -->
@@ -334,7 +335,7 @@
             })
             .then(response => response.json())
             .then(data => {
-                if (data.ok) { // FormSubmit uses 'ok' property
+                if (data.success) { // FormSubmit returns a "success" property
                     window.location.href = './thank-you_en.html'; // Redirect to your English thank you page
                 } else {
                     // Handle error if needed
@@ -347,6 +348,7 @@
                 console.error('Error:', error);
                 btn.innerHTML = originalText;
                 btn.disabled = false;
+                alert('A network error occurred. Please check your connection and try again.');
             });
         });
     </script>
