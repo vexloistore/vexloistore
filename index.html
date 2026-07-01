@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vexloi LLC | B2B Distribution Hub & Logistics</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cyberDark: '#060b13',
+                        cyberCard: '#0d1527',
+                        cyberBlue: '#00d2ff',
+                        cyberNeon: '#05ffc5',
+                    },
+                    boxShadow: {
+                        'neon-blue': '0 0 15px rgba(0, 210, 255, 0.3)',
+                        'neon-green': '0 0 15px rgba(5, 255, 197, 0.3)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass-panel {
+            background: rgba(13, 21, 39, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(0, 210, 255, 0.15);
+        }
+        .pulse-line {
+            stroke-dasharray: 8;
+            animation: dash 25s linear infinite;
+        }
+        @keyframes dash {
+            to { stroke-dashoffset: -1000; }
+        }
+    </style>
+</head>
+<body class="bg-cyberDark text-gray-200 font-sans selection:bg-cyberBlue selection:text-black">
+
+    <!-- HEADER -->
+    <header class="fixed top-0 w-full z-50 glass-panel border-b border-cyberBlue/10">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <div class="flex items-center space-x-2">
+                <span class="text-2xl font-black tracking-widest text-white">VEXLOI<span class="text-cyberBlue">.</span>LLC</span>
+            </div>
+            <nav class="hidden md:flex space-x-8 text-sm font-medium tracking-wide text-gray-400">
+                <a href="#inicio" class="hover:text-cyberBlue transition-colors">Inicio</a>
+                <a href="#suministro" class="hover:text-cyberBlue transition-colors">Suministro</a>
+                <a href="#logistica" class="hover:text-cyberBlue transition-colors">Logística Hub</a>
+                <a href="#contacto" class="hover:text-cyberBlue transition-colors">Contacto</a>
+            </nav>
+            <a href="#contacto" class="px-5 py-2.5 bg-transparent border border-cyberBlue text-cyberBlue text-xs font-bold tracking-wider uppercase rounded-sm hover:bg-cyberBlue hover:text-black transition-all duration-300 shadow-neon-blue">
+                Cuenta Corporativa
+            </a>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section id="inicio" class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
+        <!-- Fondo Dinámico SVG -->
+        <div class="absolute inset-0 z-0 opacity-40 pointer-events-none">
+            <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <radialGradient id="hero-grad" cx="50%" cy="50%" r="50%">
+                        <stop offset="0%" stop-color="#00d2ff" stop-opacity="0.15"/>
+                        <stop offset="100%" stop-color="#060b13" stop-opacity="0"/>
+                    </radialGradient>
+                </defs>
+                <rect width="100%" height="100%" fill="url(#hero-grad)"/>
+                <!-- Líneas de Red Global -->
+                <circle cx="20%" cy="40%" r="2" fill="#00d2ff" />
+                <circle cx="80%" cy="30%" r="3" fill="#05ffc5" />
+                <circle cx="50%" cy="70%" r="2" fill="#00d2ff" />
+                <line x1="20%" y1="40%" x2="50%" y2="70%" stroke="rgba(0,210,255,0.1)" stroke-width="1"/>
+                <line x1="50%" y1="70%" x2="80%" y2="30%" stroke="rgba(5,255,197,0.1)" stroke-width="1"/>
+            </svg>
+        </div>
+
+        <div class="relative z-10 max-w-5xl mx-auto px-6 text-center">
+            <span class="text-xs font-bold tracking-widest text-cyberBlue uppercase bg-cyberBlue/10 px-4 py-1.5 rounded-full border border-cyberBlue/20">
+                Miami B2B Gateway & LATAM Reseller
+            </span>
+            <h1 class="mt-6 text-4xl md:text-6xl font-extrabold tracking-tight text-white leading-tight">
+                Infraestructura de Suministro Global <br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyberBlue to-cyberNeon">
+                    con Precisión de Nicho
+                </span>
+            </h1>
+            <p class="mt-6 text-base md:text-lg text-gray-400 max-w-3xl mx-auto leading-relaxed">
+                Operamos como revendedores estratégicos y distribuidores mayoristas en el Sur de la Florida. Gestionamos contratos de suministro específicos y optimizamos la cadena logística para exportaciones de nicho hacia Latinoamérica.
+            </p>
+            <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="#suministro" class="w-full sm:w-auto px-8 py-4 bg-cyberBlue text-black font-bold text-sm tracking-wide uppercase rounded-sm hover:bg-white transition-all duration-300 shadow-neon-blue">
+                    Ver Líneas de Suministro
+                </a>
+                <a href="#logistica" class="w-full sm:w-auto px-8 py-4 bg-transparent border border-gray-700 text-gray-300 font-bold text-sm tracking-wide uppercase rounded-sm hover:border-cyberNeon hover:text-cyberNeon transition-all duration-300">
+                    Infraestructura Logística
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN INTERACTIVA: LÍNEAS DE SUMINISTRO -->
+    <section id="suministro" class="py-32 bg-[#09101c] border-y border-gray-900">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center max-w-3xl mx-auto mb-20">
+                <h2 class="text-3xl md:text-4xl font-bold text-white tracking-tight">Líneas de Suministro Especializadas</h2>
+                <p class="mt-4 text-gray-400">Interactúe con los nodos de datos para ver nuestro portafolio de marcas aliadas distribuidas desde Miami.</p>
+            </div>
+
+            <!-- Gráfico Interactivo de Métricas / Líneas -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                <!-- Columna Izquierda: Tarjetas de Categorías -->
+                <div class="lg:col-span-5 space-y-4">
+                    <div onclick="switchMetric(0, 75)" class="metric-card glass-panel p-6 rounded-sm cursor-pointer border-l-4 border-l-cyberBlue hover:bg-cyberCard/80 transition-all duration-300" id="card-0">
+                        <h3 class="text-lg font-bold text-white">Data & Memory Solutions</h3>
+                        <p class="text-xs text-gray-400 mt-1">Componentes críticos, SSDs corporativos, memorias flash.</p>
+                        <span class="inline-block mt-3 text-xs font-mono text-cyberBlue">Samsung, WD, SanDisk, Crucial, Kingston</span>
+                    </div>
+
+                    <div onclick="switchMetric(1, 45)" class="metric-card glass-panel p-6 rounded-sm cursor-pointer border-l-4 border-l-gray-700 opacity-60 hover:opacity-100 transition-all duration-300" id="card-1">
+                        <h3 class="text-lg font-bold text-white">Home & Kitchen Tech</h3>
+                        <p class="text-xs text-gray-400 mt-1">Pequeños electrodomésticos inteligentes y hospitalidad premium.</p>
+                        <span class="inline-block mt-3 text-xs font-mono text-cyberBlue">Ninja, OXO, Instant Pot, Cuisinart</span>
+                    </div>
+
+                    <div onclick="switchMetric(2, 90)" class="metric-card glass-panel p-6 rounded-sm cursor-pointer border-l-4 border-l-gray-700 opacity-60 hover:opacity-100 transition-all duration-300" id="card-2">
+                        <h3 class="text-lg font-bold text-white">Professional Tools</h3>
+                        <p class="text-xs text-gray-400 mt-1">Herramientas hardware industriales e inalámbricas Heavy-Duty.</p>
+                        <span class="inline-block mt-3 text-xs font-mono text-cyberBlue">DeWalt, Milwaukee, Makita</span>
+                    </div>
+
+                    <div onclick="switchMetric(3, 60)" class="metric-card glass-panel p-6 rounded-sm cursor-pointer border-l-4 border-l-gray-700 opacity-60 hover:opacity-100 transition-all duration-300" id="card-3">
+                        <h3 class="text-lg font-bold text-white">Lawn & Garden Automation</h3>
+                        <p class="text-xs text-gray-400 mt-1">Equipos de paisajismo corporativo eco-eficientes a batería.</p>
+                        <span class="inline-block mt-3 text-xs font-mono text-cyberBlue">Greenworks Pro, WORX</span>
+                    </div>
+                </div>
+
+                <!-- Columna Derecha: Gráfica Interactiva Generada Completamente por HTML/SVG/CSS -->
+                <div class="lg:col-span-7 glass-panel p-8 rounded-sm relative min-h-[400px] flex flex-col justify-between overflow-hidden shadow-neon-blue">
+                    <div class="absolute top-0 right-0 p-4 font-mono text-[10px] text-cyberBlue/40 tracking-wider">
+                        VEXLOI_CORE_SYS // RUNNING_
+                    </div>
+                    
+                    <div>
+                        <span class="text-xs font-mono text-cyberBlue tracking-widest uppercase">Indexador de Capacidad de Suministro</span>
+                        <h4 class="text-xl font-bold text-white mt-1" id="metric-title">Data & Memory Solutions</h4>
+                    </div>
+
+                    <!-- Gráfica de Anillo SVG Dinámica -->
+                    <div class="my-6 flex justify-center items-center relative">
+                        <svg class="w-64 h-64 transform -rotate-90" viewBox="0 0 100 100">
+                            <circle cx="50" cy="50" r="40" stroke="#111c30" stroke-width="6" fill="transparent" />
+                            <circle id="interactive-circle" cx="50" cy="50" r="40" stroke="#00d2ff" stroke-width="6" fill="transparent" 
+                                    stroke-dasharray="251.2" stroke-dashoffset="62.8" class="transition-all duration-1000 ease-out" />
+                        </svg>
+                        <div class="absolute text-center">
+                            <span class="text-4xl font-black font-mono text-white transition-all duration-500" id="metric-percent">75%</span>
+                            <span class="block text-[10px] uppercase tracking-widest text-gray-400 mt-1">Disponibilidad de Stock</span>
+                        </div>
+                    </div>
+
+                    <!-- Datos Técnicos de Salida simulados -->
+                    <div class="grid grid-cols-3 gap-4 pt-6 border-t border-gray-800 font-mono text-xs">
+                        <div>
+                            <span class="text-gray-500 block">Hub Región</span>
+                            <span class="text-gray-300 font-bold">South FL / LATAM</span>
+                        </div>
+                        <div>
+                            <span class="text-gray-500 block">Lead Time</span>
+                            <span class="text-cyberNeon font-bold">&lt; 24-48 Horas</span>
+                        </div>
+                        <div>
+                            <span class="text-gray-500 block">Tipo Contrato</span>
+                            <span class="text-gray-300 font-bold">B2B Volúmenes</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN INTERACTIVA: LOGISTICS HUB (MAPA FLUIDO DE FLUJOS) -->
+    <section id="logistica" class="py-32">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <!-- Izquierda: Información de Operaciones -->
+                <div>
+                    <span class="text-xs font-bold tracking-widest text-cyberNeon uppercase">Infraestructura de Conectividad</span>
+                    <h2 class="text-3xl md:text-4xl font-bold text-white mt-4">Hub Logístico de Miami</h2>
+                    <p class="mt-6 text-gray-400 leading-relaxed">
+                        Nuestra posición geográfica nos permite consolidar carga crítica de marcas mundiales y redistribuirla ágilmente bajo dos modalidades de nicho:
+                    </p>
+                    <div class="mt-8 space-y-6">
+                        <div class="flex items-start space-x-4">
+                            <div class="p-3 bg-cyberBlue/10 text-cyberBlue rounded-sm border border-cyberBlue/20">
+                                🏢
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-bold text-white">Mercado Local (Sur de la Florida)</h4>
+                                <p class="text-sm text-gray-400 mt-1">Contratos recurrentes de suministro empresarial, entregas directas puerta a puerta y total cumplimiento fiscal estadounidense.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <div class="p-3 bg-cyberNeon/10 text-cyberNeon rounded-sm border border-cyberNeon/20">
+                                📦
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-bold text-white">Canales de Exportación a LATAM</h4>
+                                <p class="text-sm text-gray-400 mt-1">Consolidación de paletas y contenedores, embalaje especializado de nicho y despacho prioritario internacional desde centros de distribución en Miami.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Derecha: Gráfica de Flujo SVG Animada Interactiva -->
+                <div class="glass-panel p-6 rounded-sm relative shadow-neon-green">
+                    <div class="text-xs font-mono text-gray-500 mb-4 flex justify-between items-center">
+                        <span>SIMULADOR DE FLUJO DE CARGA</span>
+                        <span class="flex h-2 w-2 relative">
+                          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyberNeon opacity-75"></span>
+                          <span class="relative inline-flex rounded-full h-2 w-2 bg-cyberNeon"></span>
+                        </span>
+                    </div>
+
+                    <!-- Gráfico de Conexión del Hub con animación nativa -->
+                    <svg class="w-full h-auto bg-cyberDark/50 border border-gray-800 rounded-sm" viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Nodos -->
+                        <g id="nodes">
+                            <!-- Fábricas Globales -->
+                            <circle cx="50" cy="125" r="8" fill="#1f2937" stroke="#00d2ff" stroke-width="2"/>
+                            <text x="50" y="145" fill="#9ca3af" font-size="9" font-family="monospace" text-anchor="middle">Marcas Globales</text>
+                            
+                            <!-- HUB MIAMI -->
+                            <circle cx="200" cy="125" r="14" fill="#0d1527" stroke="#05ffc5" stroke-width="3" class="animate-pulse"/>
+                            <text x="200" y="152" fill="#fff" font-size="11" font-family="monospace" font-weight="bold" text-anchor="middle">VEXLOI HUB (Miami)</text>
+                            
+                            <!-- Corporativos FL -->
+                            <circle cx="340" cy="60" r="8" fill="#1f2937" stroke="#00d2ff" stroke-width="2"/>
+                            <text x="345" y="75" fill="#9ca3af" font-size="9" font-family="monospace">Sur Florida B2B</text>
+                            
+                            <!-- LATAM -->
+                            <circle cx="340" cy="190" r="8" fill="#1f2937" stroke="#00d2ff" stroke-width="2"/>
+                            <text x="345" y="205" fill="#9ca3af" font-size="9" font-family="monospace">Export LATAM</text>
+                        </g>
+                        
+                        <!-- Líneas de Flujo Animadas -->
+                        <g id="flows" fill="none" stroke-width="2">
+                            <!-- Entrada a Miami -->
+                            <path d="M 58 125 L 186 125" stroke="url(#cyan-grad)" class="pulse-line" />
+                            <!-- Salida Local -->
+                            <path d="M 212 115 L 332 65" stroke="url(#neon-grad-line)" class="pulse-line" />
+                            <!-- Salida LATAM -->
+                            <path d="M 212 135 L 332 185" stroke="url(#neon-grad-line)" class="pulse-line" />
+                        </g>
+
+                        <!-- Gradientes para las líneas -->
+                        <defs>
+                            <linearGradient id="cyan-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" stop-color="#00d2ff" stop-opacity="0.2"/>
+                                <stop offset="100%" stop-color="#05ffc5"/>
+                            </linearGradient>
+                            <linearGradient id="neon-grad-line" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#05ffc5"/>
+                                <stop offset="100%" stop-color="#00d2ff" stop-opacity="0.2"/>
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CEO SECTION ===== -->
+    <section id="ceo" class="py-32 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-20 items-center">
+                <div class="relative">
+                    <div class="glass-panel aspect-square rounded-sm flex items-center justify-center overflow-hidden p-2 shadow-neon-blue">
+                        <img src="juanardila.jpg" alt="Juan Carlos Ardila CEO" class="w-full h-full object-cover rounded-sm">
+                    </div>
+                    <div class="absolute -top-10 -left-10 w-40 h-40 bg-cyberBlue/10 rounded-full -z-10 animate-pulse blur-2xl"></div>
+                </div>
+                <div>
+                    <h4 class="text-cyberBlue font-black uppercase text-sm mb-4 tracking-widest">Experiencia Que Nos Respalda</h4>
+                    <h2 class="text-5xl font-black mb-8 text-white">Juan Carlos Ardila</h2>
+                    <p class="text-xl text-gray-300 mb-8 leading-relaxed">
+                        Como CEO de <strong>Vexloi LLC</strong>, Juan Carlos Ardila combina más de <strong>20 años de experiencia</strong> en tecnología y comercio global para transformar cómo Latinoamérica accede a las marcas de EE. UU.
+                    </p>
+                    <p class="text-gray-400 mb-10 leading-relaxed">
+                        Su visión ha permitido que Vexloi evolucione de un courier convencional a un socio estratégico de representación y distribución para empresas que buscan escala y seguridad jurídica.
+                    </p>
+                    <div class="flex gap-12">
+                        <div class="text-center">
+                            <div class="text-4xl font-black text-cyberBlue">20+</div>
+                            <div class="text-xs font-bold uppercase text-gray-400 mt-1">Años en Sector IT</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-4xl font-black text-cyberBlue">10+</div>
+                            <div class="text-xs font-bold uppercase text-gray-400 mt-1">Alianzas Premium</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FORMULARIO DE CONTACTO CORPORATIVO -->
+    <section id="contacto" class="py-32 bg-[#09101c]">
+        <div class="max-w-3xl mx-auto px-6">
+            <div class="text-center mb-12">
+                <span class="text-xs font-bold font-mono text-cyberBlue uppercase tracking-widest">B2B Portal</span>
+                <h2 class="text-3xl font-bold text-white mt-2">Apertura de Cuenta y Cotizaciones</h2>
+                <p class="mt-3 text-sm text-gray-400">Establezca una cadena de suministro confiable para su empresa o canal de importación.</p>
+            </div>
+
+            <form id="contactForm" action="https://formsubmit.co/sales@vexloi.com" method="POST" class="glass-panel p-8 rounded-sm space-y-6">
+                <input type="hidden" name="_subject" value="Nueva Solicitud desde Vexloi Hub (ES)">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_next" value="thank-you_es.html">
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-xs font-mono uppercase text-gray-400 mb-2 tracking-wider">Nombre del Contacto</label>
+                        <input type="text" name="name" required class="w-full bg-cyberDark/80 border border-gray-800 rounded-sm px-4 py-3 text-sm text-white focus:outline-none focus:border-cyberBlue transition-colors">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-mono uppercase text-gray-400 mb-2 tracking-wider">Empresa / Tax ID</label>
+                        <input type="text" name="company" required class="w-full bg-cyberDark/80 border border-gray-800 rounded-sm px-4 py-3 text-sm text-white focus:outline-none focus:border-cyberBlue transition-colors">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-mono uppercase text-gray-400 mb-2 tracking-wider">Correo Electrónico Corporativo</label>
+                    <input type="email" name="email" required class="w-full bg-cyberDark/80 border border-gray-800 rounded-sm px-4 py-3 text-sm text-white focus:outline-none focus:border-cyberBlue transition-colors">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-mono uppercase text-gray-400 mb-2 tracking-wider">Línea de Interés Primaria</label>
+                    <select name="interest_line" class="w-full bg-cyberDark/80 border border-gray-800 rounded-sm px-4 py-3 text-sm text-gray-400 focus:outline-none focus:border-cyberBlue transition-colors">
+                        <option>Memorias y Almacenamiento Electrónico</option>
+                        <option>Hogar y Cocina Profesional</option>
+                        <option>Herramientas de Alta Resistencia (Tools)</option>
+                        <option>Cuidado de Exteriores (Lawn & Garden)</option>
+                        <option>Otro tipo de contrato o suministro</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-mono uppercase text-gray-400 mb-2 tracking-wider">Especificaciones del Contrato / Destino</label>
+                    <textarea name="message" rows="4" placeholder="Volúmenes estimados o requerimientos de exportación..." class="w-full bg-cyberDark/80 border border-gray-800 rounded-sm px-4 py-3 text-sm text-white focus:outline-none focus:border-cyberBlue transition-colors"></textarea>
+                </div>
+
+                <button id="submitBtn" type="submit" class="w-full py-4 bg-transparent border border-cyberNeon text-cyberNeon font-bold text-xs tracking-widest uppercase rounded-sm hover:bg-cyberNeon hover:text-black transition-all duration-300 shadow-neon-green">
+                    Enviar Requerimiento B2B
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="border-t border-gray-950 py-12 bg-cyberDark font-mono text-xs text-gray-500">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row justify-between items-center gap-4">
+            <div>
+                <span>© 2026 Vexloi LLC. Miami, Florida.</span>
+            </div>
+            <div class="flex space-x-6">
+                <span class="text-gray-600">// SUPPLY LOGISTICS HUB</span>
+                <span>B2B & Export</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- LÓGICA DE INTERACCIÓN DEL GRÁFICO (SIN LIBRERÍAS EXTERNAS) -->
+    <script>
+        const categories = [
+            { title: "Data & Memory Solutions", offset: 62.8 }, // 75% -> 251.2 * (1 - 0.75)
+            { title: "Home & Kitchen Tech", offset: 138.16 },  // 45% -> 251.2 * (1 - 0.45)
+            { title: "Professional Tools", offset: 25.12 },    // 90% -> 251.2 * (1 - 0.90)
+            { title: "Lawn & Garden Automation", offset: 100.48 } // 60% -> 251.2 * (1 - 0.60)
+        ];
+
+        function switchMetric(index, percent) {
+            // Actualizar textos en la interfaz
+            document.getElementById('metric-title').innerText = categories[index].title;
+            document.getElementById('metric-percent').innerText = percent + "%";
+            
+            // Actualizar el arco SVG del gráfico de anillo
+            document.getElementById('interactive-circle').style.strokeDashoffset = categories[index].offset;
+            
+            // Alternar los estilos visuales activos de las tarjetas
+            document.querySelectorAll('.metric-card').forEach((card, i) => {
+                if (i === index) {
+                    card.classList.remove('opacity-60', 'border-l-gray-700');
+                    card.classList.add('border-l-cyberBlue', 'bg-cyberCard/80');
+                } else {
+                    card.classList.add('opacity-60', 'border-l-gray-700');
+                    card.classList.remove('border-l-cyberBlue', 'bg-cyberCard/80');
+                }
+            });
+        }
+
+        // Lógica de envío de formulario con AJAX
+        const contactForm = document.getElementById('contactForm');
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const btn = document.getElementById('submitBtn');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = 'Enviando al sistema...';
+            btn.disabled = true;
+
+            const formData = new FormData(this);
+
+            fetch(this.action, {
+                method: 'POST',
+                body: formData,
+                headers: { 'Accept': 'application/json' }
+            })
+            .then(response => {
+                // Redirigimos al usuario a la página de agradecimiento.
+                // El error de CORS que puede aparecer en la consola es esperado con formsubmit.co al usar AJAX.
+                window.location.href = this.querySelector('input[name="_next"]').value;
+            }) 
+            .catch(error => {
+                window.location.href = this.querySelector('input[name="_next"]').value;
+            });
+        });
+    </script>
+</body>
+</html>
