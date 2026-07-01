@@ -47,20 +47,23 @@
             <div class="flex items-center space-x-2">
                 <span class="text-2xl font-black tracking-widest text-white">VEXLOI<span class="text-cyberBlue">.</span>LLC</span>
             </div>
-            <nav class="hidden md:flex space-x-8 text-sm font-medium tracking-wide text-gray-400">
-                <a href="#inicio" class="hover:text-cyberBlue transition-colors">Inicio</a>
-                <a href="#suministro" class="hover:text-cyberBlue transition-colors">Suministro</a>
-                <a href="#logistica" class="hover:text-cyberBlue transition-colors">Logística Hub</a>
-                <a href="#contacto" class="hover:text-cyberBlue transition-colors">Contacto</a>
+            <nav class="hidden lg:flex space-x-8 text-sm font-medium tracking-wide text-gray-400">
+                <a href="#home" class="hover:text-cyberBlue transition-colors">Home</a>
+                <a href="#supply" class="hover:text-cyberBlue transition-colors">Supply</a>
+                <a href="#logistics" class="hover:text-cyberBlue transition-colors">Logistics Hub</a>
+                <a href="#contact" class="hover:text-cyberBlue transition-colors">Contact</a>
             </nav>
-            <a href="#contacto" class="px-5 py-2.5 bg-transparent border border-cyberBlue text-cyberBlue text-xs font-bold tracking-wider uppercase rounded-sm hover:bg-cyberBlue hover:text-black transition-all duration-300 shadow-neon-blue">
-                Cuenta Corporativa
+            <div class="hidden lg:flex items-center gap-4">
+            <a href="#contact" class="px-5 py-2.5 bg-transparent border border-cyberBlue text-cyberBlue text-xs font-bold tracking-wider uppercase rounded-sm hover:bg-cyberBlue hover:text-black transition-all duration-300 shadow-neon-blue">
+                Corporate Account
             </a>
+            <a href="index_es.html" class="text-xs text-gray-500 hover:text-white font-bold">ES</a>
+            </div>
         </div>
     </header>
 
     <!-- HERO SECTION -->
-    <section id="inicio" class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
+    <section id="home" class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
         <!-- Fondo Dinámico SVG -->
         <div class="absolute inset-0 z-0 opacity-40 pointer-events-none">
             <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
@@ -85,31 +88,31 @@
                 Miami B2B Gateway & LATAM Reseller
             </span>
             <h1 class="mt-6 text-4xl md:text-6xl font-extrabold tracking-tight text-white leading-tight">
-                Infraestructura de Suministro Global <br>
+                Global Supply Infrastructure <br>
                 <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyberBlue to-cyberNeon">
-                    con Precisión de Nicho
+                    with Niche Precision
                 </span>
             </h1>
             <p class="mt-6 text-base md:text-lg text-gray-400 max-w-3xl mx-auto leading-relaxed">
-                Operamos como revendedores estratégicos y distribuidores mayoristas en el Sur de la Florida. Gestionamos contratos de suministro específicos y optimizamos la cadena logística para exportaciones de nicho hacia Latinoamérica.
+                We operate as strategic resellers and wholesale distributors in South Florida. We manage specific supply contracts and optimize the logistics chain for niche exports to Latin America.
             </p>
             <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a href="#suministro" class="w-full sm:w-auto px-8 py-4 bg-cyberBlue text-black font-bold text-sm tracking-wide uppercase rounded-sm hover:bg-white transition-all duration-300 shadow-neon-blue">
-                    Ver Líneas de Suministro
+                <a href="#supply" class="w-full sm:w-auto px-8 py-4 bg-cyberBlue text-black font-bold text-sm tracking-wide uppercase rounded-sm hover:bg-white transition-all duration-300 shadow-neon-blue">
+                    View Supply Lines
                 </a>
-                <a href="#logistica" class="w-full sm:w-auto px-8 py-4 bg-transparent border border-gray-700 text-gray-300 font-bold text-sm tracking-wide uppercase rounded-sm hover:border-cyberNeon hover:text-cyberNeon transition-all duration-300">
-                    Infraestructura Logística
+                <a href="#logistics" class="w-full sm:w-auto px-8 py-4 bg-transparent border border-gray-700 text-gray-300 font-bold text-sm tracking-wide uppercase rounded-sm hover:border-cyberNeon hover:text-cyberNeon transition-all duration-300">
+                    Logistics Infrastructure
                 </a>
             </div>
         </div>
     </section>
 
     <!-- SECCIÓN INTERACTIVA: LÍNEAS DE SUMINISTRO -->
-    <section id="suministro" class="py-32 bg-[#09101c] border-y border-gray-900">
+    <section id="supply" class="py-32 bg-[#09101c] border-y border-gray-900">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center max-w-3xl mx-auto mb-20">
-                <h2 class="text-3xl md:text-4xl font-bold text-white tracking-tight">Líneas de Suministro Especializadas</h2>
-                <p class="mt-4 text-gray-400">Interactúe con los nodos de datos para ver nuestro portafolio de marcas aliadas distribuidas desde Miami.</p>
+                <h2 class="text-3xl md:text-4xl font-bold text-white tracking-tight">Specialized Supply Lines</h2>
+                <p class="mt-4 text-gray-400">Interact with the data nodes to see our portfolio of allied brands distributed from Miami.</p>
             </div>
 
             <!-- Gráfico Interactivo de Métricas / Líneas -->
@@ -118,25 +121,25 @@
                 <div class="lg:col-span-5 space-y-4">
                     <div onclick="switchMetric(0, 75)" class="metric-card glass-panel p-6 rounded-sm cursor-pointer border-l-4 border-l-cyberBlue hover:bg-cyberCard/80 transition-all duration-300" id="card-0">
                         <h3 class="text-lg font-bold text-white">Data & Memory Solutions</h3>
-                        <p class="text-xs text-gray-400 mt-1">Componentes críticos, SSDs corporativos, memorias flash.</p>
+                        <p class="text-xs text-gray-400 mt-1">Critical components, corporate SSDs, flash memories.</p>
                         <span class="inline-block mt-3 text-xs font-mono text-cyberBlue">Samsung, WD, SanDisk, Crucial, Kingston</span>
                     </div>
 
                     <div onclick="switchMetric(1, 45)" class="metric-card glass-panel p-6 rounded-sm cursor-pointer border-l-4 border-l-gray-700 opacity-60 hover:opacity-100 transition-all duration-300" id="card-1">
                         <h3 class="text-lg font-bold text-white">Home & Kitchen Tech</h3>
-                        <p class="text-xs text-gray-400 mt-1">Pequeños electrodomésticos inteligentes y hospitalidad premium.</p>
+                        <p class="text-xs text-gray-400 mt-1">Smart small appliances and premium hospitality.</p>
                         <span class="inline-block mt-3 text-xs font-mono text-cyberBlue">Ninja, OXO, Instant Pot, Cuisinart</span>
                     </div>
 
                     <div onclick="switchMetric(2, 90)" class="metric-card glass-panel p-6 rounded-sm cursor-pointer border-l-4 border-l-gray-700 opacity-60 hover:opacity-100 transition-all duration-300" id="card-2">
                         <h3 class="text-lg font-bold text-white">Professional Tools</h3>
-                        <p class="text-xs text-gray-400 mt-1">Herramientas hardware industriales e inalámbricas Heavy-Duty.</p>
+                        <p class="text-xs text-gray-400 mt-1">Industrial and heavy-duty wireless hardware tools.</p>
                         <span class="inline-block mt-3 text-xs font-mono text-cyberBlue">DeWalt, Milwaukee, Makita</span>
                     </div>
 
                     <div onclick="switchMetric(3, 60)" class="metric-card glass-panel p-6 rounded-sm cursor-pointer border-l-4 border-l-gray-700 opacity-60 hover:opacity-100 transition-all duration-300" id="card-3">
                         <h3 class="text-lg font-bold text-white">Lawn & Garden Automation</h3>
-                        <p class="text-xs text-gray-400 mt-1">Equipos de paisajismo corporativo eco-eficientes a batería.</p>
+                        <p class="text-xs text-gray-400 mt-1">Eco-efficient battery-powered corporate landscaping equipment.</p>
                         <span class="inline-block mt-3 text-xs font-mono text-cyberBlue">Greenworks Pro, WORX</span>
                     </div>
                 </div>
@@ -148,7 +151,7 @@
                     </div>
                     
                     <div>
-                        <span class="text-xs font-mono text-cyberBlue tracking-widest uppercase">Indexador de Capacidad de Suministro</span>
+                        <span class="text-xs font-mono text-cyberBlue tracking-widest uppercase">Supply Capacity Indexer</span>
                         <h4 class="text-xl font-bold text-white mt-1" id="metric-title">Data & Memory Solutions</h4>
                     </div>
 
@@ -161,7 +164,7 @@
                         </svg>
                         <div class="absolute text-center">
                             <span class="text-4xl font-black font-mono text-white transition-all duration-500" id="metric-percent">75%</span>
-                            <span class="block text-[10px] uppercase tracking-widest text-gray-400 mt-1">Disponibilidad de Stock</span>
+                            <span class="block text-[10px] uppercase tracking-widest text-gray-400 mt-1">Stock Availability</span>
                         </div>
                     </div>
 
@@ -173,11 +176,11 @@
                         </div>
                         <div>
                             <span class="text-gray-500 block">Lead Time</span>
-                            <span class="text-cyberNeon font-bold">&lt; 24-48 Horas</span>
+                            <span class="text-cyberNeon font-bold">&lt; 24-48 Hours</span>
                         </div>
                         <div>
-                            <span class="text-gray-500 block">Tipo Contrato</span>
-                            <span class="text-gray-300 font-bold">B2B Volúmenes</span>
+                            <span class="text-gray-500 block">Contract Type</span>
+                            <span class="text-gray-300 font-bold">B2B Volumes</span>
                         </div>
                     </div>
                 </div>
@@ -186,15 +189,15 @@
     </section>
 
     <!-- SECCIÓN INTERACTIVA: LOGISTICS HUB (MAPA FLUIDO DE FLUJOS) -->
-    <section id="logistica" class="py-32">
+    <section id="logistics" class="py-32">
         <div class="max-w-7xl mx-auto px-6">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                 <!-- Izquierda: Información de Operaciones -->
                 <div>
-                    <span class="text-xs font-bold tracking-widest text-cyberNeon uppercase">Infraestructura de Conectividad</span>
-                    <h2 class="text-3xl md:text-4xl font-bold text-white mt-4">Hub Logístico de Miami</h2>
+                    <span class="text-xs font-bold tracking-widest text-cyberNeon uppercase">Connectivity Infrastructure</span>
+                    <h2 class="text-3xl md:text-4xl font-bold text-white mt-4">Miami Logistics Hub</h2>
                     <p class="mt-6 text-gray-400 leading-relaxed">
-                        Nuestra posición geográfica nos permite consolidar carga crítica de marcas mundiales y redistribuirla ágilmente bajo dos modalidades de nicho:
+                        Our geographical position allows us to consolidate critical cargo from global brands and redistribute it agilely under two niche modalities:
                     </p>
                     <div class="mt-8 space-y-6">
                         <div class="flex items-start space-x-4">
@@ -202,8 +205,8 @@
                                 🏢
                             </div>
                             <div>
-                                <h4 class="text-lg font-bold text-white">Mercado Local (Sur de la Florida)</h4>
-                                <p class="text-sm text-gray-400 mt-1">Contratos recurrentes de suministro empresarial, entregas directas puerta a puerta y total cumplimiento fiscal estadounidense.</p>
+                                <h4 class="text-lg font-bold text-white">Local Market (South Florida)</h4>
+                                <p class="text-sm text-gray-400 mt-1">Recurring business supply contracts, direct door-to-door deliveries, and full US tax compliance.</p>
                             </div>
                         </div>
                         <div class="flex items-start space-x-4">
@@ -211,8 +214,8 @@
                                 📦
                             </div>
                             <div>
-                                <h4 class="text-lg font-bold text-white">Canales de Exportación a LATAM</h4>
-                                <p class="text-sm text-gray-400 mt-1">Consolidación de paletas y contenedores, embalaje especializado de nicho y despacho prioritario internacional desde centros de distribución en Miami.</p>
+                                <h4 class="text-lg font-bold text-white">Export Channels to LATAM</h4>
+                                <p class="text-sm text-gray-400 mt-1">Pallet and container consolidation, specialized niche packaging, and priority international dispatch from Miami distribution centers.</p>
                             </div>
                         </div>
                     </div>
@@ -221,7 +224,7 @@
                 <!-- Derecha: Gráfica de Flujo SVG Animada Interactiva -->
                 <div class="glass-panel p-6 rounded-sm relative shadow-neon-green">
                     <div class="text-xs font-mono text-gray-500 mb-4 flex justify-between items-center">
-                        <span>SIMULADOR DE FLUJO DE CARGA</span>
+                        <span>CARGO FLOW SIMULATOR</span>
                         <span class="flex h-2 w-2 relative">
                           <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyberNeon opacity-75"></span>
                           <span class="relative inline-flex rounded-full h-2 w-2 bg-cyberNeon"></span>
@@ -234,7 +237,7 @@
                         <g id="nodes">
                             <!-- Fábricas Globales -->
                             <circle cx="50" cy="125" r="8" fill="#1f2937" stroke="#00d2ff" stroke-width="2"/>
-                            <text x="50" y="145" fill="#9ca3af" font-size="9" font-family="monospace" text-anchor="middle">Marcas Globales</text>
+                            <text x="50" y="145" fill="#9ca3af" font-size="9" font-family="monospace" text-anchor="middle">Global Brands</text>
                             
                             <!-- HUB MIAMI -->
                             <circle cx="200" cy="125" r="14" fill="#0d1527" stroke="#05ffc5" stroke-width="3" class="animate-pulse"/>
@@ -242,11 +245,11 @@
                             
                             <!-- Corporativos FL -->
                             <circle cx="340" cy="60" r="8" fill="#1f2937" stroke="#00d2ff" stroke-width="2"/>
-                            <text x="345" y="75" fill="#9ca3af" font-size="9" font-family="monospace">Sur Florida B2B</text>
+                            <text x="345" y="75" fill="#9ca3af" font-size="9" font-family="monospace">South Florida B2B</text>
                             
                             <!-- LATAM -->
                             <circle cx="340" cy="190" r="8" fill="#1f2937" stroke="#00d2ff" stroke-width="2"/>
-                            <text x="345" y="205" fill="#9ca3af" font-size="9" font-family="monospace">Export LATAM</text>
+                            <text x="345" y="205" fill="#9ca3af" font-size="9" font-family="monospace">LATAM Export</text>
                         </g>
                         
                         <!-- Líneas de Flujo Animadas -->
@@ -287,18 +290,18 @@
                     <div class="absolute -top-10 -left-10 w-40 h-40 bg-cyberBlue/10 rounded-full -z-10 animate-pulse blur-2xl"></div>
                 </div>
                 <div>
-                    <h4 class="text-cyberBlue font-black uppercase text-sm mb-4 tracking-widest">Experiencia Que Nos Respalda</h4>
+                    <h4 class="text-cyberBlue font-black uppercase text-sm mb-4 tracking-widest">Experience That Backs Us</h4>
                     <h2 class="text-5xl font-black mb-8 text-white">Juan Carlos Ardila</h2>
                     <p class="text-xl text-gray-300 mb-8 leading-relaxed">
-                        Como CEO de <strong>Vexloi LLC</strong>, Juan Carlos Ardila combina más de <strong>20 años de experiencia</strong> en tecnología y comercio global para transformar cómo Latinoamérica accede a las marcas de EE. UU.
+                        As CEO of <strong>Vexloi LLC</strong>, Juan Carlos Ardila combines over <strong>20 years of experience</strong> in technology and global trade to transform how Latin America accesses US brands.
                     </p>
                     <p class="text-gray-400 mb-10 leading-relaxed">
-                        Su visión ha permitido que Vexloi evolucione de un courier convencional a un socio estratégico de representación y distribución para empresas que buscan escala y seguridad jurídica.
+                        His vision has enabled Vexloi to evolve from a conventional courier to a strategic representation and distribution partner for companies seeking scale and legal security.
                     </p>
                     <div class="flex gap-12">
                         <div class="text-center">
                             <div class="text-4xl font-black text-cyberBlue">20+</div>
-                            <div class="text-xs font-bold uppercase text-gray-400 mt-1">Años en Sector IT</div>
+                            <div class="text-xs font-bold uppercase text-gray-400 mt-1">Years in IT Sector</div>
                         </div>
                         <div class="text-center">
                             <div class="text-4xl font-black text-cyberBlue">10+</div>
@@ -311,53 +314,53 @@
     </section>
 
     <!-- FORMULARIO DE CONTACTO CORPORATIVO -->
-    <section id="contacto" class="py-32 bg-[#09101c]">
+    <section id="contact" class="py-32 bg-[#09101c]">
         <div class="max-w-3xl mx-auto px-6">
             <div class="text-center mb-12">
                 <span class="text-xs font-bold font-mono text-cyberBlue uppercase tracking-widest">B2B Portal</span>
-                <h2 class="text-3xl font-bold text-white mt-2">Apertura de Cuenta y Cotizaciones</h2>
-                <p class="mt-3 text-sm text-gray-400">Establezca una cadena de suministro confiable para su empresa o canal de importación.</p>
+                <h2 class="text-3xl font-bold text-white mt-2">Account Opening & Quotes</h2>
+                <p class="mt-3 text-sm text-gray-400">Establish a reliable supply chain for your company or import channel.</p>
             </div>
 
             <form id="contactForm" action="https://formsubmit.co/sales@vexloi.com" method="POST" class="glass-panel p-8 rounded-sm space-y-6">
-                <input type="hidden" name="_subject" value="Nueva Solicitud desde Vexloi Hub (ES)">
+                <input type="hidden" name="_subject" value="New Request from Vexloi Hub (EN)">
                 <input type="hidden" name="_captcha" value="false">
-                <input type="hidden" name="_next" value="thank-you_es.html">
+                <input type="hidden" name="_next" value="thank-you_en.html">
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <div>
-                        <label class="block text-xs font-mono uppercase text-gray-400 mb-2 tracking-wider">Nombre del Contacto</label>
+                        <label class="block text-xs font-mono uppercase text-gray-400 mb-2 tracking-wider">Contact Name</label>
                         <input type="text" name="name" required class="w-full bg-cyberDark/80 border border-gray-800 rounded-sm px-4 py-3 text-sm text-white focus:outline-none focus:border-cyberBlue transition-colors">
                     </div>
                     <div>
-                        <label class="block text-xs font-mono uppercase text-gray-400 mb-2 tracking-wider">Empresa / Tax ID</label>
+                        <label class="block text-xs font-mono uppercase text-gray-400 mb-2 tracking-wider">Company / Tax ID</label>
                         <input type="text" name="company" required class="w-full bg-cyberDark/80 border border-gray-800 rounded-sm px-4 py-3 text-sm text-white focus:outline-none focus:border-cyberBlue transition-colors">
                     </div>
                 </div>
 
                 <div>
-                    <label class="block text-xs font-mono uppercase text-gray-400 mb-2 tracking-wider">Correo Electrónico Corporativo</label>
+                    <label class="block text-xs font-mono uppercase text-gray-400 mb-2 tracking-wider">Corporate Email</label>
                     <input type="email" name="email" required class="w-full bg-cyberDark/80 border border-gray-800 rounded-sm px-4 py-3 text-sm text-white focus:outline-none focus:border-cyberBlue transition-colors">
                 </div>
 
                 <div>
-                    <label class="block text-xs font-mono uppercase text-gray-400 mb-2 tracking-wider">Línea de Interés Primaria</label>
+                    <label class="block text-xs font-mono uppercase text-gray-400 mb-2 tracking-wider">Primary Line of Interest</label>
                     <select name="interest_line" class="w-full bg-cyberDark/80 border border-gray-800 rounded-sm px-4 py-3 text-sm text-gray-400 focus:outline-none focus:border-cyberBlue transition-colors">
-                        <option>Memorias y Almacenamiento Electrónico</option>
-                        <option>Hogar y Cocina Profesional</option>
-                        <option>Herramientas de Alta Resistencia (Tools)</option>
-                        <option>Cuidado de Exteriores (Lawn & Garden)</option>
-                        <option>Otro tipo de contrato o suministro</option>
+                        <option>Data & Memory Solutions</option>
+                        <option>Home & Professional Kitchen</option>
+                        <option>Heavy-Duty Tools</option>
+                        <option>Lawn & Garden</option>
+                        <option>Other contract or supply type</option>
                     </select>
                 </div>
 
                 <div>
-                    <label class="block text-xs font-mono uppercase text-gray-400 mb-2 tracking-wider">Especificaciones del Contrato / Destino</label>
-                    <textarea name="message" rows="4" placeholder="Volúmenes estimados o requerimientos de exportación..." class="w-full bg-cyberDark/80 border border-gray-800 rounded-sm px-4 py-3 text-sm text-white focus:outline-none focus:border-cyberBlue transition-colors"></textarea>
+                    <label class="block text-xs font-mono uppercase text-gray-400 mb-2 tracking-wider">Contract Specifications / Destination</label>
+                    <textarea name="message" rows="4" placeholder="Estimated volumes or export requirements..." class="w-full bg-cyberDark/80 border border-gray-800 rounded-sm px-4 py-3 text-sm text-white focus:outline-none focus:border-cyberBlue transition-colors"></textarea>
                 </div>
 
                 <button id="submitBtn" type="submit" class="w-full py-4 bg-transparent border border-cyberNeon text-cyberNeon font-bold text-xs tracking-widest uppercase rounded-sm hover:bg-cyberNeon hover:text-black transition-all duration-300 shadow-neon-green">
-                    Enviar Requerimiento B2B
+                    Send B2B Requirement
                 </button>
             </form>
         </div>
@@ -382,7 +385,7 @@
             { title: "Data & Memory Solutions", offset: 62.8 }, // 75% -> 251.2 * (1 - 0.75)
             { title: "Home & Kitchen Tech", offset: 138.16 },  // 45% -> 251.2 * (1 - 0.45)
             { title: "Professional Tools", offset: 25.12 },    // 90% -> 251.2 * (1 - 0.90)
-            { title: "Lawn & Garden Automation", offset: 100.48 } // 60% -> 251.2 * (1 - 0.60)
+            { title: "Lawn & Garden Automation", offset: 100.48 }, // 60% -> 251.2 * (1 - 0.60)
         ];
 
         function switchMetric(index, percent) {
@@ -411,7 +414,7 @@
             e.preventDefault();
             const btn = document.getElementById('submitBtn');
             const originalText = btn.innerHTML;
-            btn.innerHTML = 'Enviando al sistema...';
+            btn.innerHTML = 'Sending to system...';
             btn.disabled = true;
 
             const formData = new FormData(this);
