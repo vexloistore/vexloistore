@@ -303,6 +303,29 @@ function updateHeaderUserNav() {
   }
 }
 
+// --- MENÚ MÓVIL RESPONSIVE ---
+function toggleMobileMenu() {
+  const menu = document.getElementById('mobile-menu');
+  const openIcon = document.getElementById('menu-icon-open');
+  const closeIcon = document.getElementById('menu-icon-close');
+
+  if (menu) {
+    // Alterna la visibilidad del menú desplegable
+    menu.classList.toggle('hidden');
+
+    // Alterna los íconos de hamburguesa / cerrar
+    if (openIcon && closeIcon) {
+      openIcon.classList.toggle('hidden');
+      closeIcon.classList.toggle('hidden');
+    }
+
+    // Re-inicializa Lucide para asegurar que los íconos rendericen
+    if (window.lucide) {
+      lucide.createIcons();
+    }
+  }
+}
+
 // --- INICIALIZACIÓN GLOBAL ---
 document.addEventListener('DOMContentLoaded', () => {
   updateCartCounter();
