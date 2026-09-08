@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>B2B Account Login / Register | Vexloi LLC</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="flex flex-col min-h-screen bg-gray-50 text-gray-800">
+
+  <!-- TOP BAR -->
+  <div class="bg-brand-red text-white text-xs py-2 px-4 text-center font-bold tracking-wide">
+    B2B Wholesale Distribution | Direct Exports from Miami, FL | Vexloi LLC
+  </div>
+
+  <!-- HEADER -->
+  <header class="bg-white border-b border-gray-200 sticky top-0 z-50">
+    <div class="container-custom py-4 flex items-center justify-between">
+      <a href="index.html" class="flex items-center space-x-2">
+        <i data-lucide="shield-check" class="w-8 h-8 text-brand-red"></i>
+        <span class="text-2xl font-black text-brand-dark uppercase">VEXLOI <span class="text-brand-red">LLC</span></span>
+      </a>
+
+      <nav class="hidden md:flex items-center space-x-8">
+        <a href="index.html" class="text-xs font-bold uppercase hover:text-brand-red">Home</a>
+        <a href="catalog.html" class="text-xs font-bold uppercase hover:text-brand-red">Full Catalog</a>
+        <a href="about.html" class="text-xs font-bold uppercase hover:text-brand-red">About Us</a>
+        <a href="contact.html" class="text-xs font-bold uppercase hover:text-brand-red">Contact</a>
+        <a href="checkout.html" class="text-xs font-bold uppercase hover:text-brand-red">Checkout</a>
+      </nav>
+
+      <div class="flex items-center space-x-4">
+        <div id="user-header-nav"></div>
+        <button onclick="openCartDrawer()" class="relative text-gray-700 hover:text-brand-red">
+          <i data-lucide="shopping-bag" class="w-6 h-6"></i>
+          <span id="cart-counter" class="absolute -top-2 -right-2 bg-brand-red text-white text-[10px] font-bold rounded-full h-4 w-4 flex items-center justify-center">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container-custom py-12 flex-1 flex justify-center items-center">
+    <div class="w-full max-w-md bg-white border border-gray-200 rounded-xl p-8 shadow-sm">
+      
+      <!-- TAB BUTTONS -->
+      <div class="flex border-b border-gray-200 mb-6">
+        <button id="tab-login-btn" onclick="switchTab('login')" class="flex-1 py-2 text-xs font-bold uppercase border-b-2 border-brand-red text-brand-red">
+          Inicia Sesión
+        </button>
+        <button id="tab-register-btn" onclick="switchTab('register')" class="flex-1 py-2 text-xs font-bold uppercase border-b-2 border-transparent text-gray-400 hover:text-gray-700">
+          Registrar Empresa
+        </button>
+      </div>
+
+      <!-- ALERTA DE ERROR/ÉXITO -->
+      <div id="auth-alert" class="hidden text-xs p-3 rounded-lg mb-4 font-semibold"></div>
+
+      <!-- FORMULARIO LOGIN -->
+      <form id="form-login" onsubmit="handleLoginSubmit(event)" class="space-y-4">
+        <div>
+          <label class="block text-xs font-bold uppercase text-gray-600 mb-1">Correo Corporativo</label>
+          <input type="email" id="login-email" required placeholder="tu@empresa.com" class="w-full border border-gray-300 rounded-lg p-2.5 text-xs focus:ring-2 focus:ring-brand-red focus:outline-none">
+        </div>
+        <div>
+          <label class="block text-xs font-bold uppercase text-gray-600 mb-1">Contraseña</label>
+          <input type="password" id="login-pass" required placeholder="••••••••" class="w-full border border-gray-300 rounded-lg p-2.5 text-xs focus:ring-2 focus:ring-brand-red focus:outline-none">
+        </div>
+        <button type="submit" class="w-full bg-brand-red hover:bg-red-700 text-white font-bold py-3 rounded-lg text-xs uppercase tracking-wider transition">
+          Ingresar a la Plataforma
+        </button>
+      </form>
+
+      <!-- FORMULARIO REGISTRO -->
+      <form id="form-register" onsubmit="handleRegisterSubmit(event)" class="space-y-4 hidden">
+        <div>
+          <label class="block text-xs font-bold uppercase text-gray-600 mb-1">Nombre de la Empresa</label>
+          <input type="text" id="reg-company" required placeholder="Ej. Distribuidores Miami LLC" class="w-full border border-gray-300 rounded-lg p-2.5 text-xs focus:ring-2 focus:ring-brand-red focus:outline-none">
+        </div>
+        <div>
+          <label class="block text-xs font-bold uppercase text-gray-600 mb-1">Nombre de Contacto</label>
+          <input type="text" id="reg-name" required placeholder="Juan Pérez" class="w-full border border-gray-300 rounded-lg p-2.5 text-xs focus:ring-2 focus:ring-brand-red focus:outline-none">
+        </div>
+        <div>
+          <label class="block text-xs font-bold uppercase text-gray-600 mb-1">Correo Corporativo</label>
+          <input type="email" id="reg-email" required placeholder="compras@empresa.com" class="w-full border border-gray-300 rounded-lg p-2.5 text-xs focus:ring-2 focus:ring-brand-red focus:outline-none">
+        </div>
+        <div>
+          <label class="block text-xs font-bold uppercase text-gray-600 mb-1">Contraseña</label>
+          <input type="password" id="reg-pass" required placeholder="••••••••" class="w-full border border-gray-300 rounded-lg p-2.5 text-xs focus:ring-2 focus:ring-brand-red focus:outline-none">
+        </div>
+        <button type="submit" class="w-full bg-brand-red hover:bg-red-700 text-white font-bold py-3 rounded-lg text-xs uppercase tracking-wider transition">
+          Crear Cuenta B2B
+        </button>
+      </form>
+
+    </div>
+  </main>
+
+  <!-- CART OVERLAY & DRAWER -->
+  <div id="cart-overlay" onclick="closeCartDrawer()" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden"></div>
+  <aside id="cart-drawer" class="fixed top-0 right-0 w-full sm:w-96 h-full bg-white z-50 shadow-2xl flex flex-col transform translate-x-full transition-transform duration-300">
+    <div class="p-4 border-b border-gray-200 flex items-center justify-between bg-slate-900 text-white">
+      <h3 class="font-bold text-xs uppercase tracking-wider">Your Wholesale Cart</h3>
+      <button onclick="closeCartDrawer()" class="text-gray-400 hover:text-white">✕</button>
+    </div>
+    <div id="cart-drawer-items" class="flex-1 overflow-y-auto p-4 space-y-3"></div>
+    <div class="p-4 border-t border-gray-200 bg-gray-50 space-y-3">
+      <div class="flex justify-between items-center text-sm font-bold">
+        <span>Subtotal:</span>
+        <span id="cart-total" class="text-lg font-black text-brand-dark">$0.00</span>
+      </div>
+      <a href="checkout.html" class="block w-full bg-brand-red hover:bg-red-700 text-white font-bold text-center py-2.5 rounded-lg text-xs uppercase tracking-wider">
+        Proceed To B2B Checkout &rarr;
+      </a>
+    </div>
+  </aside>
+
+  <!-- FOOTER -->
+  <footer class="bg-slate-900 text-gray-400 py-6 text-xs text-center border-t border-gray-800">
+    &copy; 2026 Vexloi LLC. All rights reserved.
+  </footer>
+
+  <script src="products.js"></script>
+  <script src="script.js"></script>
+  <script>
+    function switchTab(tab) {
+      const loginBtn = document.getElementById('tab-login-btn');
+      const regBtn = document.getElementById('tab-register-btn');
+      const loginForm = document.getElementById('form-login');
+      const regForm = document.getElementById('form-register');
+      hideAlert();
+
+      if (tab === 'login') {
+        loginBtn.className = 'flex-1 py-2 text-xs font-bold uppercase border-b-2 border-brand-red text-brand-red';
+        regBtn.className = 'flex-1 py-2 text-xs font-bold uppercase border-b-2 border-transparent text-gray-400 hover:text-gray-700';
+        loginForm.classList.remove('hidden');
+        regForm.classList.add('hidden');
+      } else {
+        regBtn.className = 'flex-1 py-2 text-xs font-bold uppercase border-b-2 border-brand-red text-brand-red';
+        loginBtn.className = 'flex-1 py-2 text-xs font-bold uppercase border-b-2 border-transparent text-gray-400 hover:text-gray-700';
+        regForm.classList.remove('hidden');
+        loginForm.classList.add('hidden');
+      }
+    }
+
+    function showAlert(msg, isSuccess = false) {
+      const el = document.getElementById('auth-alert');
+      el.innerText = msg;
+      el.className = `text-xs p-3 rounded-lg mb-4 font-semibold ${isSuccess ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`;
+    }
+
+    function hideAlert() {
+      document.getElementById('auth-alert').classList.add('hidden');
+    }
+
+    function handleLoginSubmit(e) {
+      e.preventDefault();
+      const email = document.getElementById('login-email').value;
+      const pass = document.getElementById('login-pass').value;
+
+      const res = loginUser(email, pass);
+      if (res.success) {
+        showAlert('¡Sesión iniciada con éxito! Redirigiendo...', true);
+        setTimeout(() => window.location.href = 'index.html', 1000);
+      } else {
+        showAlert(res.message, false);
+      }
+    }
+
+    function handleRegisterSubmit(e) {
+      e.preventDefault();
+      const userData = {
+        company: document.getElementById('reg-company').value,
+        name: document.getElementById('reg-name').value,
+        email: document.getElementById('reg-email').value,
+        password: document.getElementById('reg-pass').value
+      };
+
+      const res = registerUser(userData);
+      if (res.success) {
+        showAlert('¡Cuenta creada e inicio de sesión exitoso!', true);
+        setTimeout(() => window.location.href = 'index.html', 1000);
+      } else {
+        showAlert(res.message, false);
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (getActiveUser()) {
+        window.location.href = 'index.html';
+      }
+    });
+  </script>
+</body>
+</html>

@@ -3,208 +3,229 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Catalog | Apex Auto Care Miami</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            brand: { red: '#9B111E', accent: '#D32F2F', dark: '#1E293B', slate: '#334155', light: '#F8FAFC' }
-          }
-        }
-      }
-    }
-  </script>
+  <title>Multi-Brand Catalog | Vexloi LLC Wholesale</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
   <script src="https://unpkg.com/lucide@latest"></script>
 </head>
-<body class="bg-brand-light text-slate-800 font-sans flex flex-col min-h-screen">
+<body class="flex flex-col min-h-screen bg-gray-50 text-gray-800">
 
-  <!-- TOP BAR & HEADER -->
-  <div class="bg-brand-red text-white text-xs md:text-sm py-2 px-4 text-center font-medium">Free Shipping on Orders Over $75 | Miami Hub</div>
+  <!-- TOP BAR -->
+  <div class="bg-brand-red text-white text-xs py-2 px-4 text-center font-bold tracking-wide">
+    B2B Wholesale Distribution | Direct Exports from Miami, FL | Vexloi LLC
+  </div>
+
+  <!-- HEADER -->
   <header class="bg-white border-b border-gray-200 sticky top-0 z-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-between h-20">
-        <a href="index.html" class="flex items-center space-x-2">
-          <i data-lucide="shield-check" class="w-8 h-8 text-brand-red"></i>
-          <span class="text-2xl font-black tracking-wider text-brand-dark uppercase">APEX <span class="text-brand-red">AUTO</span></span>
-        </a>
-        <div class="flex items-center space-x-6">
-          <a href="about.html" class="hidden lg:flex text-xs font-bold text-brand-red bg-red-50 border border-red-200 px-3 py-1.5 rounded uppercase">B2B Wholesale</a>
-          <a href="#" class="relative text-gray-700 hover:text-brand-red">
-            <i data-lucide="shopping-bag" class="w-6 h-6"></i>
-            <span id="cart-counter" class="absolute -top-2 -right-2 bg-brand-red text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">0</span>
-          </a>
-        </div>
+    <div class="container-custom py-4 flex items-center justify-between">
+      <a href="index.html" class="flex items-center space-x-2">
+        <i data-lucide="shield-check" class="w-8 h-8 text-brand-red"></i>
+        <span class="text-2xl font-black text-brand-dark uppercase">VEXLOI <span class="text-brand-red">LLC</span></span>
+      </a>
+
+      <nav class="hidden md:flex items-center space-x-8">
+        <a href="index.html" class="text-xs font-bold uppercase hover:text-brand-red">Home</a>
+        <a href="catalog.html" class="text-xs font-bold uppercase text-brand-red">Full Catalog</a>
+        <a href="about.html" class="text-xs font-bold uppercase hover:text-brand-red">About Us</a>
+        <a href="contact.html" class="text-xs font-bold uppercase hover:text-brand-red">Contact</a>
+        <a href="checkout.html" class="text-xs font-bold uppercase hover:text-brand-red">Checkout</a>
+      </nav>
+
+      <div class="flex items-center space-x-4">
+        <div id="user-header-nav"></div>
+        <button onclick="openCartDrawer()" class="relative text-gray-700 hover:text-brand-red">
+          <i data-lucide="shopping-bag" class="w-6 h-6"></i>
+          <span id="cart-counter" class="absolute -top-2 -right-2 bg-brand-red text-white text-[10px] font-bold rounded-full h-4 w-4 flex items-center justify-center">0</span>
+        </button>
       </div>
     </div>
-    <nav class="bg-brand-dark text-white hidden md:block">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <ul class="flex space-x-8 text-sm font-semibold uppercase tracking-wider py-3">
-          <li><a href="catalog.html" class="text-brand-accent">Wash & Dry</a></li>
-          <li><a href="catalog.html" class="hover:text-brand-accent">Polish & Protect</a></li>
-          <li><a href="catalog.html" class="hover:text-brand-accent">Interior Care</a></li>
-          <li><a href="catalog.html" class="hover:text-brand-accent">Wheels & Tires</a></li>
-          <li><a href="catalog.html" class="hover:text-brand-accent">Tools & Garage</a></li>
-          <li><a href="about.html" class="hover:text-brand-accent">About Us</a></li>
-          <li><a href="contact.html" class="hover:text-brand-accent">Contact Us</a></li>
-        </ul>
-      </div>
-    </nav>
   </header>
 
-  <!-- BREADCRUMBS & TITLE -->
-  <div class="bg-white border-b border-gray-200 py-6">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <nav class="text-xs text-gray-500 mb-2 uppercase tracking-wider">
-        <a href="index.html" class="hover:underline">Home</a> &gt; <span class="text-brand-dark font-bold">Wash & Dry Supplies</span>
-      </nav>
-      <h1 class="text-3xl font-black text-brand-dark uppercase tracking-tight">Wash & Dry Product Catalog</h1>
-    </div>
-  </div>
-
-  <!-- MAIN CATALOG CONTENT -->
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-1">
-    <div class="flex flex-col lg:flex-row gap-8">
+  <!-- MAIN CATALOG -->
+  <main class="container-custom py-8 flex-1">
+    
+    <!-- Filter Controls -->
+    <div class="bg-white p-6 rounded-xl border border-gray-200 mb-8 shadow-sm">
+      <h1 class="text-2xl font-black text-brand-dark uppercase mb-4">Complete Auto Care Catalog</h1>
       
-      <!-- SIDEBAR FILTERS (STATIC UI) -->
-      <aside class="w-full lg:w-64 bg-white p-6 rounded-xl border border-gray-200 h-fit space-y-6">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <!-- Search input -->
         <div>
-          <h3 class="font-bold text-brand-dark uppercase tracking-wider text-sm border-b pb-2 mb-3">Subcategories</h3>
-          <ul class="space-y-2 text-sm text-gray-600">
-            <li><label class="flex items-center space-x-2"><input type="checkbox" checked class="rounded text-brand-red focus:ring-brand-red"> <span>Car Shampoos (12)</span></label></li>
-            <li><label class="flex items-center space-x-2"><input type="checkbox" class="rounded text-brand-red focus:ring-brand-red"> <span>Foam Cannon Soaps (8)</span></label></li>
-            <li><label class="flex items-center space-x-2"><input type="checkbox" class="rounded text-brand-red focus:ring-brand-red"> <span>Drying Towels (15)</span></label></li>
-            <li><label class="flex items-center space-x-2"><input type="checkbox" class="rounded text-brand-red focus:ring-brand-red"> <span>Wash Mitts (6)</span></label></li>
-          </ul>
+          <label class="block text-xs font-bold uppercase text-gray-600 mb-1">Search Keywords or SKU</label>
+          <input type="text" id="search-input" oninput="applyFilters()" placeholder="e.g. Ceramic, Wax, MX-ONE..." class="w-full border border-gray-300 rounded-lg p-2 text-xs focus:ring-2 focus:ring-brand-red focus:outline-none">
         </div>
 
+       <!-- Brand Filter Select -->
+     
         <div>
-          <h3 class="font-bold text-brand-dark uppercase tracking-wider text-sm border-b pb-2 mb-3">Availability</h3>
-          <ul class="space-y-2 text-sm text-gray-600">
-            <li><label class="flex items-center space-x-2"><input type="checkbox" checked class="rounded text-brand-red"> <span>In Stock Miami Hub</span></label></li>
-            <li><label class="flex items-center space-x-2"><input type="checkbox" class="rounded text-brand-red"> <span>Bulk Container (5 Gal)</span></label></li>
-          </ul>
+          <label class="block text-xs font-bold uppercase text-gray-600 mb-1">Filter by Brand</label>
+          <select id="brand-select" onchange="applyFilters()" class="w-full border border-gray-300 rounded-lg p-2 text-xs font-semibold focus:ring-2 focus:ring-brand-red focus:outline-none">
+                    <option value="all">All Brands</option>
+                    <option value="1">13 Supplies</option>
+                    <option value="2">303 Products</option>
+                    <option value="3">3D</option>
+                    <option value="4">3M</option>
+                    <option value="5">Adam's Polishes</option>
+                    <option value="6">AlbaChem</option>
+                    <option value="7">Amazing Roll Off</option>
+                    <option value="8">Armor All</option>
+                    <option value="9">BFXM</option>
+                    <option value="10">Big Rig Soap</option>
+                    <option value="11">Bike Brite</option>
+                    <option value="12">Bling Sauce</option>
+                    <option value="13">Boat Bling</option>
+                    <option value="14">Bosh Chemical</option>
+                    <option value="15">CARPRO</option>
+                    <option value="16">CERAKOTE</option>
+                    <option value="17">CHOMP!</option>
+                    <option value="18">CLEAN. BY PAN THE ORGANIZER</option>
+                    <option value="19">CLR</option>
+                    <option value="20">CRC</option>
+                    <option value="21">Chem-X</option>
+                    <option value="22">Chemical Guys</option>
+                    <option value="23">Clussbin</option>
+                    <option value="24">Detailing Connect</option>
+                    <option value="25">Dr. Beasley's</option>
+                    <option value="26">Escentile</option>
+                    <option value="27">Ethos Handcrafted Car Care</option>
+                    <option value="28">Fast Orange</option>
+                    <option value="29">Flaurix</option>
+                    <option value="30">GEAR AID</option>
+                    <option value="31">GOJO</option>
+                    <option value="32">Generic</option>
+                    <option value="33">Gliptone</option>
+                    <option value="34">Great Stuff</option>
+                    <option value="35">Griot's Garage</option>
+                    <option value="36">Grip Clean</option>
+                    <option value="37">Gtechniq</option>
+                    <option value="38">Gyeon</option>
+                    <option value="39">HRIOEKAX</option>
+                    <option value="40">IK</option>
+                    <option value="41">Image Wash Products</option>
+                    <option value="42">Invisible Glass</option>
+                    <option value="43">KLEAN-STRIP</option>
+                    <option value="44">KOCHCHEMIE</option>
+                    <option value="45">Karveden</option>
+                    <option value="46">KÄRCHER</option>
+                    <option value="47">LAUCO</option>
+                    <option value="48">Legendary Car Care</option>
+                    <option value="49">Lunluarai</option>
+                    <option value="50">MAXL</option>
+                    <option value="51">MPD</option>
+                    <option value="52">Magic Finish</option>
+                    <option value="53">Max Strip</option>
+                    <option value="54">Maxima</option>
+                    <option value="55">Meguiar's</option>
+                    <option value="56">Mothers</option>
+                    <option value="57">Motomuck</option>
+                    <option value="58">Muc-Off</option>
+                    <option value="59">Nanoskin</option>
+                    <option value="60">Nikwax</option>
+                    <option value="61">OKNIAO</option>
+                    <option value="62">Optimum Polymer Technologies, Inc.</option>
+                    <option value="63">P & S PROFESSIONAL DETAIL PRODUCTS</option>
+                    <option value="64">P21S</option>
+                    <option value="65">Piuess</option>
+                    <option value="66">Plane Perfect</option>
+                    <option value="67">PolishWiz</option>
+                    <option value="68">QIFOR</option>
+                    <option value="69">Quality Chemical</option>
+                    <option value="70">Rain-X</option>
+                    <option value="71">Real Chimica</option>
+                    <option value="72">RealTruck</option>
+                    <option value="73">Rust-Oleum</option>
+                    <option value="74">S S100</option>
+                    <option value="75">STAR BRITE</option>
+                    <option value="76">Salts Gone</option>
+                    <option value="77">Simple Green</option>
+                    <option value="78">Slick Products</option>
+                    <option value="79">Sprayway</option>
+                    <option value="80">Superior Products</option>
+                    <option value="81">Swift Auto Care</option>
+                    <option value="82">SwiftJet</option>
+                    <option value="83">TABOUNTS</option>
+                    <option value="84">Technicians Choice</option>
+                    <option value="85">Tornador</option>
+                    <option value="86">Travelon</option>
+                    <option value="87">Turtle Wax</option>
+                    <option value="88">Tüff Stuff</option>
+                    <option value="89">W</option>
+                    <option value="90">WR</option>
+                    <option value="91">WRS</option>
+                    <option value="92">Walbernize</option>
+                    <option value="93">Windex</option>
+                    <option value="94">Wizards</option>
+                    <option value="95">Wontolf</option>
+                    <option value="96">Zep</option>
+                    <option value="97">Zep Professional</option>
+                    <option value="98">diy detail</option>
+                    <option value="99">featrity</option>
+                    <option value="100">stray poet</option>
+          </select>
         </div>
 
-        <div>
-          <h3 class="font-bold text-brand-dark uppercase tracking-wider text-sm border-b pb-2 mb-3">Price Range</h3>
-          <div class="flex gap-2 items-center text-sm">
-            <input type="text" placeholder="$ Min" class="w-full border rounded px-2 py-1 text-xs">
-            <span>-</span>
-            <input type="text" placeholder="$ Max" class="w-full border rounded px-2 py-1 text-xs">
-          </div>
-        </div>
-      </aside>
-
-      <!-- PRODUCT GRID -->
-      <!-- Reemplazo dentro de catalog.html -> <main class="flex-1"> -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         
-        <!-- Producto 1 -->
-        <div class="bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm flex flex-col justify-between group">
-          <div class="relative p-4">
-            <a href="product-detail.html">
-              <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=500&q=80" alt="Apex Ultra Foam Soap" class="w-full h-48 object-contain group-hover:scale-105 transition duration-300">
-            </a>
-            <span class="absolute top-2 left-2 bg-brand-dark text-white text-[10px] font-bold px-2 py-1 rounded">SKU: VX-CS16</span>
-          </div>
-          <div class="p-4 border-t border-gray-100 flex flex-col justify-between flex-1">
-            <a href="product-detail.html" class="font-bold text-brand-dark hover:text-brand-red text-sm leading-snug">Apex Ultra Foam pH-Neutral Soap 16oz</a>
-            <div class="mt-4 flex items-center justify-between">
-              <span class="text-lg font-black text-brand-dark">$18.99</span>
-              <button onclick="addToCart()" class="bg-brand-red hover:bg-red-700 text-white text-xs font-bold uppercase px-3 py-2 rounded transition">Add</button>
-            </div>
-          </div>
+        <div>
+          <label class="block text-xs font-bold uppercase text-gray-600 mb-1">Filter by Category</label>
+          <select id="category-select" onchange="applyFilters()" class="w-full border border-gray-300 rounded-lg p-2 text-xs font-semibold focus:ring-2 focus:ring-brand-red focus:outline-none">
+            <option value="all">All Categories</option>
+            <option value="car-wash">Car Wash & Foam</option>
+            <option value="ceramics">Waxes & Ceramics</option>
+            <option value="wheel-and-tire">wheel-and-tire</option>
+            <option value="interior">interior</option>
+            <option value="paint-and-exterior-care">Paint & Exterior Care</option>
+            <option value="oil">Lubricant and Oil</option>
+          </select>
         </div>
-
-        <!-- Producto 2 -->
-        <div class="bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm flex flex-col justify-between group">
-          <div class="relative p-4">
-            <a href="product-detail.html">
-              <img src="https://images.unsplash.com/photo-1520340356584-f9917d1eea6f?auto=format&fit=crop&w=500&q=80" alt="Hyper-Gloss Ceramic Wash" class="w-full h-48 object-contain group-hover:scale-105 transition duration-300">
-            </a>
-            <span class="absolute top-2 left-2 bg-brand-dark text-white text-[10px] font-bold px-2 py-1 rounded">SKU: VX-CWS32</span>
-          </div>
-          <div class="p-4 border-t border-gray-100 flex flex-col justify-between flex-1">
-            <a href="product-detail.html" class="font-bold text-brand-dark hover:text-brand-red text-sm leading-snug">Hyper-Gloss Ceramic Wash Shampoo 32oz</a>
-            <div class="mt-4 flex items-center justify-between">
-              <span class="text-lg font-black text-brand-dark">$29.99</span>
-              <button onclick="addToCart()" class="bg-brand-red hover:bg-red-700 text-white text-xs font-bold uppercase px-3 py-2 rounded transition">Add</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Producto 3 -->
-        <div class="bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm flex flex-col justify-between group">
-          <div class="relative p-4">
-            <a href="product-detail.html">
-              <img src="https://images.unsplash.com/photo-1607860108855-64acf2078ed9?auto=format&fit=crop&w=500&q=80" alt="Microfiber Drying Towel" class="w-full h-48 object-contain group-hover:scale-105 transition duration-300">
-            </a>
-            <span class="absolute top-2 left-2 bg-brand-dark text-white text-[10px] font-bold px-2 py-1 rounded">SKU: VX-MDT1</span>
-          </div>
-          <div class="p-4 border-t border-gray-100 flex flex-col justify-between flex-1">
-            <a href="product-detail.html" class="font-bold text-brand-dark hover:text-brand-red text-sm leading-snug">Microfiber Plush Drying Towel XL</a>
-            <div class="mt-4 flex items-center justify-between">
-              <span class="text-lg font-black text-brand-dark">$22.50</span>
-              <button onclick="addToCart()" class="bg-brand-red hover:bg-red-700 text-white text-xs font-bold uppercase px-3 py-2 rounded transition">Add</button>
-            </div>
-          </div>
-        </div>
-
       </div>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          
-          <!-- Product Card Loop -->
-          <script>
-            const catalogItems = [
-              { name: "Apex Ultra Foam pH-Neutral Soap 16oz", sku: "VX-CS16", price: "$18.99", img: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=500&q=80" },
-              { name: "Hyper-Gloss Ceramic Wash Shampoo 32oz", sku: "VX-CWS32", price: "$29.99", img: "https://images.unsplash.com/photo-1520340356584-f9917d1eea6f?auto=format&fit=crop&w=500&q=80" },
-              { name: "Microfiber Plush Drying Towel XL", sku: "VX-MDT1", price: "$22.50", img: "https://images.unsplash.com/photo-1607860108855-64acf2078ed9?auto=format&fit=crop&w=500&q=80" },
-              { name: "Brass Heavy Duty Foam Cannon Pro", sku: "VX-FCP01", price: "$59.95", img: "https://images.unsplash.com/photo-1507136566006-cfc505b114f6?auto=format&fit=crop&w=500&q=80" },
-              { name: "Synthetic Microfiber Wash Mitt", sku: "VX-SWM", price: "$12.99", img: "https://images.unsplash.com/photo-1563720223185-11003d516935?auto=format&fit=crop&w=500&q=80" },
-              { name: "Bug & Tar Remover Concentrate", sku: "VX-BTR16", price: "$16.50", img: "https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?auto=format&fit=crop&w=500&q=80" }
-            ];
 
-            catalogItems.forEach(item => {
-              document.write(`
-                <div class="bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm flex flex-col justify-between group">
-                  <div class="relative p-4">
-                    <a href="product-detail.html">
-                      <img src="${item.img}" class="w-full h-48 object-contain group-hover:scale-105 transition duration-300">
-                    </a>
-                    <span class="absolute top-2 left-2 bg-brand-dark text-white text-[10px] font-bold px-2 py-1 rounded">SKU: ${item.sku}</span>
-                  </div>
-                  <div class="p-4 border-t border-gray-100 flex flex-col justify-between flex-1">
-                    <a href="product-detail.html" class="font-bold text-brand-dark hover:text-brand-red text-sm">${item.name}</a>
-                    <div class="mt-4 flex items-center justify-between">
-                      <span class="text-lg font-black text-brand-dark">${item.price}</span>
-                      <button onclick="addToCart()" class="bg-brand-red hover:bg-red-700 text-white text-xs font-bold uppercase px-3 py-2 rounded">Add</button>
-                    </div>
-                  </div>
-                </div>
-              `);
-            });
-          </script>
-
-        </div>
-      </main>
-
+      <div class="mt-4 flex justify-between items-center text-xs text-gray-500 border-t border-gray-100 pt-3">
+        <span id="result-count" class="font-bold text-brand-dark">Loading products...</span>
+      </div>
     </div>
-  </div>
+
+    <!-- Products Grid -->
+    <div id="catalog-products-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"></div>
+
+  </main>
+
+  <!-- CART OVERLAY & DRAWER -->
+  <div id="cart-overlay" onclick="closeCartDrawer()" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden"></div>
+  <aside id="cart-drawer" class="fixed top-0 right-0 w-full sm:w-96 h-full bg-white z-50 shadow-2xl flex flex-col transform translate-x-full transition-transform duration-300">
+    <div class="p-4 border-b border-gray-200 flex items-center justify-between bg-slate-900 text-white">
+      <h3 class="font-bold text-xs uppercase tracking-wider">Your Wholesale Cart</h3>
+      <button onclick="closeCartDrawer()" class="text-gray-400 hover:text-white">✕</button>
+    </div>
+    <div id="cart-drawer-items" class="flex-1 overflow-y-auto p-4 space-y-3"></div>
+    <div class="p-4 border-t border-gray-200 bg-gray-50 space-y-3">
+      <div class="flex justify-between items-center text-sm font-bold">
+        <span>Subtotal:</span>
+        <span id="cart-total" class="text-lg font-black text-brand-dark">$0.00</span>
+      </div>
+      <a href="checkout.html" class="block w-full bg-brand-red hover:bg-red-700 text-white font-bold text-center py-2.5 rounded-lg text-xs uppercase tracking-wider">
+        Proceed To B2B Checkout &rarr;
+      </a>
+    </div>
+  </aside>
 
   <!-- FOOTER -->
-  <footer class="bg-slate-900 text-gray-400 py-6 text-center text-xs mt-auto">
-    &copy; 2026 Apex Auto Care LLC. Miami, FL. All Rights Reserved.
+  <footer class="bg-slate-900 text-gray-400 py-6 text-xs text-center border-t border-gray-800">
+    &copy; 2026 Vexloi LLC. All rights reserved.
   </footer>
 
+  <script src="products.js"></script>
+  <script src="script.js"></script>
   <script>
-    lucide.createIcons();
-    let cartCount = 0;
-    function addToCart() {
-      cartCount++;
-      document.getElementById('cart-counter').innerText = cartCount;
+    function applyFilters() {
+      const brand = document.getElementById('brand-select').value;
+      const category = document.getElementById('category-select').value;
+      const search = document.getElementById('search-input').value;
+      renderCatalog(brand, category, search);
     }
+    
+    document.addEventListener('DOMContentLoaded', () => {
+      renderCatalog();
+    });
   </script>
 </body>
 </html>

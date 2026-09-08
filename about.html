@@ -3,60 +3,248 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About Us | Apex Auto Care Miami Distribution</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            brand: { red: '#9B111E', accent: '#D32F2F', dark: '#1E293B', slate: '#334155', light: '#F8FAFC' }
-          }
-        }
-      }
-    }
-  </script>
+  <title>About Us | Vexloi LLC - Wholesale Auto Care Distribution</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
   <script src="https://unpkg.com/lucide@latest"></script>
 </head>
-<body class="bg-brand-light text-slate-800 font-sans flex flex-col min-h-screen">
+<body class="flex flex-col min-h-screen bg-gray-50 text-gray-800 font-sans">
+
+  <!-- TOP BAR -->
+  <div class="bg-brand-red text-white text-xs py-2 px-4 text-center font-bold tracking-wide">
+    B2B Wholesale Distribution | Direct Exports from Miami, FL | Vexloi LLC
+  </div>
 
   <!-- HEADER -->
-  <header class="bg-white border-b border-gray-200">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+  <header class="bg-white border-b border-gray-200 sticky top-0 z-50">
+    <div class="container-custom py-4 flex items-center justify-between">
       <a href="index.html" class="flex items-center space-x-2">
         <i data-lucide="shield-check" class="w-8 h-8 text-brand-red"></i>
-        <span class="text-2xl font-black text-brand-dark uppercase">APEX <span class="text-brand-red">AUTO</span></span>
+        <span class="text-2xl font-black text-brand-dark uppercase">VEXLOI <span class="text-brand-red">LLC</span></span>
       </a>
-      <a href="contact.html" class="bg-brand-red text-white text-xs font-bold uppercase px-4 py-2 rounded">Contact Team</a>
+
+      <nav class="hidden md:flex items-center space-x-8">
+        <a href="index.html" class="text-xs font-bold uppercase hover:text-brand-red">Home</a>
+        <a href="catalog.html" class="text-xs font-bold uppercase hover:text-brand-red">Full Catalog</a>
+        <a href="about.html" class="text-xs font-bold uppercase text-brand-red">About Us</a>
+        <a href="contact.html" class="text-xs font-bold uppercase hover:text-brand-red">Contact</a>
+        <a href="checkout.html" class="text-xs font-bold uppercase hover:text-brand-red">Checkout</a>
+      </nav>
+
+      <div class="flex items-center space-x-4">
+        <div id="user-header-nav"></div>
+        <button onclick="openCartDrawer()" class="relative text-gray-700 hover:text-brand-red">
+          <i data-lucide="shopping-bag" class="w-6 h-6"></i>
+          <span id="cart-counter" class="absolute -top-2 -right-2 bg-brand-red text-white text-[10px] font-bold rounded-full h-4 w-4 flex items-center justify-center">0</span>
+        </button>
+      </div>
     </div>
   </header>
 
-  <main class="max-w-5xl mx-auto px-4 py-16 flex-1">
-    <span class="text-brand-red font-bold uppercase text-xs tracking-widest">Authorized Commercial Distributor</span>
-    <h1 class="text-4xl font-black text-brand-dark uppercase mt-1 mb-6">Engineered Automotive Detailing Supplies Direct From Miami</h1>
-
-    <div class="prose max-w-none text-gray-600 space-y-6">
-      <p class="text-lg leading-relaxed">
-        Headquartered in <strong>Miami, Florida</strong>, Apex Auto Care is a specialized distributor and online retail hub serving detailing professionals, commercial fleet operators, and car care enthusiasts across the Southeastern United States and Latin America.
-      </p>
-      <p>
-        Our state-of-the-art 35,000 sq. ft. Miami logistics warehouse stocks commercial-grade chemical formulas, dual-action rotary polishers, and high-density microfiber textiles engineered to exceed standard automotive retail products.
-      </p>
+  <!-- HERO SECTION WITH AUTO DETAILING IMAGE -->
+  <section class="relative bg-slate-900 text-white py-20 overflow-hidden">
+    <div class="absolute inset-0 z-0">
+      <img 
+        src="https://images.unsplash.com/photo-1520340356584-f9917d1eea6f?q=80&w=1600&auto=format&fit=crop" 
+        alt="Automotive Care & Maintenance Facility" 
+        class="w-full h-full object-cover opacity-25 object-center"
+      >
+      <div class="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-900/90 to-transparent"></div>
     </div>
 
-    <!-- B2B BANNER SECTION -->
-    <div class="bg-brand-dark text-white rounded-2xl p-8 mt-12 flex flex-col md:flex-row items-center justify-between gap-6">
-      <div>
-        <h3 class="text-2xl font-bold uppercase">B2B & Wholesale Accounts</h3>
-        <p class="text-gray-300 text-sm mt-1">Are you an established detail shop, dealership, or fleet maintenance facility? Apply for commercial wholesale pricing.</p>
+    <div class="container-custom relative z-10 max-w-3xl">
+      <span class="text-brand-red font-bold text-xs uppercase tracking-widest">Corporate Profile & Strategic Distribution</span>
+      <h1 class="text-3xl md:text-5xl font-black uppercase tracking-tight mt-2 mb-4">
+        Empowering Auto Care <br>
+        <span class="text-brand-red">& Detailing Wholesale Supply</span>
+      </h1>
+      <p class="text-gray-300 text-sm md:text-base leading-relaxed">
+        Vexloi LLC is a premier wholesale distributor and exporter headquartered in Miami, Florida. We specialize in connecting retail networks, professional detail centers, and international distributors with industry-leading car care, cleaning, and vehicle maintenance brands.
+      </p>
+    </div>
+  </section>
+
+  <!-- CORPORATE STATS / METRICS -->
+  <section class="bg-white border-b border-gray-200 py-10">
+    <div class="container-custom grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+      <div class="p-4 rounded-xl bg-gray-50 border border-gray-100">
+        <div class="text-3xl font-black text-brand-red mb-1">100+</div>
+        <div class="text-xs font-bold uppercase text-gray-600">Active B2B Products</div>
       </div>
-      <a href="contact.html" class="bg-brand-red hover:bg-red-700 text-white font-bold py-3 px-6 rounded-lg uppercase tracking-wider text-sm whitespace-nowrap">Apply for B2B Account</a>
+      <div class="p-4 rounded-xl bg-gray-50 border border-gray-100">
+        <div class="text-3xl font-black text-brand-dark mb-1">Miami, FL</div>
+        <div class="text-xs font-bold uppercase text-gray-600">Logistics & Export Hub</div>
+      </div>
+      <div class="p-4 rounded-xl bg-gray-50 border border-gray-100">
+        <div class="text-3xl font-black text-brand-red mb-1">100%</div>
+        <div class="text-xs font-bold uppercase text-gray-600">Factory Sealed & Authentic</div>
+      </div>
+      <div class="p-4 rounded-xl bg-gray-50 border border-gray-100">
+        <div class="text-3xl font-black text-brand-dark mb-1">US & LATAM</div>
+        <div class="text-xs font-bold uppercase text-gray-600">Distribution Network</div>
+      </div>
     </div>
-  </main>
+  </section>
 
-  <footer class="bg-slate-900 text-gray-400 py-6 text-center text-xs mt-auto">
-    &copy; 2026 Apex Auto Care LLC. Miami, FL. All Rights Reserved.
+  <!-- MISSION & EXPERTISE (TWO COLUMNS) -->
+  <section class="container-custom py-16">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+      <div class="space-y-4">
+        <span class="text-xs font-bold text-brand-red uppercase tracking-wider">Core Specialization</span>
+        <h2 class="text-2xl md:text-3xl font-black uppercase text-brand-dark leading-snug">
+          Comprehensive Solutions for Auto Aesthetics & Vehicle Care
+        </h2>
+        <p class="text-xs md:text-sm text-gray-600 leading-relaxed">
+          We supply complete product lines for paint correction, technical washing, ceramic coating protection, interior reconditioning, and routine vehicle maintenance.
+        </p>
+        <p class="text-xs md:text-sm text-gray-600 leading-relaxed">
+          Our Miami-based supply infrastructure allows seamless order consolidation and fast dispatch to South Florida freight forwarders or direct regional delivery across North America and Latin America.
+        </p>
+      </div>
+
+      <div class="relative rounded-xl overflow-hidden shadow-lg border border-gray-200">
+        <img 
+          src="https://images.unsplash.com/photo-1607860108855-64acf2078ed9?q=80&w=800&auto=format&fit=crop" 
+          alt="Professional Car Cleaning & Detailing Products" 
+          class="w-full h-80 object-cover"
+        >
+      </div>
+    </div>
+  </section>
+
+  <!-- B2B ADVANTAGES / PILLARS (IMAGE CARDS STYLE) -->
+  <section class="bg-slate-900 text-white py-16">
+    <div class="container-custom">
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <span class="text-brand-red font-bold text-xs uppercase tracking-widest">Competitive Edge</span>
+        <h2 class="text-2xl md:text-3xl font-black uppercase mt-1">Why Partner With Vexloi LLC</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        
+        <!-- Pillar 1 Image Card -->
+        <div class="bg-slate-800 rounded-2xl overflow-hidden border border-gray-700/60 flex flex-col hover:border-brand-red/50 transition group">
+          <div class="h-48 overflow-hidden relative">
+            <img 
+              src="https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?q=80&w=600&auto=format&fit=crop" 
+              alt="Top Automotive Brands" 
+              class="w-full h-full object-cover group-hover:scale-105 transition duration-500"
+            >
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/20 to-transparent"></div>
+          </div>
+          <div class="p-6 space-y-2 flex-1 flex flex-col justify-between">
+            <div>
+              <h3 class="text-base font-bold uppercase text-white">Top Commercial Brands</h3>
+              <p class="text-xs text-gray-400 leading-relaxed mt-2">
+                Direct access to high-demand catalog items from Chemical Guys, Meguiar's, Turtle Wax, Griot's Garage, and Adam's Polishes.
+              </p>
+            </div>
+            <span class="text-[10px] font-bold text-brand-red uppercase tracking-wider pt-4 block border-t border-gray-700/50">100% Factory Sealed</span>
+          </div>
+        </div>
+
+        <!-- Pillar 2 Image Card -->
+        <div class="bg-slate-800 rounded-2xl overflow-hidden border border-gray-700/60 flex flex-col hover:border-brand-red/50 transition group">
+          <div class="h-48 overflow-hidden relative">
+            <img 
+              src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=600&auto=format&fit=crop" 
+              alt="Miami Logistics Hub" 
+              class="w-full h-full object-cover group-hover:scale-105 transition duration-500"
+            >
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/20 to-transparent"></div>
+          </div>
+          <div class="p-6 space-y-2 flex-1 flex flex-col justify-between">
+            <div>
+              <h3 class="text-base font-bold uppercase text-white">Miami Logistics Hub</h3>
+              <p class="text-xs text-gray-400 leading-relaxed mt-2">
+                Strategically located near major shipping ports and cargo terminals for swift export dispatch and forwarder drop-offs.
+              </p>
+            </div>
+            <span class="text-[10px] font-bold text-brand-red uppercase tracking-wider pt-4 block border-t border-gray-700/50">Freight Forwarder Ready</span>
+          </div>
+        </div>
+
+        <!-- Pillar 3 Image Card -->
+        <div class="bg-slate-800 rounded-2xl overflow-hidden border border-gray-700/60 flex flex-col hover:border-brand-red/50 transition group">
+          <div class="h-48 overflow-hidden relative">
+            <img 
+              src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=600&auto=format&fit=crop" 
+              alt="Flexible B2B Terms" 
+              class="w-full h-full object-cover group-hover:scale-105 transition duration-500"
+            >
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/20 to-transparent"></div>
+          </div>
+          <div class="p-6 space-y-2 flex-1 flex flex-col justify-between">
+            <div>
+              <h3 class="text-base font-bold uppercase text-white">Flexible B2B Terms</h3>
+              <p class="text-xs text-gray-400 leading-relaxed mt-2">
+                Instant Proforma Invoicing for secure US Wire/ACH bank transfers as well as online commercial card payments.
+              </p>
+            </div>
+            <span class="text-[10px] font-bold text-brand-red uppercase tracking-wider pt-4 block border-t border-gray-700/50">Fast Order Processing</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CALL TO ACTION -->
+  <section class="container-custom py-16 text-center">
+    <div class="bg-white border border-gray-200 p-8 md:p-12 rounded-2xl shadow-sm max-w-4xl mx-auto space-y-4">
+      <h2 class="text-2xl md:text-3xl font-black uppercase text-brand-dark">
+        Ready to Expand Your Wholesale Inventory?
+      </h2>
+      <p class="text-xs md:text-sm text-gray-600 max-w-xl mx-auto">
+        Browse our 100-product catalog featuring competitive tiered pricing, low MOQs, and immediate order fulfillment.
+      </p>
+      <div class="flex flex-wrap justify-center gap-4 pt-2">
+        <a href="catalog.html" class="bg-brand-red hover:bg-red-700 text-white font-bold text-xs uppercase px-8 py-3.5 rounded-lg tracking-wider transition">
+          Explore Full Catalog &rarr;
+        </a>
+        <a href="contact.html" class="border border-gray-300 hover:border-gray-800 text-gray-800 font-bold text-xs uppercase px-8 py-3.5 rounded-lg tracking-wider transition">
+          Contact Sales Team
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CART OVERLAY & DRAWER -->
+  <div id="cart-overlay" onclick="closeCartDrawer()" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden"></div>
+  <aside id="cart-drawer" class="fixed top-0 right-0 w-full sm:w-96 h-full bg-white z-50 shadow-2xl flex flex-col transform translate-x-full transition-transform duration-300">
+    <div class="p-4 border-b border-gray-200 flex items-center justify-between bg-slate-900 text-white">
+      <h3 class="font-bold text-xs uppercase tracking-wider">Your Wholesale Cart</h3>
+      <button onclick="closeCartDrawer()" class="text-gray-400 hover:text-white">✕</button>
+    </div>
+    <div id="cart-drawer-items" class="flex-1 overflow-y-auto p-4 space-y-3"></div>
+    <div class="p-4 border-t border-gray-200 bg-gray-50 space-y-3">
+      <div class="flex justify-between items-center text-sm font-bold">
+        <span>Subtotal:</span>
+        <span id="cart-total" class="text-lg font-black text-brand-dark">$0.00</span>
+      </div>
+      <a href="checkout.html" class="block w-full bg-brand-red hover:bg-red-700 text-white font-bold text-center py-2.5 rounded-lg text-xs uppercase tracking-wider">
+        Proceed To B2B Checkout &rarr;
+      </a>
+    </div>
+  </aside>
+
+  <!-- FOOTER -->
+  <footer class="bg-slate-900 text-gray-400 py-8 text-xs border-t border-gray-800">
+    <div class="container-custom flex flex-col md:flex-row justify-between items-center gap-4">
+      <div>
+        <span class="font-black text-white uppercase text-sm">VEXLOI LLC</span>
+        <p class="text-gray-500 mt-1">Import, Export & Wholesale Distribution - Miami, FL</p>
+      </div>
+      <div class="text-gray-500">&copy; 2026 Vexloi LLC. All rights reserved.</div>
+    </div>
   </footer>
-  <script>lucide.createIcons();</script>
+
+  <script src="products.js"></script>
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.lucide) lucide.createIcons();
+    });
+  </script>
 </body>
 </html>

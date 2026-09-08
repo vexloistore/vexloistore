@@ -3,163 +3,131 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Apex Ultra Foam pH-Neutral Car Shampoo | Apex Auto Care</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            brand: { red: '#9B111E', accent: '#D32F2F', dark: '#1E293B', slate: '#334155', light: '#F8FAFC' }
-          }
-        }
-      }
-    }
-  </script>
+  <title>Product Details | Vexloi LLC</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
   <script src="https://unpkg.com/lucide@latest"></script>
 </head>
-<body class="bg-brand-light text-slate-800 font-sans flex flex-col min-h-screen">
+<body class="flex flex-col min-h-screen bg-gray-50 text-gray-800">
+
+  <!-- TOP BAR -->
+  <div class="bg-brand-red text-white text-xs py-2 px-4 text-center font-bold tracking-wide">
+    B2B Wholesale Distribution | Direct Exports from Miami, FL | Vexloi LLC
+  </div>
 
   <!-- HEADER -->
   <header class="bg-white border-b border-gray-200 sticky top-0 z-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-between h-20">
-        <a href="index.html" class="flex items-center space-x-2">
-          <i data-lucide="shield-check" class="w-8 h-8 text-brand-red"></i>
-          <span class="text-2xl font-black tracking-wider text-brand-dark uppercase">APEX <span class="text-brand-red">AUTO</span></span>
-        </a>
-        <a href="#" class="relative text-gray-700 hover:text-brand-red">
+    <div class="container-custom py-4 flex items-center justify-between">
+      <a href="index.html" class="flex items-center space-x-2">
+        <i data-lucide="shield-check" class="w-8 h-8 text-brand-red"></i>
+        <span class="text-2xl font-black text-brand-dark uppercase">VEXLOI <span class="text-brand-red">LLC</span></span>
+      </a>
+
+      <nav class="hidden md:flex items-center space-x-8">
+        <a href="index.html" class="text-xs font-bold uppercase hover:text-brand-red">Home</a>
+        <a href="catalog.html" class="text-xs font-bold uppercase hover:text-brand-red">Full Catalog</a>
+        <a href="about.html" class="text-xs font-bold uppercase hover:text-brand-red">About Us</a>
+        <a href="contact.html" class="text-xs font-bold uppercase hover:text-brand-red">Contact</a>
+        <a href="checkout.html" class="text-xs font-bold uppercase hover:text-brand-red">Checkout</a>
+      </nav>
+
+      <div class="flex items-center space-x-4">
+        <div id="user-header-nav"></div>
+        <button onclick="openCartDrawer()" class="relative text-gray-700 hover:text-brand-red">
           <i data-lucide="shopping-bag" class="w-6 h-6"></i>
-          <span id="cart-counter" class="absolute -top-2 -right-2 bg-brand-red text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">0</span>
-        </a>
+          <span id="cart-counter" class="absolute -top-2 -right-2 bg-brand-red text-white text-[10px] font-bold rounded-full h-4 w-4 flex items-center justify-center">0</span>
+        </button>
       </div>
     </div>
   </header>
 
-  <!-- BREADCRUMB -->
-  <div class="bg-white border-b border-gray-200 py-4">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-xs text-gray-500 uppercase">
-      <a href="index.html" class="hover:underline">Home</a> &gt; <a href="catalog.html" class="hover:underline">Wash & Dry</a> &gt; <span class="text-brand-dark font-bold">Apex Ultra Foam Shampoo</span>
+  <!-- PRODUCT DETAIL CONTENT -->
+  <main id="product-detail-container" class="container-custom py-12 flex-1"></main>
+
+  <!-- CART OVERLAY & DRAWER -->
+  <div id="cart-overlay" onclick="closeCartDrawer()" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden"></div>
+  <aside id="cart-drawer" class="fixed top-0 right-0 w-full sm:w-96 h-full bg-white z-50 shadow-2xl flex flex-col transform translate-x-full transition-transform duration-300">
+    <div class="p-4 border-b border-gray-200 flex items-center justify-between bg-slate-900 text-white">
+      <h3 class="font-bold text-xs uppercase tracking-wider">Your Wholesale Cart</h3>
+      <button onclick="closeCartDrawer()" class="text-gray-400 hover:text-white">✕</button>
     </div>
-  </div>
-
-  <!-- PDP MAIN CONTENT -->
-  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 flex-1">
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-      
-      <!-- PRODUCT GALLERY -->
-      <div>
-        <div class="bg-white p-6 border border-gray-200 rounded-xl mb-4 text-center">
-          <img id="main-image" src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=800&q=80" alt="Apex Ultra Foam" class="w-full h-96 object-contain mx-auto">
-        </div>
-        <div class="grid grid-cols-4 gap-4">
-          <button onclick="changeImage('https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=800&q=80')" class="border rounded-lg p-2 bg-white hover:border-brand-red">
-            <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=200&q=80" class="h-16 w-full object-contain">
-          </button>
-          <button onclick="changeImage('https://images.unsplash.com/photo-1520340356584-f9917d1eea6f?auto=format&fit=crop&w=800&q=80')" class="border rounded-lg p-2 bg-white hover:border-brand-red">
-            <img src="https://images.unsplash.com/photo-1520340356584-f9917d1eea6f?auto=format&fit=crop&w=200&q=80" class="h-16 w-full object-contain">
-          </button>
-        </div>
+    <div id="cart-drawer-items" class="flex-1 overflow-y-auto p-4 space-y-3"></div>
+    <div class="p-4 border-t border-gray-200 bg-gray-50 space-y-3">
+      <div class="flex justify-between items-center text-sm font-bold">
+        <span>Subtotal:</span>
+        <span id="cart-total" class="text-lg font-black text-brand-dark">$0.00</span>
       </div>
-
-      <!-- PRODUCT INFO -->
-      <div>
-        <span class="text-xs font-bold text-gray-500 uppercase tracking-widest">Brand: Apex Auto Care | MPN: VX-CS16</span>
-        <h1 class="text-3xl font-black text-brand-dark uppercase tracking-tight mt-1 mb-3">Apex Ultra Foam pH-Neutral Car Shampoo 16oz</h1>
-        
-        <div class="flex items-center space-x-2 mb-4 text-amber-500 text-sm">
-          <i data-lucide="star" class="fill-current w-4 h-4"></i>
-          <i data-lucide="star" class="fill-current w-4 h-4"></i>
-          <i data-lucide="star" class="fill-current w-4 h-4"></i>
-          <i data-lucide="star" class="fill-current w-4 h-4"></i>
-          <i data-lucide="star" class="fill-current w-4 h-4"></i>
-          <span class="text-gray-500 font-bold ml-2">(48 Customer Reviews)</span>
-        </div>
-
-        <div class="text-3xl font-black text-brand-dark mb-4">$18.99 <span class="text-xs text-gray-400 font-normal">MSRP</span></div>
-
-        <div class="bg-green-50 border border-green-200 text-green-800 text-xs font-bold px-3 py-2 rounded-lg mb-6 flex items-center gap-2">
-          <i data-lucide="check-circle" class="w-4 h-4"></i> In Stock - Ships Directly from Miami Warehouse Hub
-        </div>
-
-        <p class="text-gray-600 text-sm leading-relaxed mb-6">
-          High-foaming, hyper-concentrated pH-neutral car wash soap designed for foam cannons and two-bucket hand washes. Safely lubricates paintwork to prevent wash marring and swirl marks while preserving existing wax, sealant, or ceramic protection.
-        </p>
-
-        <!-- QUANTITY & CTA -->
-        <div class="flex items-center gap-4 mb-8">
-          <div class="flex items-center border border-gray-300 rounded-lg bg-white">
-            <button onclick="adjustQty(-1)" class="px-3 py-2 font-bold text-gray-600 hover:text-brand-red">-</button>
-            <input id="product-qty" type="text" value="1" readonly class="w-12 text-center font-bold text-sm">
-            <button onclick="adjustQty(1)" class="px-3 py-2 font-bold text-gray-600 hover:text-brand-red">+</button>
-          </div>
-          <button onclick="addToCartPDP()" class="flex-1 bg-brand-red hover:bg-red-700 text-white font-bold py-3 px-6 rounded-lg uppercase tracking-wider transition">
-            Add To Cart
-          </button>
-        </div>
-
-        <!-- ACCORDIONS / TABS -->
-        <div class="border-t border-gray-200 pt-6">
-          <div class="flex border-b border-gray-200 gap-6 text-sm font-bold uppercase mb-4">
-            <button onclick="showTab('desc')" id="tab-desc-btn" class="pb-2 border-b-2 border-brand-red text-brand-red">Description</button>
-            <button onclick="showTab('specs')" id="tab-specs-btn" class="pb-2 text-gray-500 hover:text-brand-dark">Specifications & MSDS</button>
-            <button onclick="showTab('directions')" id="tab-directions-btn" class="pb-2 text-gray-500 hover:text-brand-dark">Directions</button>
-          </div>
-
-          <div id="tab-desc" class="text-sm text-gray-600 space-y-2">
-            <p>Formulated specifically for automotive enthusiasts and high-volume commercial detail bays. Produces thick, long-lasting foam suds that cling to vertical panels, encapsulating dirt and road grime safely.</p>
-          </div>
-          <div id="tab-specs" class="hidden text-sm text-gray-600 space-y-2">
-            <p><strong>Size:</strong> 16 fl oz / 473 ml</p>
-            <p><strong>Dilution:</strong> 1 oz per 1 gallon of water (or 2 oz in 32oz foam cannon bottle)</p>
-            <p><strong>pH Level:</strong> 7.0 (Neutral)</p>
-            <p><strong>Safety:</strong> Biodegradable, Safe on Wraps & PPF</p>
-          </div>
-          <div id="tab-directions" class="hidden text-sm text-gray-600 space-y-2">
-            <p>1. Rinse vehicle thoroughly to remove loose dirt.</p>
-            <p>2. Mix 1-2 oz of soap with warm water in your wash bucket or foam cannon.</p>
-            <p>3. Apply foam top-to-bottom using a high-quality microfiber wash mitt.</p>
-            <p>4. Rinse clean and dry with an XL microfiber towel.</p>
-          </div>
-        </div>
-
-      </div>
-
+      <a href="checkout.html" class="block w-full bg-brand-red hover:bg-red-700 text-white font-bold text-center py-2.5 rounded-lg text-xs uppercase tracking-wider">
+        Proceed To B2B Checkout &rarr;
+      </a>
     </div>
-  </main>
+  </aside>
 
-  <footer class="bg-slate-900 text-gray-400 py-6 text-center text-xs mt-auto">
-    &copy; 2026 Apex Auto Care LLC. Miami, FL. All Rights Reserved.
+  <!-- FOOTER -->
+  <footer class="bg-slate-900 text-gray-400 py-6 text-xs text-center border-t border-gray-800">
+    &copy; 2026 Vexloi LLC. All rights reserved.
   </footer>
 
+  <script src="products.js"></script>
+  <script src="script.js"></script>
   <script>
-    lucide.createIcons();
-    
-    function changeImage(src) {
-      document.getElementById('main-image').src = src;
-    }
+    document.addEventListener('DOMContentLoaded', () => {
+      const params = new URLSearchParams(window.location.search);
+      const productId = params.get('id') || (typeof productsData !== 'undefined' && productsData.length > 0 ? productsData[0].id : '');
+      const product = typeof productsData !== 'undefined' ? productsData.find(p => p.id === productId) : null;
+      const container = document.getElementById('product-detail-container');
+      const minQty = 1;
 
-    let qty = 1;
-    function adjustQty(amount) {
-      qty = Math.max(1, qty + amount);
-      document.getElementById('product-qty').value = qty;
-    }
+      if (!product) {
+        container.innerHTML = `
+          <div class="text-center py-12">
+            <h2 class="text-lg font-bold text-gray-700 mb-2">Product not found.</h2>
+            <a href="catalog.html" class="text-xs font-bold uppercase text-brand-red hover:underline">&larr; Return to Catalog</a>
+          </div>
+        `;
+        return;
+      }
 
-    let globalCart = 0;
-    function addToCartPDP() {
-      globalCart += qty;
-      document.getElementById('cart-counter').innerText = globalCart;
-    }
+      container.innerHTML = `
+        <div class="mb-6">
+          <a href="catalog.html" class="text-xs font-bold uppercase text-brand-red hover:underline">&larr; Back to Full Catalog</a>
+        </div>
 
-    function showTab(tabName) {
-      ['desc', 'specs', 'directions'].forEach(t => {
-        document.getElementById(`tab-${t}`).classList.add('hidden');
-        document.getElementById(`tab-${t}-btn`).classList.remove('border-b-2', 'border-brand-red', 'text-brand-red');
-        document.getElementById(`tab-${t}-btn`).classList.add('text-gray-500');
-      });
-      document.getElementById(`tab-${tabName}`).classList.remove('hidden');
-      document.getElementById(`tab-${tabName}-btn`).classList.add('border-b-2', 'border-brand-red', 'text-brand-red');
-    }
+        <div class="bg-white rounded-xl border border-gray-200 p-8 grid grid-cols-1 md:grid-cols-2 gap-8 shadow-sm">
+          <div class="bg-gray-50 p-6 rounded-lg flex items-center justify-center border border-gray-100">
+            <img src="${product.image}" alt="${product.name}" class="max-h-96 object-contain" onerror="this.src='https://via.placeholder.com/400?text=${encodeURIComponent(product.brand)}'">
+          </div>
+
+          <div class="flex flex-col justify-between">
+            <div>
+              <span class="text-xs font-bold text-brand-red uppercase tracking-widest">${product.brand}</span>
+              <h1 class="text-2xl font-black text-brand-dark uppercase mt-1 mb-2">${product.name}</h1>
+              <p class="text-xs font-mono text-gray-400 mb-4">SKU: ${product.sku}</p>
+              
+              <div class="text-3xl font-black text-brand-dark mb-4">
+                $${product.price.toFixed(2)} <span class="text-xs font-normal text-gray-500">USD / Unit</span>
+              </div>
+
+              <p class="text-sm text-gray-600 mb-6 leading-relaxed">${product.desc}</p>
+            </div>
+
+            <div class="bg-gray-50 p-4 rounded-lg border border-gray-200 space-y-3">
+              <label class="block text-xs font-bold uppercase text-gray-700">
+                Order Quantity
+              </label>
+              <div class="flex gap-3">
+                <input type="number" id="detail-qty" value="${minQty}" min="${minQty}" class="w-24 border border-gray-300 rounded-lg p-2.5 text-center font-bold text-sm focus:ring-2 focus:ring-brand-red focus:outline-none">
+                <button onclick="addToCart('${product.id}', 'detail-qty', ${minQty})" class="flex-1 bg-brand-red hover:bg-red-700 text-white font-bold py-3.5 rounded-lg text-xs uppercase tracking-wider transition">
+                  Add To Wholesale Cart
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+
+      if (window.lucide) lucide.createIcons();
+    });
   </script>
 </body>
 </html>

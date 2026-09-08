@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>B2B Checkout & Payment Gateway | Vexloi LLC</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-gray-50 min-h-screen flex flex-col text-gray-800">
+  
+  <!-- TOP BAR -->
+  <div class="bg-brand-red text-white text-xs py-2 px-4 text-center font-bold tracking-wide">
+    B2B Wholesale Distribution | Direct Exports from Miami, FL | Vexloi LLC
+  </div>
+
+  <!-- HEADER -->
+  <header class="bg-white border-b border-gray-200 sticky top-0 z-50">
+    <div class="container-custom py-4 flex items-center justify-between">
+      <a href="index.html" class="flex items-center space-x-2">
+        <i data-lucide="shield-check" class="w-8 h-8 text-brand-red"></i>
+        <span class="text-2xl font-black text-brand-dark uppercase">VEXLOI <span class="text-brand-red">LLC</span></span>
+      </a>
+
+      <nav class="hidden md:flex items-center space-x-8">
+        <a href="index.html" class="text-xs font-bold uppercase hover:text-brand-red">Home</a>
+        <a href="catalog.html" class="text-xs font-bold uppercase hover:text-brand-red">Full Catalog</a>
+        <a href="about.html" class="text-xs font-bold uppercase hover:text-brand-red">About Us</a>
+        <a href="contact.html" class="text-xs font-bold uppercase hover:text-brand-red">Contact</a>
+        <a href="checkout.html" class="text-xs font-bold uppercase text-brand-red">Checkout</a>
+      </nav>
+
+      <div class="flex items-center space-x-4">
+        <div id="user-header-nav"></div>
+        <button onclick="openCartDrawer()" class="relative text-gray-700 hover:text-brand-red">
+          <i data-lucide="shopping-bag" class="w-6 h-6"></i>
+          <span id="cart-counter" class="absolute -top-2 -right-2 bg-brand-red text-white text-[10px] font-bold rounded-full h-4 w-4 flex items-center justify-center">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container-custom py-10 flex-1 grid grid-cols-1 lg:grid-cols-3 gap-8">
+    <!-- FORMULARIO DE PEDIDO Y PASARELA DE PAGO B2B -->
+    <div class="lg:col-span-2 space-y-6">
+      
+      <!-- INFORMACIÓN DE LA EMPRESA Y ENVÍO -->
+      <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm">
+        <h2 class="text-base font-black uppercase text-brand-dark mb-4 flex items-center gap-2">
+          <i data-lucide="truck" class="w-5 h-5 text-brand-red"></i> 1. Shipping & Corporate Details
+        </h2>
+        
+        <form id="checkout-form" onsubmit="event.preventDefault(); submitOrderProcess();" class="space-y-4">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-bold uppercase text-gray-600 mb-1">Company / Contact Name *</label>
+              <input type="text" id="cust-name" required placeholder="e.g. AutoCare Distributors LLC" class="w-full border border-gray-300 rounded p-2.5 text-xs focus:ring-2 focus:ring-brand-red focus:outline-none">
+            </div>
+            <div>
+              <label class="block text-xs font-bold uppercase text-gray-600 mb-1">Corporate Email Address *</label>
+              <input type="email" id="cust-email" required placeholder="purchasing@company.com" class="w-full border border-gray-300 rounded p-2.5 text-xs focus:ring-2 focus:ring-brand-red focus:outline-none">
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-bold uppercase text-gray-600 mb-1">Phone / WhatsApp *</label>
+              <input type="tel" id="cust-phone" required placeholder="+1 (305) 000-0000" class="w-full border border-gray-300 rounded p-2.5 text-xs focus:ring-2 focus:ring-brand-red focus:outline-none">
+            </div>
+            <div>
+              <label class="block text-xs font-bold uppercase text-gray-600 mb-1">Tax ID / EIN (Optional)</label>
+              <input type="text" id="cust-taxid" placeholder="EIN or Tax Registration" class="w-full border border-gray-300 rounded p-2.5 text-xs focus:ring-2 focus:ring-brand-red focus:outline-none">
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold uppercase text-gray-600 mb-1">Delivery / Freight Forwarder Address *</label>
+            <input type="text" id="cust-address" required placeholder="Street Address, City, State, ZIP (Miami Port or Direct Address)" class="w-full border border-gray-300 rounded p-2.5 text-xs focus:ring-2 focus:ring-brand-red focus:outline-none">
+          </div>
+        </form>
+      </div>
+
+      <!-- SELECCIÓN DE MÉTODO DE PAGO / PASARELA DE EE. UU. -->
+      <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm">
+        <h2 class="text-base font-black uppercase text-brand-dark mb-4 flex items-center gap-2">
+          <i data-lucide="credit-card" class="w-5 h-5 text-brand-red"></i> 2. Payment Method / B2B Terms
+        </h2>
+
+        <!-- OPCIONES DE PAGO -->
+        <div class="space-y-3 mb-6">
+          
+          <!-- OPCIÓN 1: PROFORMA / WIRE TRANSFER -->
+          <label class="flex items-start p-3.5 border border-gray-300 rounded-lg cursor-pointer hover:border-brand-red transition bg-gray-50">
+            <input type="radio" name="payment_method" value="proforma" checked onclick="togglePaymentView('proforma')" class="mt-1 text-brand-red focus:ring-brand-red">
+            <div class="ml-3 flex-1">
+              <div class="flex justify-between items-center">
+                <span class="text-xs font-bold text-gray-800 uppercase">Request Proforma Invoice (Wire Transfer / ACH)</span>
+                <span class="text-[10px] font-bold bg-blue-100 text-blue-800 px-2 py-0.5 rounded">B2B Standard</span>
+              </div>
+              <p class="text-[11px] text-gray-500 mt-0.5">Recibe una factura proforma oficial para realizar el pago mediante transferencia bancaria internacional o wire transfer en EE. UU.</p>
+            </div>
+          </label>
+
+          <!-- OPCIÓN 2: TARJETA DE CRÉDITO/DÉBITO -->
+          <label class="flex items-start p-3.5 border border-gray-300 rounded-lg cursor-pointer hover:border-brand-red transition bg-gray-50">
+            <input type="radio" name="payment_method" value="card" onclick="togglePaymentView('card')" class="mt-1 text-brand-red focus:ring-brand-red">
+            <div class="ml-3 flex-1">
+              <div class="flex justify-between items-center">
+                <span class="text-xs font-bold text-gray-800 uppercase">Pay Online with Credit / Debit Card</span>
+                <div class="flex gap-1 text-gray-400">
+                  <i data-lucide="credit-card" class="w-4 h-4"></i>
+                </div>
+              </div>
+              <p class="text-[11px] text-gray-500 mt-0.5">Procesamiento seguro instantáneo (Visa, Mastercard, American Express, Discover).</p>
+            </div>
+          </label>
+
+          <!-- OPCIÓN 3: PAYPAL -->
+          <label class="flex items-start p-3.5 border border-gray-300 rounded-lg cursor-pointer hover:border-brand-red transition bg-gray-50">
+            <input type="radio" name="payment_method" value="paypal" onclick="togglePaymentView('paypal')" class="mt-1 text-brand-red focus:ring-brand-red">
+            <div class="ml-3 flex-1">
+              <div class="flex justify-between items-center">
+                <span class="text-xs font-bold text-gray-800 uppercase">PayPal Express Checkout</span>
+                <span class="text-[10px] font-bold text-blue-600 italic">PayPal</span>
+              </div>
+              <p class="text-[11px] text-gray-500 mt-0.5">Paga utilizando tu saldo comercial de PayPal o cuenta corporativa vinculada.</p>
+            </div>
+          </label>
+        </div>
+
+        <!-- FORMULARIOS DINÁMICOS SEGÚN LA OPCIÓN SELECCIONADA -->
+        
+        <!-- VISTA PROFORMA -->
+        <div id="payment-proforma-info" class="p-4 bg-blue-50 border border-blue-200 rounded-lg text-xs text-blue-900">
+          <p class="font-bold mb-1">Instrucciones de Factura Proforma:</p>
+          <p class="text-[11px] leading-relaxed">Al procesar la orden, nuestro departamento de exportación de Vexloi LLC generará la Factura Proforma con los detalles bancarios para transferencia Wire o ACH en EE. UU.</p>
+        </div>
+
+        <!-- VISTA TARJETA -->
+        <div id="payment-card-form" class="hidden p-4 bg-gray-50 border border-gray-200 rounded-lg space-y-3">
+          <div>
+            <label class="block text-[10px] font-bold uppercase text-gray-600 mb-1">Cardholder Name</label>
+            <input type="text" id="card-name" placeholder="John Doe" class="w-full border border-gray-300 rounded p-2 text-xs focus:ring-1 focus:ring-brand-red focus:outline-none">
+          </div>
+          <div>
+            <label class="block text-[10px] font-bold uppercase text-gray-600 mb-1">Card Number</label>
+            <input type="text" id="card-number" maxlength="19" placeholder="4000 1234 5678 9010" class="w-full border border-gray-300 rounded p-2 text-xs focus:ring-1 focus:ring-brand-red focus:outline-none font-mono">
+          </div>
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <label class="block text-[10px] font-bold uppercase text-gray-600 mb-1">Expiration (MM/YY)</label>
+              <input type="text" id="card-exp" maxlength="5" placeholder="12/28" class="w-full border border-gray-300 rounded p-2 text-xs focus:ring-1 focus:ring-brand-red focus:outline-none text-center">
+            </div>
+            <div>
+              <label class="block text-[10px] font-bold uppercase text-gray-600 mb-1">CVV / CVC</label>
+              <input type="password" id="card-cvv" maxlength="4" placeholder="123" class="w-full border border-gray-300 rounded p-2 text-xs focus:ring-1 focus:ring-brand-red focus:outline-none text-center font-mono">
+            </div>
+          </div>
+        </div>
+
+        <!-- VISTA PAYPAL -->
+        <div id="payment-paypal-info" class="hidden p-4 bg-yellow-50 border border-yellow-200 rounded-lg text-center">
+          <p class="text-xs text-yellow-800 font-semibold mb-2">Serás redirigido de forma segura al portal de PayPal al confirmar el pedido.</p>
+          <div class="inline-block bg-yellow-400 text-blue-900 font-black px-6 py-2 rounded-full text-xs cursor-pointer hover:bg-yellow-500 shadow-sm">
+            PayPal Checkout
+          </div>
+        </div>
+
+        <!-- BOTÓN FINAL DE PROCESAMIENTO -->
+        <button onclick="submitOrderProcess()" class="w-full bg-brand-red hover:bg-red-700 text-white font-bold py-3.5 rounded-lg text-xs uppercase tracking-wider transition mt-6 flex items-center justify-center gap-2">
+          <i data-lucide="lock" class="w-4 h-4"></i>
+          <span id="submit-btn-text">Complete Order & Request Proforma</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- RESUMEN DEL PEDIDO CON AJUSTE DE CANTIDADES Y BOTÓN ELIMINAR -->
+    <div class="bg-white p-6 rounded-xl border border-gray-200 h-fit shadow-sm">
+      <div class="flex justify-between items-center mb-4 pb-2 border-b border-gray-100">
+        <h3 class="text-sm font-black uppercase text-brand-dark">Order Summary</h3>
+        <span class="text-[10px] font-bold text-gray-400">B2B Wholesale</span>
+      </div>
+
+      <!-- Ítems dinámicos con controles de cantidad y eliminación -->
+      <div id="checkout-items" class="space-y-3 mb-6 max-h-96 overflow-y-auto pr-1"></div>
+
+      <div class="border-t border-gray-200 pt-4 space-y-2">
+        <div class="flex justify-between text-xs text-gray-500">
+          <span>Est. Freight / Shipping:</span>
+          <span class="font-bold text-gray-700">Calculated on Invoice</span>
+        </div>
+        <div class="flex justify-between items-center text-sm font-black pt-2 border-t border-gray-100">
+          <span>Total Estimate:</span>
+          <span id="checkout-total" class="text-lg text-brand-red">$0.00</span>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- CART OVERLAY & DRAWER -->
+  <div id="cart-overlay" onclick="closeCartDrawer()" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden"></div>
+  <aside id="cart-drawer" class="fixed top-0 right-0 w-full sm:w-96 h-full bg-white z-50 shadow-2xl flex flex-col transform translate-x-full transition-transform duration-300">
+    <div class="p-4 border-b border-gray-200 flex items-center justify-between bg-slate-900 text-white">
+      <h3 class="font-bold text-xs uppercase tracking-wider">Your Wholesale Cart</h3>
+      <button onclick="closeCartDrawer()" class="text-gray-400 hover:text-white">✕</button>
+    </div>
+    <div id="cart-drawer-items" class="flex-1 overflow-y-auto p-4 space-y-3"></div>
+    <div class="p-4 border-t border-gray-200 bg-gray-50 space-y-3">
+      <div class="flex justify-between items-center text-sm font-bold">
+        <span>Subtotal:</span>
+        <span id="cart-total" class="text-lg font-black text-brand-dark">$0.00</span>
+      </div>
+      <a href="checkout.html" class="block w-full bg-brand-red hover:bg-red-700 text-white font-bold text-center py-2.5 rounded-lg text-xs uppercase tracking-wider">
+        Proceed To B2B Checkout &rarr;
+      </a>
+    </div>
+  </aside>
+
+  <!-- FOOTER -->
+  <footer class="bg-slate-900 text-gray-400 py-6 text-xs text-center border-t border-gray-800">
+    &copy; 2026 Vexloi LLC. All rights reserved.
+  </footer>
+
+  <script src="products.js"></script>
+  <script src="script.js"></script>
+  <script>
+    let currentMethod = 'proforma';
+
+    function togglePaymentView(method) {
+      currentMethod = method;
+      const proformaInfo = document.getElementById('payment-proforma-info');
+      const cardForm = document.getElementById('payment-card-form');
+      const paypalInfo = document.getElementById('payment-paypal-info');
+      const btnText = document.getElementById('submit-btn-text');
+
+      proformaInfo.classList.add('hidden');
+      cardForm.classList.add('hidden');
+      paypalInfo.classList.add('hidden');
+
+      if (method === 'proforma') {
+        proformaInfo.classList.remove('hidden');
+        btnText.innerText = 'Complete Order & Request Proforma';
+      } else if (method === 'card') {
+        cardForm.classList.remove('hidden');
+        btnText.innerText = 'Pay Now with Credit Card';
+      } else if (method === 'paypal') {
+        paypalInfo.classList.remove('hidden');
+        btnText.innerText = 'Proceed to PayPal Payment';
+      }
+    }
+
+    function renderCheckoutSummary() {
+      const container = document.getElementById('checkout-items');
+      const totalEl = document.getElementById('checkout-total');
+      const cart = getCart();
+      
+      const totalPrice = cart.reduce((s, i) => s + (i.price * i.qty), 0);
+      if (totalEl) totalEl.innerText = `$${totalPrice.toFixed(2)} USD`;
+
+      if (!container) return;
+
+      if (cart.length === 0) {
+        container.innerHTML = `
+          <div class="text-center py-6">
+            <p class="text-xs text-gray-400 mb-3">Your cart is empty.</p>
+            <a href="catalog.html" class="text-xs font-bold text-brand-red hover:underline uppercase">&larr; Return to Catalog</a>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = cart.map(i => {
+        const min = i.minQty || 1;
+        return `
+          <div class="p-3 bg-gray-50 rounded-lg border border-gray-200 space-y-2">
+            <div class="flex justify-between items-start gap-2">
+              <span class="font-bold text-xs text-gray-800 leading-tight flex-1">${i.name}</span>
+              <div class="flex items-center gap-2">
+                <span class="font-black text-xs text-brand-dark whitespace-nowrap">$${(i.price * i.qty).toFixed(2)}</span>
+                <button onclick="removeItemCheckout('${i.id}')" class="text-gray-400 hover:text-red-600 p-0.5" title="Remove item">
+                  <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>
+                </button>
+              </div>
+            </div>
+            
+            <div class="flex justify-between items-center text-[10px] text-gray-500 pt-1 border-t border-gray-200">
+              <span>$${i.price.toFixed(2)} c/u (Min: ${min})</span>
+              <div class="flex items-center space-x-1 bg-white border border-gray-300 rounded px-1">
+                <button onclick="changeQtyCheckout('${i.id}', -1)" class="text-xs font-bold px-1.5 text-gray-600 hover:text-brand-red">-</button>
+                <span class="text-xs font-bold px-1">${i.qty}</span>
+                <button onclick="changeQtyCheckout('${i.id}', 1)" class="text-xs font-bold px-1.5 text-gray-600 hover:text-brand-red">+</button>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      if (window.lucide) lucide.createIcons();
+    }
+
+    function changeQtyCheckout(productId, delta) {
+      updateCartItemQty(productId, delta);
+      renderCheckoutSummary();
+    }
+
+    function removeItemCheckout(productId) {
+      if (typeof removeFromCart === 'function') {
+        removeFromCart(productId);
+      } else {
+        let cart = getCart().filter(item => item.id !== productId);
+        saveCart(cart);
+      }
+      renderCheckoutSummary();
+    }
+
+    function submitOrderProcess() {
+      const cart = getCart();
+      if (cart.length === 0) {
+        alert('Your cart is empty. Please add products before submitting an order.');
+        return;
+      }
+
+      const name = document.getElementById('cust-name').value;
+      const email = document.getElementById('cust-email').value;
+      const address = document.getElementById('cust-address').value;
+
+      if (!name || !email || !address) {
+        alert('Please complete all required fields in the Shipping & Corporate Details section.');
+        return;
+      }
+
+      if (currentMethod === 'card') {
+        const cardNumber = document.getElementById('card-number').value;
+        if (!cardNumber || cardNumber.length < 15) {
+          alert('Please enter a valid credit card number.');
+          return;
+        }
+        alert('Payment authorized successfully via US Gateway! Order Confirmation #' + Math.floor(100000 + Math.random() * 900000));
+      } else if (currentMethod === 'paypal') {
+        alert('Redirecting to PayPal Gateway... Payment successful! Order Confirmation #' + Math.floor(100000 + Math.random() * 900000));
+      } else {
+        alert('Proforma Invoice request received! Our sales team will email the official Proforma and Wire transfer instructions shortly.');
+      }
+
+      localStorage.removeItem('vexloi_cart');
+      window.location.href = 'index.html';
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      renderCheckoutSummary();
+      
+      const activeUser = typeof getActiveUser === 'function' ? getActiveUser() : null;
+      if (activeUser) {
+        if (document.getElementById('cust-name')) document.getElementById('cust-name').value = activeUser.company || activeUser.name || '';
+        if (document.getElementById('cust-email')) document.getElementById('cust-email').value = activeUser.email || '';
+      }
+
+      if (window.lucide) lucide.createIcons();
+    });
+  </script>
+</body>
+</html>
