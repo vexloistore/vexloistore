@@ -18,6 +18,8 @@ def get_category_info(title, brand):
         return 4, "paint-and-exterior-care", "Paint & Exterior Care"
     elif any(k in text for k in ['wash', 'soap', 'shampoo', 'foam', 'snow foam', 'cleaner', 'waterless', 'suds', 'bucket']):
         return 5, "car-wash", "Car Wash & Soap"
+    elif any(k in text for k in ['oil', 'chemical', 'fluid', 'solvent', 'cleaner', 'lubricant']):
+        return 6, "chemicals-and-oils", "Chemicals & Oils"
     else:
         return 4, "paint-and-exterior-care", "Paint & Exterior Care"
 
@@ -27,7 +29,8 @@ categories_dict = {
     2: {"slug": "ceramics", "name": "Waxes & Ceramics"},
     3: {"slug": "interior", "name": "Interior Care"},
     4: {"slug": "paint-and-exterior-care", "name": "Paint & Exterior Care"},
-    5: {"slug": "car-wash", "name": "Car Wash & Soap"}
+    5: {"slug": "car-wash", "name": "Car Wash & Soap"},
+    6: {"slug": "chemicals-and-oils", "name": "Chemicals & Oils"}
 }
 
 # 4. Crear Diccionario de Marcas (ID entero -> Nombre exacto)
