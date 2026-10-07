@@ -5,140 +5,129 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Product Details | Vexloi LLC</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <script src="https://unpkg.com/lucide@latest"></script>
 </head>
-<body class="flex flex-col min-h-screen bg-gray-50 text-gray-800">
+<body data-page="catalog" class="flex flex-col min-h-screen">
+  <div id="site-header"></div>
 
-  <!-- TOP BAR -->
-  <div class="bg-brand-red text-white text-xs py-2 px-4 text-center font-bold tracking-wide">
-    B2B Wholesale Distribution | Direct Exports from Miami, FL | Vexloi LLC
-  </div>
+  <main id="product-detail-container" class="container-custom py-8 flex-1 w-full"></main>
 
-  <!-- HEADER -->
-  <header class="bg-white border-b border-gray-200 sticky top-0 z-50">
-    <div class="container-custom py-4 flex items-center justify-between">
-      <a href="index.html" class="flex items-center space-x-2">
-        <i data-lucide="shield-check" class="w-8 h-8 text-brand-red"></i>
-        <span class="text-2xl font-black text-brand-dark uppercase">VEXLOI <span class="text-brand-red">LLC</span></span>
-      </a>
-
-      <nav class="hidden md:flex items-center space-x-8">
-        <a href="index.html" class="text-xs font-bold uppercase hover:text-brand-red">Home</a>
-        <a href="catalog.html" class="text-xs font-bold uppercase hover:text-brand-red">Full Catalog</a>
-        <a href="about.html" class="text-xs font-bold uppercase hover:text-brand-red">About Us</a>
-        <a href="contact.html" class="text-xs font-bold uppercase hover:text-brand-red">Contact</a>
-        <a href="checkout.html" class="text-xs font-bold uppercase hover:text-brand-red">Checkout</a>
-      </nav>
-
-      <div class="flex items-center space-x-4">
-        <div id="user-header-nav"></div>
-        <button onclick="openCartDrawer()" class="relative text-gray-700 hover:text-brand-red">
-          <i data-lucide="shopping-bag" class="w-6 h-6"></i>
-          <span id="cart-counter" class="absolute -top-2 -right-2 bg-brand-red text-white text-[10px] font-bold rounded-full h-4 w-4 flex items-center justify-center">0</span>
-        </button>
-      </div>
-    </div>
-  </header>
-
-  <!-- PRODUCT DETAIL CONTENT -->
-  <main id="product-detail-container" class="container-custom py-12 flex-1"></main>
-
-  <!-- CART OVERLAY & DRAWER -->
-  <div id="cart-overlay" onclick="closeCartDrawer()" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden"></div>
-  <aside id="cart-drawer" class="fixed top-0 right-0 w-full sm:w-96 h-full bg-white z-50 shadow-2xl flex flex-col transform translate-x-full transition-transform duration-300">
-    <div class="p-4 border-b border-gray-200 flex items-center justify-between bg-slate-900 text-white">
-      <h3 class="font-bold text-xs uppercase tracking-wider">Your Wholesale Cart</h3>
-      <button onclick="closeCartDrawer()" class="text-gray-400 hover:text-white">✕</button>
-    </div>
-    <div id="cart-drawer-items" class="flex-1 overflow-y-auto p-4 space-y-3"></div>
-    <div class="p-4 border-t border-gray-200 bg-gray-50 space-y-3">
-      <div class="flex justify-between items-center text-sm font-bold">
-        <span>Subtotal:</span>
-        <span id="cart-total" class="text-lg font-black text-brand-dark">$0.00</span>
-      </div>
-      <a href="checkout.html" class="block w-full bg-brand-red hover:bg-red-700 text-white font-bold text-center py-2.5 rounded-lg text-xs uppercase tracking-wider">
-        Proceed To B2B Checkout &rarr;
-      </a>
-    </div>
-  </aside>
-
-  <!-- FOOTER ESTÁNDAR PARA TODAS LAS PÁGINAS -->
-  <footer class="bg-slate-900 text-gray-400 py-8 text-xs border-t border-gray-800">
-    <div class="container-custom flex flex-col md:flex-row justify-between items-center gap-4">
-      <div>
-        <span class="font-black text-white uppercase text-sm">VEXLOI LLC</span>
-        <p class="text-gray-500 mt-1">Import, Export & Wholesale Distribution - Miami, FL</p>
-      </div>
-      
-      <!-- ENLACES DE POLÍTICAS B2B -->
-      <div class="flex flex-wrap justify-center gap-4 text-gray-400">
-        <a href="privacy-policy.html" class="hover:text-white transition">Privacy Policy</a>
-        <a href="accessibility-policy.html" class="hover:text-white transition">Accessibility Policy</a>
-        <a href="terms-and-conditions.html" class="hover:text-white transition">Terms & Conditions</a>
-        <a href="returns-policy.html" class="hover:text-white transition">Returns & Refunds</a>
-      </div>
-
-      <div class="text-gray-500">&copy; 2026 Vexloi LLC. All rights reserved.</div>
-    </div>
-  </footer>
+  <div id="site-footer"></div>
 
   <script src="products.js"></script>
   <script src="script.js"></script>
   <script>
+    function changeDetailQty(delta) {
+      const input = document.getElementById('detail-qty');
+      input.value = Math.max(1, (parseInt(input.value) || 1) + delta);
+    }
+
     document.addEventListener('DOMContentLoaded', () => {
-      const params = new URLSearchParams(window.location.search);
-      const productId = params.get('id') || (typeof productsData !== 'undefined' && productsData.length > 0 ? productsData[0].id : '');
-      const product = typeof productsData !== 'undefined' ? productsData.find(p => p.id === productId) : null;
+      const id = new URLSearchParams(location.search).get('id');
+      const product = productsData.find(p => p.id === id) || (id ? null : productsData[0]);
       const container = document.getElementById('product-detail-container');
-      const minQty = 1;
 
       if (!product) {
         container.innerHTML = `
-          <div class="text-center py-12">
-            <h2 class="text-lg font-bold text-gray-700 mb-2">Product not found.</h2>
-            <a href="catalog.html" class="text-xs font-bold uppercase text-brand-red hover:underline">&larr; Return to Catalog</a>
-          </div>
-        `;
+          <div class="card p-12 text-center max-w-lg mx-auto">
+            <i data-lucide="package-x" class="w-12 h-12 mx-auto text-gray-300 mb-3"></i>
+            <h2 class="text-lg font-bold text-brand-ink mb-2">Product not found</h2>
+            <a href="catalog.html" class="btn-primary mt-2">&larr; Back to Catalog</a>
+          </div>`;
+        lucide.createIcons();
         return;
       }
 
+      const cat = getCategory(product.categoryId);
+      const brandTotal = productsData.filter(p => p.brandId === product.brandId).length;
+      const moreBrand = productsData.filter(p => p.brandId === product.brandId && p.id !== product.id).sort((a, b) => a.rank - b.rank);
+      const related = productsData
+        .filter(p => p.id !== product.id && p.brandId !== product.brandId && p.categoryId === product.categoryId && p.subcategory === product.subcategory)
+        .sort((a, b) => a.pop - b.pop).slice(0, 5);
+      document.title = `${product.name} | ${product.brand} | Vexloi LLC`;
+
+      const specs = [
+        ['Brand', `<a href="catalog.html?brand=${product.brandId}" class="text-brand-blue hover:underline">${esc(product.brand)}</a>`],
+        ['Category', `<a href="catalog.html?cat=${cat.slug}" class="text-brand-blue hover:underline">${esc(cat.name)}</a>`],
+        ['Subcategory', esc(product.subcategory || '—')],
+        ['ASIN / SKU', `<span class="font-mono">${product.sku}</span>`],
+        ['UPC', `<span class="font-mono">${esc(product.upc || '—')}</span>`],
+        ['Condition', 'New · Factory sealed'],
+        ['Brand ranking', `#${product.rank} of ${brandTotal} best sellers`],
+      ];
+
       container.innerHTML = `
-        <div class="mb-6">
-          <a href="catalog.html" class="text-xs font-bold uppercase text-brand-red hover:underline">&larr; Back to Full Catalog</a>
-        </div>
+        <nav class="text-2xs text-gray-500 mb-5 flex flex-wrap gap-1">
+          <a href="index.html" class="hover:text-brand-blue">Home</a> /
+          <a href="catalog.html?cat=${cat.slug}" class="hover:text-brand-blue">${esc(cat.name)}</a> /
+          ${product.subcategory ? `<a href="catalog.html?cat=${cat.slug}&sub=${encodeURIComponent(product.subcategory)}" class="hover:text-brand-blue">${esc(product.subcategory)}</a> /` : ''}
+          <span class="text-gray-400 line-clamp-1">${esc(product.brand)}</span>
+        </nav>
 
-        <div class="bg-white rounded-xl border border-gray-200 p-8 grid grid-cols-1 md:grid-cols-2 gap-8 shadow-sm">
-          <div class="bg-gray-50 p-6 rounded-lg flex items-center justify-center border border-gray-100">
-            <img src="${product.image}" alt="${product.name}" class="max-h-96 object-contain" onerror="this.src='https://via.placeholder.com/400?text=${encodeURIComponent(product.brand)}'">
+        <div class="card p-5 md:p-8 grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div class="relative bg-white rounded-xl border border-gray-100 flex items-center justify-center p-6" style="min-height:22rem">
+            <img src="${esc(product.image)}" alt="${esc(product.name)}" class="object-contain" style="max-height:26rem" onerror="this.src='${imgFallback(product.brand)}'">
+            <span class="badge badge-dark absolute top-3 left-3"><i data-lucide="flame" class="w-3 h-3"></i> #${product.rank} Best Seller · ${esc(product.brand)}</span>
           </div>
 
-          <div class="flex flex-col justify-between">
-            <div>
-              <span class="text-xs font-bold text-brand-red uppercase tracking-widest">${product.brand}</span>
-              <h1 class="text-2xl font-black text-brand-dark uppercase mt-1 mb-2">${product.name}</h1>
-              <p class="text-xs font-mono text-gray-400 mb-4">SKU: ${product.sku}</p>
-              
-              <div class="text-3xl font-black text-brand-dark mb-4">
-                $${product.price.toFixed(2)} <span class="text-xs font-normal text-gray-500">USD / Unit</span>
-              </div>
-
-              <p class="text-sm text-gray-600 mb-6 leading-relaxed">${product.desc}</p>
+          <div class="flex flex-col">
+            <a href="catalog.html?brand=${product.brandId}" class="text-xs font-bold text-brand-blue uppercase tracking-wider hover:underline">${esc(product.brand)}</a>
+            <h1 class="text-xl md:text-2xl font-extrabold text-brand-ink mt-1 leading-snug">${esc(product.desc)}</h1>
+            <div class="flex flex-wrap items-center gap-3 mt-3 text-xs text-gray-500">
+              <span class="flex items-center gap-1">${starsHTML(product.rating)} <b class="text-gray-700">${product.rating ? product.rating.toFixed(1) : '—'}</b> (${product.reviews.toLocaleString('en-US')} reviews)</span>
+              <span class="badge badge-cyan">${esc(cat.name)}</span>
             </div>
 
-            <div class="bg-gray-50 p-4 rounded-lg border border-gray-200 space-y-3">
-              <label class="block text-xs font-bold uppercase text-gray-700">
-                Order Quantity
-              </label>
-              <div class="flex gap-3">
-                <input type="number" id="detail-qty" value="${minQty}" min="${minQty}" class="w-24 border border-gray-300 rounded-lg p-2.5 text-center font-bold text-sm focus:ring-2 focus:ring-brand-red focus:outline-none">
-                <button onclick="addToCart('${product.id}', 'detail-qty', ${minQty})" class="flex-1 bg-brand-red hover:bg-red-700 text-white font-bold py-3.5 rounded-lg text-xs uppercase tracking-wider transition">
-                  Add To Wholesale Cart
-                </button>
+            <div class="mt-6 flex items-end gap-2">
+              <span class="text-4xl font-extrabold text-brand-ink">${money(product.price)}</span>
+              <span class="text-xs text-gray-500 mb-1.5">USD / unit · reference price</span>
+            </div>
+            <p class="text-xs text-green-700 font-semibold mt-2 flex items-center gap-1"><i data-lucide="check-circle-2" class="w-4 h-4"></i> Available for wholesale & export orders</p>
+
+            <div class="mt-6 bg-gray-50 border border-gray-200 rounded-xl p-4 space-y-3">
+              <label class="label" for="detail-qty">Order Quantity</label>
+              <div class="flex flex-wrap gap-3">
+                <div class="flex items-center border border-gray-300 rounded-lg bg-white">
+                  <button onclick="changeDetailQty(-1)" class="px-3 py-2.5 font-bold hover:text-brand-blue">−</button>
+                  <input type="number" id="detail-qty" value="1" min="1" class="w-16 text-center font-bold text-sm focus:outline-none">
+                  <button onclick="changeDetailQty(1)" class="px-3 py-2.5 font-bold hover:text-brand-blue">+</button>
+                </div>
+                <button onclick="addToCart('${product.id}', 'detail-qty', 1)" class="btn-primary flex-1"><i data-lucide="shopping-cart" class="w-4 h-4"></i> Add to Wholesale Cart</button>
               </div>
+              <a href="contact.html?product=${product.id}" class="btn-ghost w-full"><i data-lucide="message-square" class="w-4 h-4"></i> Request volume pricing</a>
+            </div>
+
+            <div class="grid grid-cols-3 gap-2 mt-5 text-center text-3xs text-gray-600">
+              <div class="p-2 rounded-lg border border-gray-200"><i data-lucide="shield-check" class="w-4 h-4 mx-auto text-brand-blue mb-1"></i>Factory sealed</div>
+              <div class="p-2 rounded-lg border border-gray-200"><i data-lucide="ship" class="w-4 h-4 mx-auto text-brand-blue mb-1"></i>Export from Miami</div>
+              <div class="p-2 rounded-lg border border-gray-200"><i data-lucide="file-text" class="w-4 h-4 mx-auto text-brand-blue mb-1"></i>Proforma invoice</div>
             </div>
           </div>
         </div>
+
+        <div class="card p-5 md:p-6 mt-6">
+          <h2 class="text-sm font-extrabold text-brand-ink mb-3 flex items-center gap-2"><i data-lucide="list" class="w-4 h-4 text-brand-blue"></i> Specifications</h2>
+          <dl class="grid grid-cols-1 md:grid-cols-2 gap-x-8 text-xs">
+            ${specs.map(([k, v]) => `<div class="flex justify-between gap-4 py-2 border-b border-gray-100"><dt class="text-gray-500">${k}</dt><dd class="font-semibold text-gray-800 text-right">${v}</dd></div>`).join('')}
+          </dl>
+        </div>
+
+        ${moreBrand.length ? `
+        <section class="mt-10">
+          <div class="flex items-end justify-between mb-4">
+            <h2 class="text-lg font-extrabold text-brand-ink">More top sellers from ${esc(product.brand)}</h2>
+            <a href="catalog.html?brand=${product.brandId}" class="text-xs font-semibold text-brand-blue hover:underline">View brand &rarr;</a>
+          </div>
+          <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">${moreBrand.slice(0, 5).map(createProductCardHTML).join('')}</div>
+        </section>` : ''}
+
+        ${related.length ? `
+        <section class="mt-10">
+          <h2 class="text-lg font-extrabold text-brand-ink mb-4">Related in ${esc(product.subcategory)}</h2>
+          <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">${related.map(createProductCardHTML).join('')}</div>
+        </section>` : ''}
       `;
 
       if (window.lucide) lucide.createIcons();

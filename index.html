@@ -3,248 +3,173 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Vexloi LLC | B2B Auto Care & Detailing Wholesale Distribution</title>
+  <title>Vexloi LLC | B2B Wholesale Electronics & Technology Distribution</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <script src="https://unpkg.com/lucide@latest"></script>
 </head>
-<body class="flex flex-col min-h-screen bg-gray-50 text-gray-800 font-sans">
+<body data-page="home" class="flex flex-col min-h-screen">
+  <div id="site-header"></div>
 
-  <!-- TOP ANNOUNCEMENT BAR -->
-  <div class="bg-brand-red text-white text-xs py-2 px-4 text-center font-bold tracking-wide">
-    B2B Wholesale Distribution & Export Hub | Direct Dispatch from Miami, FL | Vexloi LLC
-  </div>
-
-  <!-- HEADER NAV -->
-  <header class="bg-white border-b border-gray-200 sticky top-0 z-50 shadow-sm">
-    <div class="container-custom py-4 flex items-center justify-between">
-      <!-- LOGO -->
-      <a href="index.html" class="flex items-center space-x-2">
-        <i data-lucide="shield-check" class="w-8 h-8 text-brand-red"></i>
-        <span class="text-2xl font-black text-brand-dark uppercase">VEXLOI <span class="text-brand-red">LLC</span></span>
-      </a>
-
-      <!-- NAVEGACIÓN DESKTOP (Oculta en móviles) -->
-      <nav class="hidden md:flex items-center space-x-8">
-        <a href="index.html" class="text-xs font-bold uppercase text-brand-red">Home</a>
-        <a href="catalog.html" class="text-xs font-bold uppercase hover:text-brand-red transition">Full Catalog</a>
-        <a href="about.html" class="text-xs font-bold uppercase hover:text-brand-red transition">About Us</a>
-        <a href="contact.html" class="text-xs font-bold uppercase hover:text-brand-red transition">Contact</a>
-        <a href="checkout.html" class="text-xs font-bold uppercase hover:text-brand-red transition">Checkout</a>
-      </nav>
-
-      <!-- ACCIONES HEADER Y BOTÓN HAMBURGUESA -->
-      <div class="flex items-center space-x-3">
-        <div id="user-header-nav"></div>
-        <button onclick="openCartDrawer()" class="relative text-gray-700 hover:text-brand-red transition p-1">
-          <i data-lucide="shopping-bag" class="w-6 h-6"></i>
-          <span id="cart-counter" class="absolute -top-1 -right-1 bg-brand-red text-white text-[10px] font-bold rounded-full h-4 w-4 flex items-center justify-center">0</span>
-        </button>
-
-        <!-- BOTÓN HAMBURGUESA MÓVIL (Solo visible en pantallas pequeñas) -->
-        <button onclick="toggleMobileMenu()" class="md:hidden text-gray-700 hover:text-brand-red focus:outline-none p-1">
-          <i data-lucide="menu" id="menu-icon-open" class="w-7 h-7"></i>
-          <i data-lucide="x" id="menu-icon-close" class="w-7 h-7 hidden"></i>
-        </button>
-      </div>
-    </div>
-
-    <!-- MENÚ DESPLEGABLE MÓVIL -->
-    <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 px-4 pt-3 pb-5 space-y-3 shadow-lg">
-      <a href="index.html" class="block text-xs font-bold uppercase text-brand-red py-1">Home</a>
-      <a href="catalog.html" class="block text-xs font-bold uppercase text-gray-700 hover:text-brand-red py-1">Full Catalog</a>
-      <a href="about.html" class="block text-xs font-bold uppercase text-gray-700 hover:text-brand-red py-1">About Us</a>
-      <a href="contact.html" class="block text-xs font-bold uppercase text-gray-700 hover:text-brand-red py-1">Contact</a>
-      <a href="checkout.html" class="block text-xs font-bold uppercase text-gray-700 hover:text-brand-red py-1">Checkout</a>
-    </div>
-  </header>
-
-  <!-- HERO SECTION -->
-  <section class="relative bg-slate-900 text-white py-20 md:py-28 overflow-hidden border-b border-gray-800">
-    <div class="absolute inset-0 z-0">
-      <img 
-        src="https://images.unsplash.com/photo-1601362840469-51e4d8d58785?q=80&w=1600&auto=format&fit=crop" 
-        alt="Professional Car Detailing & Auto Care Wholesale" 
-        class="w-full h-full object-cover opacity-70 object-center"
-      >
-      <div class="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-900/90 to-transparent"></div>
-    </div>
-
-    <div class="container-custom relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-      <div class="lg:col-span-8 space-y-6">
-        
-        <div class="inline-flex items-center gap-2 bg-brand-red/10 border border-brand-red/30 px-3 py-1.5 rounded-full">
-          <span class="w-2 h-2 rounded-full bg-brand-red animate-pulse"></span>
-          <span class="text-xs font-bold uppercase tracking-wider text-red-400">Premier Auto Care & Detailing Wholesale Hub</span>
-        </div>
-
-        <h1 class="text-3xl md:text-5xl font-black uppercase tracking-tight leading-tight">
-          Professional Grade <br>
-          <span class="text-brand-red">Car Care & Detailing Supply</span>
+  <!-- HERO -->
+  <section class="hero-tech text-white">
+    <div class="container-custom py-16 md:py-24 grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+      <div class="lg:col-span-7 space-y-6">
+        <span class="glass inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-2xs font-semibold uppercase tracking-wider text-blue-200">
+          <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span> Wholesale Technology Hub · Miami, FL
+        </span>
+        <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight leading-tight">
+          Wholesale Electronics<br><span class="text-gradient">& Pro Technology Supply</span>
         </h1>
-
-        <p class="text-sm md:text-base text-gray-300 max-w-2xl leading-relaxed">
-          Vexloi LLC is an authorized wholesale distributor and exporter supplying top-tier professional detailing formulations, ceramic/graphene coatings, paint correction polishes, and interior restoration products directly from Miami, FL.
+        <p class="text-gray-300 text-sm md:text-base max-w-xl leading-relaxed">
+          Vexloi LLC distributes the best-selling products of <strong id="hero-brands" class="text-white">350+</strong> leading brands — car audio, pro AV, networking, PC storage, security, photo/video, instruments and industrial tech — ready for export from Miami.
         </p>
-
-        <div class="flex flex-wrap gap-4 pt-2">
-          <a href="catalog.html" class="bg-brand-red hover:bg-red-700 text-white font-bold px-7 py-3.5 rounded-lg text-xs uppercase tracking-wider transition flex items-center gap-2 shadow-lg">
-            <i data-lucide="grid" class="w-4 h-4"></i>
-            Browse Wholesale Catalog &rarr;
-          </a>
-          <a href="about.html" class="bg-white/10 hover:bg-white/20 text-white border border-white/20 font-bold px-7 py-3.5 rounded-lg text-xs uppercase tracking-wider transition backdrop-blur-sm flex items-center gap-2">
-            <i data-lucide="file-text" class="w-4 h-4"></i>
-            Corporate Overview
-          </a>
+        <form action="catalog.html" class="flex bg-white rounded-xl overflow-hidden max-w-xl shadow-2xl">
+          <span class="pl-4 flex items-center text-gray-400"><i data-lucide="search" class="w-5 h-5"></i></span>
+          <input name="q" type="search" placeholder="Try “Alpine”, “NVMe SSD”, “intercom”…" class="flex-1 px-3 py-4 text-sm text-gray-800 focus:outline-none">
+          <button class="bg-brand-blue hover-bg-brand-blue-dark px-6 font-semibold text-sm">Search</button>
+        </form>
+        <div class="flex flex-wrap gap-3">
+          <a href="catalog.html" class="btn-primary"><i data-lucide="layout-grid" class="w-4 h-4"></i> Browse Full Catalog</a>
+          <a href="brands.html" class="btn-ghost" style="background:transparent;color:#fff;border-color:rgba(255,255,255,.3)"><i data-lucide="award" class="w-4 h-4"></i> Shop by Brand</a>
         </div>
+      </div>
 
-        <div class="pt-6 grid grid-cols-2 sm:grid-cols-3 gap-4 border-t border-gray-800 text-xs text-gray-400 font-semibold">
-          <div class="flex items-center gap-2">
-            <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-red"></i>
-            <span>100% Factory Sealed & Original</span>
-          </div>
-          <div class="flex items-center gap-2">
-            <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-red"></i>
-            <span>Freight Forwarder Ready (Miami)</span>
-          </div>
-          <div class="flex items-center gap-2">
-            <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-red"></i>
-            <span>Proforma & Wire / ACH Payment</span>
-          </div>
+      <div class="lg:col-span-5 grid grid-cols-2 gap-4">
+        <div class="glass rounded-2xl p-5">
+          <i data-lucide="package" class="w-6 h-6 text-brand-cyan mb-3"></i>
+          <div id="stat-products" class="text-3xl font-extrabold">0</div>
+          <div class="text-2xs text-gray-400 uppercase tracking-wider mt-1">Bestselling SKUs</div>
         </div>
-
+        <div class="glass rounded-2xl p-5">
+          <i data-lucide="award" class="w-6 h-6 text-brand-cyan mb-3"></i>
+          <div id="stat-brands" class="text-3xl font-extrabold">0</div>
+          <div class="text-2xs text-gray-400 uppercase tracking-wider mt-1">Brands</div>
+        </div>
+        <div class="glass rounded-2xl p-5">
+          <i data-lucide="layers" class="w-6 h-6 text-brand-cyan mb-3"></i>
+          <div id="stat-cats" class="text-3xl font-extrabold">0</div>
+          <div class="text-2xs text-gray-400 uppercase tracking-wider mt-1">Categories</div>
+        </div>
+        <div class="glass rounded-2xl p-5">
+          <i data-lucide="globe-2" class="w-6 h-6 text-brand-cyan mb-3"></i>
+          <div class="text-3xl font-extrabold">US & LATAM</div>
+          <div class="text-2xs text-gray-400 uppercase tracking-wider mt-1">Export Network</div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- BRAND PARTNERS BANNER -->
-  <section class="bg-white py-6 border-b border-gray-200">
-    <div class="container-custom">
-      <p class="text-[10px] uppercase tracking-widest font-bold text-gray-400 text-center mb-4">Authorized Wholesale Lines & Premium Brands</p>
-      <div class="flex flex-wrap justify-between items-center text-xs md:text-sm font-black uppercase text-gray-500 gap-6">
-        <span class="hover:text-brand-dark transition">Adam's Polishes</span>
-        <span class="hover:text-brand-dark transition">Chemical Guys</span>
-        <span class="hover:text-brand-dark transition">Meguiar's</span>
-        <span class="hover:text-brand-dark transition">Turtle Wax</span>
-        <span class="hover:text-brand-dark transition">Griot's Garage</span>
-      </div>
+  <!-- TRUST STRIP -->
+  <section class="bg-white border-b border-gray-200">
+    <div class="container-custom py-5 grid grid-cols-2 md:grid-cols-4 gap-4 text-xs">
+      <div class="flex items-center gap-3"><i data-lucide="shield-check" class="w-6 h-6 text-brand-blue"></i><div><b class="text-brand-ink block">Factory Sealed</b><span class="text-gray-500">Original, traceable stock</span></div></div>
+      <div class="flex items-center gap-3"><i data-lucide="ship" class="w-6 h-6 text-brand-blue"></i><div><b class="text-brand-ink block">Export Ready</b><span class="text-gray-500">Miami freight forwarders</span></div></div>
+      <div class="flex items-center gap-3"><i data-lucide="file-text" class="w-6 h-6 text-brand-blue"></i><div><b class="text-brand-ink block">Proforma Invoicing</b><span class="text-gray-500">Wire / ACH / Card</span></div></div>
+      <div class="flex items-center gap-3"><i data-lucide="headset" class="w-6 h-6 text-brand-blue"></i><div><b class="text-brand-ink block">B2B Support</b><span class="text-gray-500">Bilingual sales team</span></div></div>
     </div>
   </section>
 
-  <!-- CATEGORY GRID SECTION -->
-  <section class="bg-gray-100 py-16 border-b border-gray-200">
-    <div class="container-custom">
-      <div class="text-center max-w-2xl mx-auto mb-12">
-        <span class="text-brand-red font-bold text-xs uppercase tracking-widest">Catalog Segments</span>
-        <h2 class="text-2xl md:text-3xl font-black uppercase text-brand-dark mt-1">Shop By Detailing Category</h2>
-        <p class="text-xs md:text-sm text-gray-600 mt-2">Equip your detailing facility, auto parts store, or wholesale export network with professional chemical lines.</p>
-      </div>
-
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        
-        <div class="bg-white rounded-xl p-6 border border-gray-200 shadow-sm hover:shadow-md transition group">
-          <div class="w-16 h-16 bg-red-50 text-brand-red rounded-lg flex items-center justify-center mb-4 group-hover:bg-brand-red group-hover:text-white transition">
-            <i data-lucide="sparkles" class="w-6 h-6"></i>
-          </div>
-          <h3 class="font-bold text-sm uppercase text-brand-dark mb-2">Ceramic & Graphene</h3>
-          <p class="text-xs text-gray-500 leading-relaxed mb-4">UV-curable ceramic coatings, graphene detail sprays, nano-sealants, and hydrophobic boost sprays.</p>
-          <a href="catalog.html" class="text-xs font-bold text-brand-red uppercase flex items-center gap-1 hover:underline">Explore Category &rarr;</a>
-        </div>
-
-        <div class="bg-white rounded-xl p-6 border border-gray-200 shadow-sm hover:shadow-md transition group">
-          <div class="w-16 h-16 bg-red-50 text-brand-red rounded-lg flex items-center justify-center mb-4 group-hover:bg-brand-red group-hover:text-white transition">
-            <i data-lucide="car" class="w-6 h-6"></i>
-          </div>
-          <h3 class="font-bold text-sm uppercase text-brand-dark mb-2">Paint & Exterior Care</h3>
-          <p class="text-xs text-gray-500 leading-relaxed mb-4">pH-neutral car shampoos, mega foam soaps, iron removers, visco clay bars, and correction polishes.</p>
-          <a href="catalog.html" class="text-xs font-bold text-brand-red uppercase flex items-center gap-1 hover:underline">Explore Category &rarr;</a>
-        </div>
-
-        <div class="bg-white rounded-xl p-6 border border-gray-200 shadow-sm hover:shadow-md transition group">
-          <div class="w-16 h-16 bg-red-50 text-brand-red rounded-lg flex items-center justify-center mb-4 group-hover:bg-brand-red group-hover:text-white transition">
-            <i data-lucide="disc" class="w-6 h-6"></i>
-          </div>
-          <h3 class="font-bold text-sm uppercase text-brand-dark mb-2">Wheel & Tire Care</h3>
-          <p class="text-xs text-gray-500 leading-relaxed mb-4">All-in-one wheel cleaners, heavy-duty brake dust removers, rubber mat cleaners, and high-gloss tire dressings.</p>
-          <a href="catalog.html" class="text-xs font-bold text-brand-red uppercase flex items-center gap-1 hover:underline">Explore Category &rarr;</a>
-        </div>
-
-        <div class="bg-white rounded-xl p-6 border border-gray-200 shadow-sm hover:shadow-md transition group">
-          <div class="w-16 h-16 bg-red-50 text-brand-red rounded-lg flex items-center justify-center mb-4 group-hover:bg-brand-red group-hover:text-white transition">
-            <i data-lucide="armchair" class="w-6 h-6"></i>
-          </div>
-          <h3 class="font-bold text-sm uppercase text-brand-dark mb-2">Interior Restoration</h3>
-          <p class="text-xs text-gray-500 leading-relaxed mb-4">Total interior detailers, leather conditioners, upholstery cleaners, and odor eliminator solutions.</p>
-          <a href="catalog.html" class="text-xs font-bold text-brand-red uppercase flex items-center gap-1 hover:underline">Explore Category &rarr;</a>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- FEATURED CATALOG PREVIEW -->
-  <main class="container-custom py-16 flex-1">
-    <div class="flex justify-between items-end mb-8">
+  <!-- CATEGORIES -->
+  <section class="container-custom py-14">
+    <div class="flex items-end justify-between mb-8 gap-4">
       <div>
-        <span class="text-xs font-bold text-brand-red uppercase tracking-wider">Curated B2B Selection</span>
-        <h2 class="text-2xl md:text-3xl font-black uppercase text-brand-dark">Featured Wholesale Bestsellers</h2>
+        <span class="text-2xs font-bold text-brand-blue uppercase tracking-widest-2">Catalog Segments</span>
+        <h2 class="text-2xl md:text-3xl font-extrabold text-brand-ink mt-1">Shop by Category</h2>
       </div>
-      <a href="catalog.html" class="text-xs font-bold uppercase text-brand-red hover:underline">View All Products &rarr;</a>
+      <a href="catalog.html" class="text-xs font-semibold text-brand-blue hover:underline whitespace-nowrap">View all &rarr;</a>
     </div>
+    <div id="home-categories" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4"></div>
+  </section>
 
-    <!-- Featured Grid -->
-    <div id="featured-products-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6"></div>
-  </main>
-
-  <!-- CART OVERLAY & DRAWER -->
-  <div id="cart-overlay" onclick="closeCartDrawer()" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden"></div>
-  <aside id="cart-drawer" class="fixed top-0 right-0 w-full sm:w-96 h-full bg-white z-50 shadow-2xl flex flex-col transform translate-x-full transition-transform duration-300">
-    <div class="p-4 border-b border-gray-200 flex items-center justify-between bg-slate-900 text-white">
-      <h3 class="font-bold text-xs uppercase tracking-wider">Your Wholesale Cart</h3>
-      <button onclick="closeCartDrawer()" class="text-gray-400 hover:text-white">✕</button>
-    </div>
-    <div id="cart-drawer-items" class="flex-1 overflow-y-auto p-4 space-y-3"></div>
-    <div class="p-4 border-t border-gray-200 bg-gray-50 space-y-3">
-      <div class="flex justify-between items-center text-sm font-bold">
-        <span>Subtotal:</span>
-        <span id="cart-total" class="text-lg font-black text-brand-dark">$0.00</span>
+  <!-- TOP BRANDS -->
+  <section class="bg-white border-y border-gray-200 py-10">
+    <div class="container-custom">
+      <div class="flex items-end justify-between mb-6">
+        <h2 class="text-lg font-extrabold text-brand-ink">Top Brands This Month</h2>
+        <a href="brands.html" class="text-xs font-semibold text-brand-blue hover:underline">All brands &rarr;</a>
       </div>
-      <a href="checkout.html" class="block w-full bg-brand-red hover:bg-red-700 text-white font-bold text-center py-2.5 rounded-lg text-xs uppercase tracking-wider">
-        Proceed To B2B Checkout &rarr;
-      </a>
+      <div id="home-brands" class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-3"></div>
     </div>
-  </aside>
+  </section>
 
- <!-- FOOTER ESTÁNDAR PARA TODAS LAS PÁGINAS -->
-  <footer class="bg-slate-900 text-gray-400 py-8 text-xs border-t border-gray-800">
-    <div class="container-custom flex flex-col md:flex-row justify-between items-center gap-4">
+  <!-- BESTSELLERS -->
+  <section class="container-custom py-14">
+    <div class="flex items-end justify-between mb-6">
       <div>
-        <span class="font-black text-white uppercase text-sm">VEXLOI LLC</span>
-        <p class="text-gray-500 mt-1">Import, Export & Wholesale Distribution - Miami, FL</p>
+        <span class="text-2xs font-bold text-brand-blue uppercase tracking-widest-2">Curated B2B Selection</span>
+        <h2 class="text-2xl md:text-3xl font-extrabold text-brand-ink mt-1">Wholesale Bestsellers</h2>
       </div>
-      
-      <!-- ENLACES DE POLÍTICAS B2B -->
-      <div class="flex flex-wrap justify-center gap-4 text-gray-400">
-        <a href="privacy-policy.html" class="hover:text-white transition">Privacy Policy</a>
-        <a href="accessibility-policy.html" class="hover:text-white transition">Accessibility Policy</a>
-        <a href="terms-and-conditions.html" class="hover:text-white transition">Terms & Conditions</a>
-        <a href="returns-policy.html" class="hover:text-white transition">Returns & Refunds</a>
-      </div>
-
-      <div class="text-gray-500">&copy; 2026 Vexloi LLC. All rights reserved.</div>
+      <a href="catalog.html?sort=popular" class="text-xs font-semibold text-brand-blue hover:underline">View all &rarr;</a>
     </div>
-  </footer>
+    <div id="featured-products-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4"></div>
+  </section>
+
+  <!-- TRENDING BY CATEGORY -->
+  <section class="bg-white border-t border-gray-200 py-14">
+    <div class="container-custom">
+      <h2 class="text-2xl md:text-3xl font-extrabold text-brand-ink mb-5">Trending by Category</h2>
+      <div id="trend-tabs" class="flex gap-2 overflow-x-auto no-scrollbar pb-2 mb-6"></div>
+      <div id="trend-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4"></div>
+      <div class="text-center mt-8"><a id="trend-link" href="catalog.html" class="btn-ghost">See all in this category &rarr;</a></div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="container-custom py-14">
+    <div class="hero-tech rounded-2xl p-8 md:p-12 text-white grid md:grid-cols-3 gap-6 items-center">
+      <div class="md:col-span-2">
+        <h2 class="text-2xl md:text-3xl font-extrabold">Need volume pricing or a full container?</h2>
+        <p class="text-gray-300 text-sm mt-2">Send us your SKU list and our sales team will reply with availability, MOQs and a formal proforma invoice.</p>
+      </div>
+      <div class="flex md:justify-end gap-3">
+        <a href="contact.html" class="btn-primary"><i data-lucide="send" class="w-4 h-4"></i> Request a Quote</a>
+        <a href="login.html" class="btn-ghost">Open B2B Account</a>
+      </div>
+    </div>
+  </section>
+
+  <div id="site-footer"></div>
 
   <script src="products.js"></script>
   <script src="script.js"></script>
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const grid = document.getElementById('featured-products-grid');
-      if (grid && typeof productsData !== 'undefined') {
-        const featuredProducts = productsData.slice(0, 8);
-        grid.innerHTML = featuredProducts.map(p => createProductCardHTML(p)).join('');
-      }
+    function renderTrend(catId) {
+      const c = getCategory(catId);
+      document.querySelectorAll('#trend-tabs .tab-btn').forEach(b => b.classList.toggle('active', Number(b.dataset.id) === catId));
+      const items = productsData.filter(p => p.categoryId === catId).sort((a, b) => a.pop - b.pop).slice(0, 10);
+      document.getElementById('trend-grid').innerHTML = items.map(createProductCardHTML).join('');
+      document.getElementById('trend-link').href = `catalog.html?cat=${c.slug}`;
       if (window.lucide) lucide.createIcons();
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const catCounts = countBy(productsData, p => p.categoryId);
+      const brandCount = Object.keys(brandsDict).length;
+      document.getElementById('stat-products').innerText = productsData.length.toLocaleString('en-US');
+      document.getElementById('stat-brands').innerText = brandCount;
+      document.getElementById('stat-cats').innerText = Object.keys(categoriesDict).length;
+      document.getElementById('hero-brands').innerText = brandCount;
+
+      document.getElementById('home-categories').innerHTML = Object.entries(categoriesDict).map(([id, c]) => `
+        <a href="catalog.html?cat=${c.slug}" class="cat-tile card card-hover p-4 flex flex-col">
+          <span class="cat-icon w-11 h-11 rounded-xl bg-blue-50 text-brand-blue flex items-center justify-center mb-3"><i data-lucide="${c.icon}" class="w-5 h-5"></i></span>
+          <span class="text-sm font-bold text-brand-ink leading-tight">${esc(c.name)}</span>
+          <span class="text-3xs text-gray-500 mt-1 line-clamp-2">${esc(c.desc)}</span>
+          <span class="text-2xs font-semibold text-brand-blue mt-auto pt-3">${catCounts[id] || 0} products &rarr;</span>
+        </a>`).join('');
+
+      const sorted = [...productsData].sort((a, b) => a.pop - b.pop);
+      const topBrandIds = [...new Set(sorted.map(p => p.brandId))].slice(0, 16);
+      document.getElementById('home-brands').innerHTML = topBrandIds.map(id => `
+        <a href="catalog.html?brand=${id}" class="card card-hover h-16 flex items-center justify-center px-2 text-center text-xs font-extrabold uppercase text-gray-600 hover-text-brand-blue">${esc(brandsDict[id].name)}</a>`).join('');
+
+      document.getElementById('featured-products-grid').innerHTML = sorted.slice(0, 10).map(createProductCardHTML).join('');
+
+      document.getElementById('trend-tabs').innerHTML = Object.entries(categoriesDict).map(([id, c]) =>
+        `<button class="tab-btn" data-id="${id}" onclick="renderTrend(${id})">${esc(c.name)}</button>`).join('');
+      renderTrend(Number(Object.keys(categoriesDict)[0]));
     });
   </script>
 </body>

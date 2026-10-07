@@ -3,110 +3,69 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact Us | Vexloi LLC</title>
+  <title>Contact & Wholesale Quotes | Vexloi LLC</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <script src="https://unpkg.com/lucide@latest"></script>
 </head>
-<body class="flex flex-col min-h-screen bg-gray-50 text-gray-800">
+<body data-page="contact" class="flex flex-col min-h-screen">
+  <div id="site-header"></div>
 
-  <!-- TOP BAR -->
-  <div class="bg-brand-red text-white text-xs py-2 px-4 text-center font-bold tracking-wide">
-    B2B Wholesale Distribution | Direct Exports from Miami, FL | Vexloi LLC
-  </div>
-
-  <!-- HEADER -->
-  <header class="bg-white border-b border-gray-200 sticky top-0 z-50">
-    <div class="container-custom py-4 flex items-center justify-between">
-      <a href="index.html" class="flex items-center space-x-2">
-        <i data-lucide="shield-check" class="w-8 h-8 text-brand-red"></i>
-        <span class="text-2xl font-black text-brand-dark uppercase">VEXLOI <span class="text-brand-red">LLC</span></span>
-      </a>
-
-      <nav class="hidden md:flex items-center space-x-8">
-        <a href="index.html" class="text-xs font-bold uppercase hover:text-brand-red">Home</a>
-        <a href="catalog.html" class="text-xs font-bold uppercase hover:text-brand-red">Full Catalog</a>
-        <a href="about.html" class="text-xs font-bold uppercase hover:text-brand-red">About Us</a>
-        <a href="contact.html" class="text-xs font-bold uppercase text-brand-red">Contact</a>
-        <a href="checkout.html" class="text-xs font-bold uppercase hover:text-brand-red">Checkout</a>
-      </nav>
-
-      <div class="flex items-center space-x-4">
-        <div id="user-header-nav"></div>
-          <button onclick="openCartDrawer()" class="relative text-gray-700 hover:text-brand-red">
-            <i data-lucide="shopping-bag" class="w-6 h-6"></i>
-            <span id="cart-counter" class="absolute -top-2 -right-2 bg-brand-red text-white text-[10px] font-bold rounded-full h-4 w-4 flex items-center justify-center">0</span>
-          </button>
+  <main class="container-custom py-12 flex-1 w-full grid grid-cols-1 lg:grid-cols-3 gap-6">
+    <div class="space-y-4">
+      <div class="hero-tech rounded-2xl p-6 text-white">
+        <h1 class="text-2xl font-extrabold">Wholesale Inquiries</h1>
+        <p class="text-sm text-gray-300 mt-2">Volume pricing, MOQs, availability and export logistics. We usually reply within one business day.</p>
+      </div>
+      <div class="card p-5 space-y-4 text-xs">
+        <div class="flex gap-3"><i data-lucide="mail" class="w-5 h-5 text-brand-blue"></i><div><b class="block text-brand-ink">Email</b>sales@vexloi.com</div></div>
+        <div class="flex gap-3"><i data-lucide="map-pin" class="w-5 h-5 text-brand-blue"></i><div><b class="block text-brand-ink">Location</b>Doral / Miami, Florida, USA</div></div>
+        <div class="flex gap-3"><i data-lucide="clock" class="w-5 h-5 text-brand-blue"></i><div><b class="block text-brand-ink">Hours</b>Mon–Fri, 9:00 AM – 6:00 PM ET</div></div>
+        <div class="flex gap-3"><i data-lucide="languages" class="w-5 h-5 text-brand-blue"></i><div><b class="block text-brand-ink">Languages</b>English · Español</div></div>
       </div>
     </div>
-  </header>
 
-  <main class="py-12 container-custom flex-1">
-    <div class="max-w-2xl mx-auto bg-white p-8 border border-gray-200 rounded-xl shadow-sm">
-      <h1 class="text-2xl font-black text-brand-dark uppercase mb-2">Wholesale Inquiries</h1>
-      <p class="text-gray-500 text-sm mb-6">Contact our team for bulk pricing or distribution opportunities.</p>
-
-      <form class="space-y-4" onsubmit="event.preventDefault(); alert('Message sent successfully!');">
-        <div>
-          <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Company / Name</label>
-          <input type="text" required class="w-full border border-gray-300 rounded-lg p-2.5 text-sm focus:ring-2 focus:ring-brand-red focus:outline-none">
+    <div class="lg:col-span-2 card p-6 md:p-8">
+      <div id="product-ref" class="hidden mb-5 p-3 rounded-xl bg-blue-50 border border-blue-200 flex items-center gap-3"></div>
+      <form class="space-y-4" onsubmit="event.preventDefault(); alert('Thank you! Your inquiry was sent. Our sales team will contact you shortly.'); this.reset();">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div><label class="label" for="c-company">Company / Name *</label><input id="c-company" type="text" required class="input"></div>
+          <div><label class="label" for="c-email">Email *</label><input id="c-email" type="email" required class="input"></div>
         </div>
-        <div>
-          <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Email</label>
-          <input type="email" required class="w-full border border-gray-300 rounded-lg p-2.5 text-sm focus:ring-2 focus:ring-brand-red focus:outline-none">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div><label class="label" for="c-country">Country</label><input id="c-country" type="text" placeholder="USA, Colombia, Mexico..." class="input"></div>
+          <div>
+            <label class="label" for="c-type">Inquiry Type</label>
+            <select id="c-type" class="input">
+              <option>Volume pricing / Quote</option>
+              <option>Open a B2B account</option>
+              <option>Export & logistics</option>
+              <option>Brand / distribution partnership</option>
+              <option>Other</option>
+            </select>
+          </div>
         </div>
-        <div>
-          <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Message</label>
-          <textarea rows="4" required class="w-full border border-gray-300 rounded-lg p-2.5 text-sm focus:ring-2 focus:ring-brand-red focus:outline-none"></textarea>
-        </div>
-        <button type="submit" class="w-full bg-brand-red hover:bg-red-700 text-white font-bold py-3 rounded-lg uppercase transition">
-          Send Inquiry
-        </button>
+        <div><label class="label" for="c-msg">Message / SKU list *</label><textarea id="c-msg" rows="6" required class="input" placeholder="Brand, ASIN or UPC, quantities..."></textarea></div>
+        <button type="submit" class="btn-primary w-full"><i data-lucide="send" class="w-4 h-4"></i> Send Inquiry</button>
       </form>
     </div>
   </main>
 
-  <!-- CART OVERLAY & DRAWER -->
-  <div id="cart-overlay" onclick="closeCartDrawer()" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden"></div>
-  <aside id="cart-drawer" class="fixed top-0 right-0 w-full sm:w-96 h-full bg-white z-50 shadow-2xl flex flex-col transform translate-x-full transition-transform duration-300">
-    <div class="p-4 border-b border-gray-200 flex items-center justify-between bg-slate-900 text-white">
-      <h3 class="font-bold text-xs uppercase tracking-wider">Your Wholesale Cart</h3>
-      <button onclick="closeCartDrawer()" class="text-gray-400 hover:text-white">✕</button>
-    </div>
-    <div id="cart-drawer-items" class="flex-1 overflow-y-auto p-4 space-y-3"></div>
-    <div class="p-4 border-t border-gray-200 bg-gray-50 space-y-3">
-      <div class="flex justify-between items-center text-sm font-bold">
-        <span>Subtotal:</span>
-        <span id="cart-total" class="text-lg font-black text-brand-dark">$0.00</span>
-      </div>
-      <a href="checkout.html" class="block w-full bg-brand-red hover:bg-red-700 text-white font-bold text-center py-2.5 rounded-lg text-xs uppercase tracking-wider">
-        Proceed To B2B Checkout &rarr;
-      </a>
-    </div>
-  </aside>
-
-  <!-- FOOTER ESTÁNDAR PARA TODAS LAS PÁGINAS -->
-  <footer class="bg-slate-900 text-gray-400 py-8 text-xs border-t border-gray-800">
-    <div class="container-custom flex flex-col md:flex-row justify-between items-center gap-4">
-      <div>
-        <span class="font-black text-white uppercase text-sm">VEXLOI LLC</span>
-        <p class="text-gray-500 mt-1">Import, Export & Wholesale Distribution - Miami, FL</p>
-      </div>
-      
-      <!-- ENLACES DE POLÍTICAS B2B -->
-      <div class="flex flex-wrap justify-center gap-4 text-gray-400">
-        <a href="privacy-policy.html" class="hover:text-white transition">Privacy Policy</a>
-        <a href="accessibility-policy.html" class="hover:text-white transition">Accessibility Policy</a>
-        <a href="terms-and-conditions.html" class="hover:text-white transition">Terms & Conditions</a>
-        <a href="returns-policy.html" class="hover:text-white transition">Returns & Refunds</a>
-      </div>
-
-      <div class="text-gray-500">&copy; 2026 Vexloi LLC. All rights reserved.</div>
-    </div>
-  </footer>
+  <div id="site-footer"></div>
 
   <script src="products.js"></script>
   <script src="script.js"></script>
-  <script>if (window.lucide) lucide.createIcons();</script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const p = productsData.find(x => x.id === new URLSearchParams(location.search).get('product'));
+      if (!p) return;
+      const box = document.getElementById('product-ref');
+      box.classList.remove('hidden');
+      box.innerHTML = `<img src="${esc(p.image)}" alt="" class="w-12 h-12 object-contain bg-white rounded">
+        <div class="text-xs"><b class="text-brand-blue uppercase text-3xs">${esc(p.brand)}</b><p class="font-semibold text-brand-ink line-clamp-1">${esc(p.name)}</p><span class="font-mono text-gray-500">${p.sku}</span></div>`;
+      document.getElementById('c-msg').value = `Hello, we would like volume pricing for:\n${p.brand} — ${p.name}\nASIN: ${p.sku}${p.upc ? ' | UPC: ' + p.upc : ''}\nQuantity: `;
+    });
+  </script>
 </body>
 </html>

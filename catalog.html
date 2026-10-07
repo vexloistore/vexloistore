@@ -3,400 +3,261 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Multi-Brand Catalog | Vexloi LLC Wholesale</title>
+  <title>Wholesale Catalog | Vexloi LLC</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <script src="https://unpkg.com/lucide@latest"></script>
 </head>
-<body class="flex flex-col min-h-screen bg-gray-50 text-gray-800">
+<body data-page="catalog" class="flex flex-col min-h-screen">
+  <div id="site-header"></div>
 
-  <!-- TOP BAR -->
-  <div class="bg-brand-red text-white text-xs py-2 px-4 text-center font-bold tracking-wide">
-    B2B Wholesale Distribution | Direct Exports from Miami, FL | Vexloi LLC
-  </div>
-
-  <!-- HEADER -->
-  <header class="bg-white border-b border-gray-200 sticky top-0 z-50">
-    <div class="container-custom py-4 flex items-center justify-between">
-      <a href="index.html" class="flex items-center space-x-2">
-        <i data-lucide="shield-check" class="w-8 h-8 text-brand-red"></i>
-        <span class="text-2xl font-black text-brand-dark uppercase">VEXLOI <span class="text-brand-red">LLC</span></span>
-      </a>
-
-      <nav class="hidden md:flex items-center space-x-8">
-        <a href="index.html" class="text-xs font-bold uppercase hover:text-brand-red">Home</a>
-        <a href="catalog.html" class="text-xs font-bold uppercase text-brand-red">Full Catalog</a>
-        <a href="about.html" class="text-xs font-bold uppercase hover:text-brand-red">About Us</a>
-        <a href="contact.html" class="text-xs font-bold uppercase hover:text-brand-red">Contact</a>
-        <a href="checkout.html" class="text-xs font-bold uppercase hover:text-brand-red">Checkout</a>
-      </nav>
-
-      <div class="flex items-center space-x-4">
-        <div id="user-header-nav"></div>
-        <button onclick="openCartDrawer()" class="relative text-gray-700 hover:text-brand-red">
-          <i data-lucide="shopping-bag" class="w-6 h-6"></i>
-          <span id="cart-counter" class="absolute -top-2 -right-2 bg-brand-red text-white text-[10px] font-bold rounded-full h-4 w-4 flex items-center justify-center">0</span>
-        </button>
+  <!-- CATEGORY BANNER -->
+  <section class="hero-tech text-white">
+    <div class="container-custom py-8">
+      <nav id="breadcrumb" class="text-2xs text-gray-400 mb-2"></nav>
+      <div class="flex items-center gap-4">
+        <span id="banner-icon" class="w-12 h-12 rounded-xl bg-brand-blue flex items-center justify-center shrink-0"></span>
+        <div>
+          <h1 id="banner-title" class="text-2xl md:text-3xl font-extrabold">Full Catalog</h1>
+          <p id="banner-desc" class="text-sm text-gray-300 mt-0.5"></p>
+        </div>
       </div>
     </div>
-  </header>
+  </section>
 
-  <!-- MAIN CATALOG -->
-  <main class="container-custom py-8 flex-1">
-    
-    <!-- Filter Controls -->
-    <div class="bg-white p-6 rounded-xl border border-gray-200 mb-8 shadow-sm">
-      <h1 class="text-2xl font-black text-brand-dark uppercase mb-4">Complete Auto Care Catalog</h1>
-      
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <!-- Search input -->
-        <div>
-          <label class="block text-xs font-bold uppercase text-gray-600 mb-1">Search Keywords or SKU</label>
-          <input type="text" id="search-input" oninput="applyFilters()" placeholder="e.g. Ceramic, Wax, MX-ONE..." class="w-full border border-gray-300 rounded-lg p-2 text-xs focus:ring-2 focus:ring-brand-red focus:outline-none">
+  <main class="container-custom py-8 flex-1 w-full">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+
+      <!-- SIDEBAR -->
+      <aside class="lg:col-span-3 space-y-4">
+        <div class="card p-4">
+          <label class="label" for="search-input">Search</label>
+          <div class="relative">
+            <i data-lucide="search" class="w-4 h-4 text-gray-400 absolute left-3 top-3"></i>
+            <input id="search-input" type="search" placeholder="Product, brand, ASIN, UPC..." class="input" style="padding-left:2.2rem">
+          </div>
         </div>
 
-       <!-- Brand Filter Select -->
-        <div>
-          <label class="block text-xs font-bold uppercase text-gray-600 mb-1">Filter by Brand</label>
-          <select id="brand-select" onchange="applyFilters()" class="w-full border border-gray-300 rounded-lg p-2 text-xs font-semibold focus:ring-2 focus:ring-brand-red focus:outline-none">
-                    <option value="all">All Brands</option>
-                    <option value="1">13 Supplies</option>
-                    <option value="2">303 Products</option>
-                    <option value="3">3D</option>
-                    <option value="4">3M</option>
-                    <option value="5">4into1</option>
-                    <option value="6">ACT</option>
-                    <option value="7">AK ADVANCED KOTINGS</option>
-                    <option value="8">APEC WATER</option>
-                    <option value="9">ASFSKY</option>
-                    <option value="10">Abeillonecta</option>
-                    <option value="11">Adam's Polishes</option>
-                    <option value="12">Aero Cosmetics</option>
-                    <option value="13">AlbaChem</option>
-                    <option value="14">All Kleer</option>
-                    <option value="15">AllGuard</option>
-                    <option value="16">Amazing Roll Off</option>
-                    <option value="17">Americana Global</option>
-                    <option value="18">Ardex</option>
-                    <option value="19">Armor All</option>
-                    <option value="20">Armour Detail Supply</option>
-                    <option value="21">Auto Magic</option>
-                    <option value="22">Autoglym</option>
-                    <option value="23">B.E.S.T.</option>
-                    <option value="24">BAGISTES</option>
-                    <option value="25">BFXM</option>
-                    <option value="26">Biaoyun</option>
-                    <option value="27">Big Rig Soap</option>
-                    <option value="28">Bike Brite</option>
-                    <option value="29">Bilt Hamber</option>
-                    <option value="30">Biokleen</option>
-                    <option value="31">Blackline</option>
-                    <option value="32">Bling Sauce</option>
-                    <option value="33">Boat Bling</option>
-                    <option value="34">Bosh Chemical</option>
-                    <option value="35">Brillianize</option>
-                    <option value="36">CARPRO</option>
-                    <option value="37">CERAKOTE</option>
-                    <option value="38">CHOMP!</option>
-                    <option value="39">CLEAN. BY PAN THE ORGANIZER</option>
-                    <option value="40">CLR</option>
-                    <option value="41">CRC</option>
-                    <option value="42">Car Gods</option>
-                    <option value="43">Carfidant</option>
-                    <option value="44">Chem-X</option>
-                    <option value="45">Chemical Guys</option>
-                    <option value="46">Cilajet</option>
-                    <option value="47">Citratex</option>
-                    <option value="48">Clean Republic</option>
-                    <option value="49">Clearly MaD</option>
-                    <option value="50">Clussbin</option>
-                    <option value="51">Colonel Brassy</option>
-                    <option value="52">Compensai</option>
-                    <option value="53">Corrosion Technologies</option>
-                    <option value="54">Custom Shop</option>
-                    <option value="55">CyberSudZ</option>
-                    <option value="56">Cyeior</option>
-                    <option value="57">DRTRU</option>
-                    <option value="58">DUB BOYZ</option>
-                    <option value="59">DUCKY PRODUCTS</option>
-                    <option value="60">DZCKTFYGRT</option>
-                    <option value="61">Detail King</option>
-                    <option value="62">Detail Studio</option>
-                    <option value="63">Detailing Connect</option>
-                    <option value="64">Detco</option>
-                    <option value="65">Dr. Beasley's</option>
-                    <option value="66">Durabasics</option>
-                    <option value="67">Duragloss</option>
-                    <option value="68">E-ZOIL</option>
-                    <option value="69">E.A. Mattes</option>
-                    <option value="70">Easywave</option>
-                    <option value="71">Escentile</option>
-                    <option value="72">Ethos Handcrafted Car Care</option>
-                    <option value="73">ExoForma</option>
-                    <option value="74">FLITZ</option>
-                    <option value="75">FUERHPSH</option>
-                    <option value="76">Fast Orange</option>
-                    <option value="77">Flaurix</option>
-                    <option value="78">FneeMukt</option>
-                    <option value="79">Ford</option>
-                    <option value="80">GEAR AID</option>
-                    <option value="81">GOJO</option>
-                    <option value="82">Gear Hugger</option>
-                    <option value="83">Gel-Gloss</option>
-                    <option value="84">Generic</option>
-                    <option value="85">Gliptone</option>
-                    <option value="86">Goo Gone</option>
-                    <option value="87">Great Stuff</option>
-                    <option value="88">Grime Eater</option>
-                    <option value="89">Griot's Garage</option>
-                    <option value="90">Grip Clean</option>
-                    <option value="91">Gtechniq</option>
-                    <option value="92">Gunk Getter</option>
-                    <option value="93">Gyeon</option>
-                    <option value="94">HRIOEKAX</option>
-                    <option value="95">Hatstart</option>
-                    <option value="96">Honda</option>
-                    <option value="97">HydroSilex</option>
-                    <option value="98">IGL Coatings</option>
-                    <option value="99">IK</option>
-                    <option value="100">Identicalven</option>
-                    <option value="101">Image Wash Products</option>
-                    <option value="102">Invisible Glass</option>
-                    <option value="103">Jack's Magic</option>
-                    <option value="104">Jay Leno's Garage</option>
-                    <option value="105">Jescar</option>
-                    <option value="106">Jimbos</option>
-                    <option value="107">Joe's</option>
-                    <option value="108">KING KLEAR</option>
-                    <option value="109">KLEAN-STRIP</option>
-                    <option value="110">KLIFE</option>
-                    <option value="111">KOCHCHEMIE</option>
-                    <option value="112">KTRCU</option>
-                    <option value="113">Karveden</option>
-                    <option value="114">Khaki Tom</option>
-                    <option value="115">Kubot</option>
-                    <option value="116">KÄRCHER</option>
-                    <option value="117">LANE'S</option>
-                    <option value="118">LAUCO</option>
-                    <option value="119">Legendary Car Care</option>
-                    <option value="120">Legion Chemicals</option>
-                    <option value="121">LiME LiNE</option>
-                    <option value="122">Liqui Moly</option>
-                    <option value="123">Lisnhlin</option>
-                    <option value="124">Lithium Auto Elixirs</option>
-                    <option value="125">Lunluarai</option>
-                    <option value="126">M-Tec</option>
-                    <option value="127">MAXL</option>
-                    <option value="128">MJJC</option>
-                    <option value="129">MPD</option>
-                    <option value="130">MULPG</option>
-                    <option value="131">MYPIN</option>
-                    <option value="132">Magic Finish</option>
-                    <option value="133">Magic Shield</option>
-                    <option value="134">Malco</option>
-                    <option value="135">Marine 31</option>
-                    <option value="136">Max Strip</option>
-                    <option value="137">Maxima</option>
-                    <option value="138">McKee's 37</option>
-                    <option value="139">Meguiar's</option>
-                    <option value="140">Metalube Corp</option>
-                    <option value="141">Milsek</option>
-                    <option value="142">Molecule</option>
-                    <option value="143">Mothers</option>
-                    <option value="144">Motomuck</option>
-                    <option value="145">Motorcraft</option>
-                    <option value="146">Motul</option>
-                    <option value="147">Muc-Off</option>
-                    <option value="148">NUAN</option>
-                    <option value="149">Nanoskin</option>
-                    <option value="150">Nikwax</option>
-                    <option value="151">Nitvei</option>
-                    <option value="152">OKNIAO</option>
-                    <option value="153">OPTI-COAT</option>
-                    <option value="154">On The Go</option>
-                    <option value="155">Optimum Polymer Technologies, Inc.</option>
-                    <option value="156">P & S PROFESSIONAL DETAIL PRODUCTS</option>
-                    <option value="157">P21S</option>
-                    <option value="158">POR-15</option>
-                    <option value="159">PRAZISCHUTZ</option>
-                    <option value="160">PRO+AQUA</option>
-                    <option value="161">PURPLE POWER</option>
-                    <option value="162">Perfect-It</option>
-                    <option value="163">Permatex</option>
-                    <option value="164">Pig Spit</option>
-                    <option value="165">Piuess</option>
-                    <option value="166">Plane Perfect</option>
-                    <option value="167">PolishWiz</option>
-                    <option value="168">Presta</option>
-                    <option value="169">ProductionShop</option>
-                    <option value="170">Professor Amos</option>
-                    <option value="171">Protect All</option>
-                    <option value="172">QIFOR</option>
-                    <option value="173">QUIVR</option>
-                    <option value="174">Quality Chemical</option>
-                    <option value="175">Raggtopp</option>
-                    <option value="176">Rain-X</option>
-                    <option value="177">Ranger</option>
-                    <option value="178">Rapid Tac</option>
-                    <option value="179">Real Chimica</option>
-                    <option value="180">RealClean</option>
-                    <option value="181">RealTruck</option>
-                    <option value="182">Renaissance</option>
-                    <option value="183">Renegade Products</option>
-                    <option value="184">Rev Auto</option>
-                    <option value="185">Rhine</option>
-                    <option value="186">Rislone</option>
-                    <option value="187">Riverside Essentials</option>
-                    <option value="188">Rolite</option>
-                    <option value="189">Rubbit</option>
-                    <option value="190">Rust-Oleum</option>
-                    <option value="191">S S100</option>
-                    <option value="192">SHINE ARMOR</option>
-                    <option value="193">SLIIMU</option>
-                    <option value="194">SLIX</option>
-                    <option value="195">SOFT99</option>
-                    <option value="196">SONAX</option>
-                    <option value="197">SOPAMI</option>
-                    <option value="198">SQZRAN</option>
-                    <option value="199">STAR BRITE</option>
-                    <option value="200">STP</option>
-                    <option value="201">SUNDEER</option>
-                    <option value="202">Salts Gone</option>
-                    <option value="203">Santa Nope</option>
-                    <option value="204">Schultz Laboratories</option>
-                    <option value="205">Shinykings</option>
-                    <option value="206">Silent Grind Pro</option>
-                    <option value="207">Simple Green</option>
-                    <option value="208">Slick Products</option>
-                    <option value="209">Socar Chemical</option>
-                    <option value="210">Sprayway</option>
-                    <option value="211">Stoner Car Care</option>
-                    <option value="212">Sun Joe</option>
-                    <option value="213">SuperClean</option>
-                    <option value="214">Superior Products</option>
-                    <option value="215">Swift Auto Care</option>
-                    <option value="216">SwiftJet</option>
-                    <option value="217">TABOUNTS</option>
-                    <option value="218">TCP Global</option>
-                    <option value="219">TEAWOO</option>
-                    <option value="220">TR</option>
-                    <option value="221">TYTAN PROFESSIONAL</option>
-                    <option value="222">Technicians Choice</option>
-                    <option value="223">Teexpert</option>
-                    <option value="224">Timeno</option>
-                    <option value="225">Tornador</option>
-                    <option value="226">Travelon</option>
-                    <option value="227">Tuff Stuff</option>
-                    <option value="228">Turtle Wax</option>
-                    <option value="229">Tüff Stuff</option>
-                    <option value="230">VP Racing</option>
-                    <option value="231">Vitacamy</option>
-                    <option value="232">Vonixx</option>
-                    <option value="233">W</option>
-                    <option value="234">WAXMAN OF TRI STATE</option>
-                    <option value="235">WR</option>
-                    <option value="236">WRS</option>
-                    <option value="237">Walbernize</option>
-                    <option value="238">Wash Safe Industries</option>
-                    <option value="239">WeatherTech</option>
-                    <option value="240">WenFeng</option>
-                    <option value="241">Windex</option>
-                    <option value="242">Wizards</option>
-                    <option value="243">Wontolf</option>
-                    <option value="244">XFYVIKR</option>
-                    <option value="245">XPEL</option>
-                    <option value="246">Xinlly</option>
-                    <option value="247">XiuFa</option>
-                    <option value="248">YJW</option>
-                    <option value="249">ZYMÖL</option>
-                    <option value="250">ZannWnm</option>
-                    <option value="251">Zep</option>
-                    <option value="252">Zep Professional</option>
-                    <option value="253">diy detail</option>
-                    <option value="254">dssuoa</option>
-                    <option value="255">featrity</option>
-                    <option value="256">stray poet</option>
-                    <option value="257">suds.lab</option>
-                    <option value="258">woolwax</option>
-          </select>
+        <div class="card p-4">
+          <label class="label" for="cat-select-mobile">Categories</label>
+          <select id="cat-select-mobile" class="input lg:hidden"></select>
+          <div id="cat-list" class="space-y-0.5 hidden lg:block"></div>
         </div>
 
-        
-        <div>
-          <label class="block text-xs font-bold uppercase text-gray-600 mb-1">Filter by Category</label>
-          <select id="category-select" onchange="applyFilters()" class="w-full border border-gray-300 rounded-lg p-2 text-xs font-semibold focus:ring-2 focus:ring-brand-red focus:outline-none">
-            <option value="all">All Categories</option>
-            <option value="car-wash">Car Wash & Foam</option>
-            <option value="ceramics">Waxes & Ceramics</option>
-            <option value="wheel-and-tire">wheel-and-tire</option>
-            <option value="interior">interior</option>
-            <option value="paint-and-exterior-care">Paint & Exterior Care</option>
-            <option value="chemicals-and-oils">Chemicals & Oils</option>
-          </select>
+        <div id="sub-box" class="card p-4 hidden">
+          <h3 class="label">Subcategory</h3>
+          <div id="sub-list" class="space-y-0.5 max-h-72 overflow-y-auto scrollbar-thin pr-1"></div>
         </div>
-      </div>
 
-      <div class="mt-4 flex justify-between items-center text-xs text-gray-500 border-t border-gray-100 pt-3">
-        <span id="result-count" class="font-bold text-brand-dark">Loading products...</span>
-      </div>
+        <div class="card p-4">
+          <label class="label" for="brand-select">Brand</label>
+          <select id="brand-select" class="input"></select>
+        </div>
+      </aside>
+
+      <!-- RESULTS -->
+      <section class="lg:col-span-9">
+        <div class="card p-3 mb-5 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div class="flex flex-wrap items-center gap-2">
+            <span id="result-count" class="text-xs font-semibold text-brand-ink">Loading products...</span>
+            <div id="active-chips" class="flex flex-wrap gap-2"></div>
+          </div>
+          <div class="flex items-center gap-2">
+            <label for="sort-select" class="text-2xs font-semibold text-gray-500 uppercase whitespace-nowrap">Sort by</label>
+            <select id="sort-select" class="input" style="width:auto">
+              <option value="popular">Best Selling</option>
+              <option value="brand">Brand A–Z</option>
+              <option value="price-asc">Price: Low to High</option>
+              <option value="price-desc">Price: High to Low</option>
+              <option value="rating">Top Rated</option>
+            </select>
+          </div>
+        </div>
+
+        <div id="catalog-products-grid" class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4"></div>
+        <div id="pagination" class="flex flex-wrap justify-center gap-1.5 mt-8"></div>
+      </section>
     </div>
-
-    <!-- Products Grid -->
-    <div id="catalog-products-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"></div>
-
   </main>
 
-  <!-- CART OVERLAY & DRAWER -->
-  <div id="cart-overlay" onclick="closeCartDrawer()" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden"></div>
-  <aside id="cart-drawer" class="fixed top-0 right-0 w-full sm:w-96 h-full bg-white z-50 shadow-2xl flex flex-col transform translate-x-full transition-transform duration-300">
-    <div class="p-4 border-b border-gray-200 flex items-center justify-between bg-slate-900 text-white">
-      <h3 class="font-bold text-xs uppercase tracking-wider">Your Wholesale Cart</h3>
-      <button onclick="closeCartDrawer()" class="text-gray-400 hover:text-white">✕</button>
-    </div>
-    <div id="cart-drawer-items" class="flex-1 overflow-y-auto p-4 space-y-3"></div>
-    <div class="p-4 border-t border-gray-200 bg-gray-50 space-y-3">
-      <div class="flex justify-between items-center text-sm font-bold">
-        <span>Subtotal:</span>
-        <span id="cart-total" class="text-lg font-black text-brand-dark">$0.00</span>
-      </div>
-      <a href="checkout.html" class="block w-full bg-brand-red hover:bg-red-700 text-white font-bold text-center py-2.5 rounded-lg text-xs uppercase tracking-wider">
-        Proceed To B2B Checkout &rarr;
-      </a>
-    </div>
-  </aside>
-
-  <!-- FOOTER ESTÁNDAR PARA TODAS LAS PÁGINAS -->
-  <footer class="bg-slate-900 text-gray-400 py-8 text-xs border-t border-gray-800">
-    <div class="container-custom flex flex-col md:flex-row justify-between items-center gap-4">
-      <div>
-        <span class="font-black text-white uppercase text-sm">VEXLOI LLC</span>
-        <p class="text-gray-500 mt-1">Import, Export & Wholesale Distribution - Miami, FL</p>
-      </div>
-      
-      <!-- ENLACES DE POLÍTICAS B2B -->
-      <div class="flex flex-wrap justify-center gap-4 text-gray-400">
-        <a href="privacy-policy.html" class="hover:text-white transition">Privacy Policy</a>
-        <a href="accessibility-policy.html" class="hover:text-white transition">Accessibility Policy</a>
-        <a href="terms-and-conditions.html" class="hover:text-white transition">Terms & Conditions</a>
-        <a href="returns-policy.html" class="hover:text-white transition">Returns & Refunds</a>
-      </div>
-
-      <div class="text-gray-500">&copy; 2026 Vexloi LLC. All rights reserved.</div>
-    </div>
-  </footer>
+  <div id="site-footer"></div>
 
   <script src="products.js"></script>
   <script src="script.js"></script>
   <script>
-    function applyFilters() {
-      const brand = document.getElementById('brand-select').value;
-      const category = document.getElementById('category-select').value;
-      const search = document.getElementById('search-input').value;
-      renderCatalog(brand, category, search);
+    const PAGE_SIZE = 36;
+    const params = new URLSearchParams(location.search);
+    const state = {
+      cat: getCategoryIdBySlug(params.get('cat')),
+      sub: params.get('sub') || '',
+      brand: Number(params.get('brand')) || null,
+      q: params.get('q') || '',
+      sort: params.get('sort') || 'popular',
+      page: Math.max(1, Number(params.get('page')) || 1),
+    };
+    // Si llega solo la marca, se ubica su categoría
+    if (state.brand && !state.cat && brandsDict[state.brand]) state.cat = brandsDict[state.brand].categoryId;
+
+    function syncUrl() {
+      const p = new URLSearchParams();
+      if (state.cat) p.set('cat', getCategory(state.cat).slug);
+      if (state.sub) p.set('sub', state.sub);
+      if (state.brand) p.set('brand', state.brand);
+      if (state.q) p.set('q', state.q);
+      if (state.sort !== 'popular') p.set('sort', state.sort);
+      if (state.page > 1) p.set('page', state.page);
+      history.replaceState(null, '', location.pathname + (p.toString() ? '?' + p : ''));
     }
-    
+
+    function setState(patch, resetPage = true) {
+      Object.assign(state, patch);
+      if (resetPage) state.page = 1;
+      render();
+    }
+
+    function matchesSearch(p, term) {
+      return term.split(/\s+/).every(t =>
+        p.desc.toLowerCase().includes(t) || p.brand.toLowerCase().includes(t) ||
+        p.sku.toLowerCase().includes(t) || p.upc.includes(t) || p.subcategory.toLowerCase().includes(t));
+    }
+
+    function render() {
+      const term = state.q.trim().toLowerCase();
+      const bySearch = term ? productsData.filter(p => matchesSearch(p, term)) : productsData;
+
+      // Sidebar de categorías (conteos según búsqueda)
+      const catCounts = countBy(bySearch, p => p.categoryId);
+      document.getElementById('cat-list').innerHTML =
+        `<button class="filter-link ${!state.cat ? 'active' : ''}" onclick="setState({cat:null, sub:'', brand:null})"><span>All Categories</span><span class="count">${bySearch.length}</span></button>` +
+        Object.entries(categoriesDict).map(([id, c]) => `
+          <button class="filter-link ${state.cat === Number(id) ? 'active' : ''}" onclick="setState({cat:${id}, sub:'', brand:null})">
+            <span class="flex items-center gap-2"><i data-lucide="${c.icon}" class="w-3.5 h-3.5"></i>${esc(c.name)}</span><span class="count">${catCounts[id] || 0}</span>
+          </button>`).join('');
+
+      document.getElementById('cat-select-mobile').innerHTML =
+        `<option value="">All Categories (${bySearch.length})</option>` +
+        Object.entries(categoriesDict).map(([id, c]) => `<option value="${id}" ${state.cat === Number(id) ? 'selected' : ''}>${esc(c.name)} (${catCounts[id] || 0})</option>`).join('');
+
+      const inCat = state.cat ? bySearch.filter(p => p.categoryId === state.cat) : bySearch;
+
+      // Subcategorías
+      const subBox = document.getElementById('sub-box');
+      if (state.cat) {
+        const base = state.brand ? inCat.filter(p => p.brandId === state.brand) : inCat;
+        const subs = Object.entries(countBy(base, p => p.subcategory || 'Other')).sort((a, b) => b[1] - a[1]);
+        subBox.classList.remove('hidden');
+        document.getElementById('sub-list').innerHTML =
+          `<button class="filter-link ${!state.sub ? 'active' : ''}" onclick="setState({sub:''})"><span>All</span><span class="count">${base.length}</span></button>` +
+          subs.map(([s, n]) => `<button class="filter-link ${state.sub === s ? 'active' : ''}" data-sub="${esc(s)}" onclick="setState({sub:this.dataset.sub})"><span class="line-clamp-1">${esc(s)}</span><span class="count">${n}</span></button>`).join('');
+      } else {
+        subBox.classList.add('hidden');
+      }
+
+      // Marcas disponibles (según categoría/subcategoría)
+      const forBrands = state.sub ? inCat.filter(p => (p.subcategory || 'Other') === state.sub) : inCat;
+      const brandCounts = countBy(forBrands, p => p.brandId);
+      const brandIds = Object.keys(brandCounts).map(Number).sort((a, b) => brandsDict[a].name.localeCompare(brandsDict[b].name));
+      if (state.brand && !brandCounts[state.brand]) brandIds.unshift(state.brand);
+      document.getElementById('brand-select').innerHTML = `<option value="">All Brands (${brandIds.length})</option>` +
+        brandIds.map(id => `<option value="${id}" ${state.brand === id ? 'selected' : ''}>${esc(brandsDict[id].name)} (${brandCounts[id] || 0})</option>`).join('');
+
+      // Resultados
+      let list = forBrands;
+      if (state.brand) list = list.filter(p => p.brandId === state.brand);
+      const sorters = {
+        popular: (a, b) => a.pop - b.pop,
+        brand: (a, b) => a.brand.localeCompare(b.brand) || a.rank - b.rank,
+        'price-asc': (a, b) => a.price - b.price,
+        'price-desc': (a, b) => b.price - a.price,
+        rating: (a, b) => b.rating - a.rating || b.reviews - a.reviews,
+      };
+      list = [...list].sort(sorters[state.sort] || sorters.popular);
+
+      const pages = Math.max(1, Math.ceil(list.length / PAGE_SIZE));
+      state.page = Math.min(state.page, pages);
+      const start = (state.page - 1) * PAGE_SIZE;
+      const pageItems = list.slice(start, start + PAGE_SIZE);
+
+      document.getElementById('result-count').innerText = list.length
+        ? `Showing ${start + 1}–${start + pageItems.length} of ${list.length.toLocaleString('en-US')} products`
+        : 'No products found';
+
+      const grid = document.getElementById('catalog-products-grid');
+      grid.innerHTML = pageItems.length ? pageItems.map(createProductCardHTML).join('') : `
+        <div class="col-span-full card p-12 text-center">
+          <i data-lucide="search-x" class="w-10 h-10 mx-auto text-gray-300 mb-3"></i>
+          <p class="text-sm font-semibold text-gray-600">No products match your filters.</p>
+          <button onclick="setState({cat:null, sub:'', brand:null, q:''}); document.getElementById('search-input').value='';" class="btn-ghost mt-4">Clear all filters</button>
+        </div>`;
+
+      renderPagination(pages);
+      renderChips();
+      renderBanner();
+      document.getElementById('sort-select').value = state.sort;
+      syncUrl();
+      if (window.lucide) lucide.createIcons();
+    }
+
+    function renderPagination(pages) {
+      const el = document.getElementById('pagination');
+      if (pages <= 1) { el.innerHTML = ''; return; }
+      const nums = [...new Set([1, state.page - 2, state.page - 1, state.page, state.page + 1, state.page + 2, pages])]
+        .filter(n => n >= 1 && n <= pages).sort((a, b) => a - b);
+      let html = `<button class="tab-btn" ${state.page === 1 ? 'disabled style="opacity:.4"' : ''} onclick="goPage(${state.page - 1})">&larr;</button>`;
+      nums.forEach((n, i) => {
+        if (i && n - nums[i - 1] > 1) html += `<span class="px-1 text-gray-400">…</span>`;
+        html += `<button class="tab-btn ${n === state.page ? 'active' : ''}" onclick="goPage(${n})">${n}</button>`;
+      });
+      html += `<button class="tab-btn" ${state.page === pages ? 'disabled style="opacity:.4"' : ''} onclick="goPage(${state.page + 1})">&rarr;</button>`;
+      el.innerHTML = html;
+    }
+
+    function goPage(n) {
+      setState({ page: n }, false);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function renderChips() {
+      const chips = [];
+      if (state.q) chips.push(['q', `“${state.q}”`]);
+      if (state.sub) chips.push(['sub', state.sub]);
+      if (state.brand) chips.push(['brand', brandsDict[state.brand].name]);
+      document.getElementById('active-chips').innerHTML = chips.map(([k, label]) =>
+        `<button onclick="clearFilter('${k}')" class="badge badge-blue" style="text-transform:none">${esc(label)} <i data-lucide="x" class="w-3 h-3"></i></button>`).join('');
+    }
+
+    function clearFilter(k) {
+      if (k === 'q') document.getElementById('search-input').value = '';
+      setState({ [k]: k === 'brand' ? null : '' });
+    }
+
+    function renderBanner() {
+      const c = state.cat ? getCategory(state.cat) : null;
+      const brand = state.brand ? brandsDict[state.brand].name : '';
+      document.getElementById('banner-title').innerText = brand ? `${brand}` : (c ? c.name : 'Full Wholesale Catalog');
+      document.getElementById('banner-desc').innerText = brand
+        ? `Top ${productsData.filter(p => p.brandId === state.brand).length} best-selling ${brand} products${c ? ' · ' + c.name : ''}`
+        : (c ? c.desc : `The top 10 best-selling products of ${Object.keys(brandsDict).length} brands across ${Object.keys(categoriesDict).length} technology categories.`);
+      document.getElementById('banner-icon').innerHTML = `<i data-lucide="${c ? c.icon : 'layout-grid'}" class="w-6 h-6"></i>`;
+      document.getElementById('breadcrumb').innerHTML = `<a href="index.html" class="hover:text-white">Home</a> / <a href="catalog.html" class="hover:text-white">Catalog</a>` +
+        (c ? ` / <a href="catalog.html?cat=${c.slug}" class="hover:text-white">${esc(c.name)}</a>` : '') + (brand ? ` / ${esc(brand)}` : '');
+      document.title = `${brand || (c ? c.name : 'Wholesale Catalog')} | Vexloi LLC`;
+    }
+
     document.addEventListener('DOMContentLoaded', () => {
-      renderCatalog();
+      const search = document.getElementById('search-input');
+      search.value = state.q;
+      let t;
+      search.addEventListener('input', () => { clearTimeout(t); t = setTimeout(() => setState({ q: search.value }), 200); });
+      document.getElementById('brand-select').addEventListener('change', e => {
+        const id = Number(e.target.value) || null;
+        setState({ brand: id, sub: '', cat: id ? brandsDict[id].categoryId : state.cat });
+      });
+      document.getElementById('cat-select-mobile').addEventListener('change', e => setState({ cat: Number(e.target.value) || null, sub: '', brand: null }));
+      document.getElementById('sort-select').addEventListener('change', e => setState({ sort: e.target.value }));
+      document.querySelectorAll('#site-header input[name=q]').forEach(i => i.value = state.q);
+      render();
     });
   </script>
 </body>
