@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>B2B Account | Vexloi LLC</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body data-page="login" class="flex flex-col min-h-screen">
+  <div id="site-header"></div>
+
+  <main class="container-custom py-12 flex-1 w-full grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+    <div class="hidden lg:block hero-tech rounded-2xl p-10 text-white h-full">
+      <span class="text-2xs font-bold text-brand-cyan uppercase tracking-widest-2">B2B Partner Portal</span>
+      <h1 class="text-3xl font-extrabold mt-2">Wholesale access for resellers, installers and exporters</h1>
+      <ul class="mt-6 space-y-3 text-sm text-gray-300">
+        <li class="flex gap-2"><i data-lucide="check-circle-2" class="w-5 h-5 text-brand-cyan"></i> Saved company details for faster proformas</li>
+        <li class="flex gap-2"><i data-lucide="check-circle-2" class="w-5 h-5 text-brand-cyan"></i> Volume pricing on 3,000+ bestselling SKUs</li>
+        <li class="flex gap-2"><i data-lucide="check-circle-2" class="w-5 h-5 text-brand-cyan"></i> Export consolidation through Miami forwarders</li>
+      </ul>
+    </div>
+
+    <div class="w-full max-w-md mx-auto card p-8">
+      <div class="flex border-b border-gray-200 mb-6">
+        <button id="tab-login-btn" onclick="switchTab('login')" class="flex-1 py-2 text-xs font-bold uppercase border-b-2">Sign In</button>
+        <button id="tab-register-btn" onclick="switchTab('register')" class="flex-1 py-2 text-xs font-bold uppercase border-b-2">Register Company</button>
+      </div>
+
+      <div id="auth-alert" class="hidden text-xs p-3 rounded-lg mb-4 font-semibold"></div>
+
+      <form id="form-login" onsubmit="handleLoginSubmit(event)" class="space-y-4">
+        <div><label class="label" for="login-email">Corporate Email</label><input type="email" id="login-email" required placeholder="you@company.com" class="input"></div>
+        <div><label class="label" for="login-pass">Password</label><input type="password" id="login-pass" required placeholder="••••••••" class="input"></div>
+        <button type="submit" class="btn-primary w-full">Sign In</button>
+      </form>
+
+      <form id="form-register" onsubmit="handleRegisterSubmit(event)" class="space-y-4 hidden">
+        <div><label class="label" for="reg-company">Company Name</label><input type="text" id="reg-company" required placeholder="e.g. Miami Tech Distributors LLC" class="input"></div>
+        <div><label class="label" for="reg-name">Contact Name</label><input type="text" id="reg-name" required placeholder="John Smith" class="input"></div>
+        <div><label class="label" for="reg-email">Corporate Email</label><input type="email" id="reg-email" required placeholder="purchasing@company.com" class="input"></div>
+        <div><label class="label" for="reg-pass">Password</label><input type="password" id="reg-pass" required placeholder="••••••••" class="input"></div>
+        <button type="submit" class="btn-primary w-full">Create B2B Account</button>
+      </form>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="products.js"></script>
+  <script src="script.js"></script>
+  <script>
+    function switchTab(tab) {
+      const on = 'flex-1 py-2 text-xs font-bold uppercase border-b-2 border-brand-blue text-brand-blue';
+      const off = 'flex-1 py-2 text-xs font-bold uppercase border-b-2 border-transparent text-gray-400 hover:text-gray-700';
+      document.getElementById('tab-login-btn').className = tab === 'login' ? on : off;
+      document.getElementById('tab-register-btn').className = tab === 'register' ? on : off;
+      document.getElementById('form-login').classList.toggle('hidden', tab !== 'login');
+      document.getElementById('form-register').classList.toggle('hidden', tab !== 'register');
+      document.getElementById('auth-alert').classList.add('hidden');
+    }
+
+    function showAlert(msg, ok) {
+      const el = document.getElementById('auth-alert');
+      el.innerText = msg;
+      el.className = `text-xs p-3 rounded-lg mb-4 font-semibold ${ok ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`;
+    }
+
+    function handleLoginSubmit(e) {
+      e.preventDefault();
+      const res = loginUser(document.getElementById('login-email').value, document.getElementById('login-pass').value);
+      if (res.success) { showAlert('Signed in successfully. Redirecting...', true); setTimeout(() => location.href = 'index.html', 900); }
+      else showAlert(res.message, false);
+    }
+
+    function handleRegisterSubmit(e) {
+      e.preventDefault();
+      const res = registerUser({
+        company: document.getElementById('reg-company').value,
+        name: document.getElementById('reg-name').value,
+        email: document.getElementById('reg-email').value,
+        password: document.getElementById('reg-pass').value,
+      });
+      if (res.success) { showAlert('Account created. Redirecting...', true); setTimeout(() => location.href = 'index.html', 900); }
+      else showAlert(res.message, false);
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (getActiveUser()) location.href = 'index.html';
+      switchTab('login');
+    });
+  </script>
+</body>
+</html>

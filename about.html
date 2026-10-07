@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us | Vexloi LLC</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body data-page="about" class="flex flex-col min-h-screen">
+  <div id="site-header"></div>
+
+  <section class="hero-tech text-white">
+    <div class="container-custom py-16 md:py-20 max-w-3xl">
+      <span class="text-2xs font-bold text-brand-cyan uppercase tracking-widest-2">Corporate Profile</span>
+      <h1 class="text-3xl md:text-5xl font-extrabold mt-2 leading-tight">Connecting global buyers with <span class="text-gradient">the technology brands they need</span></h1>
+      <p class="text-gray-300 text-sm md:text-base mt-4 leading-relaxed">Vexloi LLC is a wholesale distributor and exporter based in Doral, Miami, Florida. We supply resellers, installers, integrators and international distributors with the best-selling products of leading electronics and technology brands.</p>
+    </div>
+  </section>
+
+  <section class="bg-white border-b border-gray-200">
+    <div class="container-custom py-10 grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+      <div class="p-4 rounded-xl bg-gray-50"><div id="a-brands" class="text-3xl font-extrabold text-brand-blue">0</div><div class="text-2xs font-semibold uppercase text-gray-500 mt-1">Brands</div></div>
+      <div class="p-4 rounded-xl bg-gray-50"><div id="a-products" class="text-3xl font-extrabold text-brand-ink">0</div><div class="text-2xs font-semibold uppercase text-gray-500 mt-1">Bestselling SKUs</div></div>
+      <div class="p-4 rounded-xl bg-gray-50"><div id="a-cats" class="text-3xl font-extrabold text-brand-blue">0</div><div class="text-2xs font-semibold uppercase text-gray-500 mt-1">Technology Categories</div></div>
+      <div class="p-4 rounded-xl bg-gray-50"><div class="text-3xl font-extrabold text-brand-ink">US & LATAM</div><div class="text-2xs font-semibold uppercase text-gray-500 mt-1">Distribution Network</div></div>
+    </div>
+  </section>
+
+  <section class="container-custom py-16 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+    <div class="space-y-4">
+      <span class="text-2xs font-bold text-brand-blue uppercase tracking-widest-2">What we do</span>
+      <h2 class="text-2xl md:text-3xl font-extrabold text-brand-ink">From car audio to network infrastructure</h2>
+      <p class="text-sm text-gray-600 leading-relaxed">Our catalog covers mobile and marine electronics, home and pro audio, broadcast and AV, networking, PC storage, security and access control, photo/video, sport optics, musical instruments, test & measurement and industrial technology.</p>
+      <p class="text-sm text-gray-600 leading-relaxed">We source through authorized distributors and brand channels, so every unit is original, factory sealed and backed by traceable invoices.</p>
+    </div>
+    <div class="rounded-2xl overflow-hidden shadow-xl border border-gray-200">
+      <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=900&auto=format&fit=crop" alt="Electronic circuit board" class="w-full h-80 object-cover">
+    </div>
+  </section>
+
+  <section class="bg-brand-ink text-white py-16">
+    <div class="container-custom">
+      <h2 class="text-2xl md:text-3xl font-extrabold text-center mb-10">Why partner with Vexloi LLC</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="bg-brand-panel rounded-2xl p-6 border border-white border-opacity-10">
+          <i data-lucide="badge-check" class="w-8 h-8 text-brand-cyan mb-4"></i>
+          <h3 class="font-bold text-lg">Authentic, traceable stock</h3>
+          <p class="text-sm text-gray-400 mt-2">Products sourced from authorized distributors and brand channels, with documentation for every shipment.</p>
+        </div>
+        <div class="bg-brand-panel rounded-2xl p-6 border border-white border-opacity-10">
+          <i data-lucide="ship" class="w-8 h-8 text-brand-cyan mb-4"></i>
+          <h3 class="font-bold text-lg">Miami export hub</h3>
+          <p class="text-sm text-gray-400 mt-2">Next to the port and cargo terminals: order consolidation and fast delivery to your freight forwarder.</p>
+        </div>
+        <div class="bg-brand-panel rounded-2xl p-6 border border-white border-opacity-10">
+          <i data-lucide="wallet" class="w-8 h-8 text-brand-cyan mb-4"></i>
+          <h3 class="font-bold text-lg">Flexible B2B terms</h3>
+          <p class="text-sm text-gray-400 mt-2">Proforma invoicing for Wire/ACH, card payments and PayPal Business, with bilingual sales support.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="container-custom py-16 text-center">
+    <h2 class="text-2xl md:text-3xl font-extrabold text-brand-ink">Ready to expand your technology inventory?</h2>
+    <p class="text-sm text-gray-600 mt-2">Browse the top sellers of every brand we work with.</p>
+    <div class="flex flex-wrap justify-center gap-3 mt-6">
+      <a href="catalog.html" class="btn-primary">Explore Catalog &rarr;</a>
+      <a href="contact.html" class="btn-ghost">Contact Sales</a>
+    </div>
+  </section>
+
+  <div id="site-footer"></div>
+
+  <script src="products.js"></script>
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      document.getElementById('a-brands').innerText = Object.keys(brandsDict).length;
+      document.getElementById('a-products').innerText = productsData.length.toLocaleString('en-US');
+      document.getElementById('a-cats').innerText = Object.keys(categoriesDict).length;
+    });
+  </script>
+</body>
+</html>
