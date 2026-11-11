@@ -1,8 +1,6 @@
-// script.js — Vexloi LLC Tech Wholesale
+// script.js — Vexloi LLC (sitio multicategoría)
 
-const CART_KEY = 'vexloi_tech_cart';
-const USERS_KEY = 'vexloi_tech_users';
-const ACTIVE_USER_KEY = 'vexloi_tech_active_user';
+const CART_KEY = 'vexloi_multi_quote';
 
 // --- UTILIDADES ---
 function esc(str) {
@@ -47,6 +45,7 @@ const NAV_LINKS = [
   { page: 'home', href: 'index.html', label: 'Home' },
   { page: 'catalog', href: 'catalog.html', label: 'Catalog' },
   { page: 'brands', href: 'brands.html', label: 'Brands' },
+  { page: 'partners', href: 'partners.html', label: 'Suppliers' },
   { page: 'about', href: 'about.html', label: 'About Us' },
   { page: 'contact', href: 'contact.html', label: 'Contact' },
 ];
@@ -60,11 +59,10 @@ function renderHeader() {
   el.innerHTML = `
     <div class="bg-brand-ink text-gray-300 text-2xs">
       <div class="container-custom py-2 flex items-center justify-between gap-4">
-        <span class="flex items-center gap-2"><i data-lucide="cpu" class="w-3.5 h-3.5 text-brand-cyan"></i> B2B Wholesale Electronics & Technology | Direct Export from Miami, FL</span>
+        <span class="flex items-center gap-2"><i data-lucide="zap" class="w-3.5 h-3.5 text-brand-cyan"></i> ${esc(siteConfig.focusLabel)} · Online retailer based in ${esc(siteConfig.location)}</span>
         <span class="hidden md:flex items-center gap-5">
-          <span class="flex items-center gap-1"><i data-lucide="shield-check" class="w-3.5 h-3.5"></i> 100% Factory Sealed</span>
-          <span class="flex items-center gap-1"><i data-lucide="truck" class="w-3.5 h-3.5"></i> Freight Forwarder Ready</span>
-          <a href="contact.html" class="hover:text-white">sales@vexloi.com</a>
+          <span class="flex items-center gap-1"><i data-lucide="languages" class="w-3.5 h-3.5"></i> ${esc(siteConfig.languages)}</span>
+          <a href="contact.html" class="hover:text-white">${esc(siteConfig.email)}</a>
         </span>
       </div>
     </div>
@@ -78,15 +76,14 @@ function renderHeader() {
 
         <form action="catalog.html" class="hidden md:flex flex-1 max-w-2xl">
           <div class="flex w-full bg-white rounded-lg overflow-hidden">
-            <input name="q" type="search" placeholder="Search 3,000+ products, brands, ASIN or UPC..." class="flex-1 px-4 py-2.5 text-sm text-gray-800 focus:outline-none">
+            <input name="q" type="search" placeholder="Search products, brands, ASIN or UPC..." class="flex-1 px-4 py-2.5 text-sm text-gray-800 focus:outline-none">
             <button class="bg-brand-blue hover-bg-brand-blue-dark px-5 flex items-center" aria-label="Search"><i data-lucide="search" class="w-4 h-4"></i></button>
           </div>
         </form>
 
         <div class="flex items-center gap-4 ml-auto">
-          <div id="user-header-nav"></div>
-          <button onclick="openCartDrawer()" class="relative flex items-center gap-2 hover:text-blue-300 transition" aria-label="Open cart">
-            <i data-lucide="shopping-cart" class="w-6 h-6"></i>
+          <button onclick="openCartDrawer()" class="relative flex items-center gap-2 hover:text-blue-300 transition" aria-label="Open quote list">
+            <i data-lucide="clipboard-list" class="w-6 h-6"></i>
             <span id="cart-counter" class="absolute -top-2 -right-2 bg-brand-cyan text-brand-ink text-3xs font-bold rounded-full h-5 min-w-5 px-1 flex items-center justify-center" style="min-width:1.25rem">0</span>
           </button>
           <button onclick="toggleMobileMenu()" class="md:hidden" aria-label="Menu">
@@ -113,7 +110,7 @@ function renderHeader() {
             </div>
           </div>
           ${NAV_LINKS.map(l => `<a href="${l.href}" class="py-2.5 font-medium ${active === l.page ? 'text-brand-cyan' : 'text-gray-300 hover:text-white'}">${l.label}</a>`).join('')}
-          <a href="checkout.html" class="py-2.5 font-medium ml-auto ${active === 'checkout' ? 'text-brand-cyan' : 'text-gray-300 hover:text-white'} flex items-center gap-1"><i data-lucide="file-text" class="w-4 h-4"></i> Checkout / Proforma</a>
+          <a href="contact.html" class="py-2.5 font-medium ml-auto text-gray-300 hover:text-white flex items-center gap-1"><i data-lucide="send" class="w-4 h-4"></i> Request a Quote</a>
         </div>
       </nav>
 
@@ -122,7 +119,7 @@ function renderHeader() {
           <input name="q" type="search" placeholder="Search products..." class="flex-1 px-3 py-2 text-sm text-gray-800 focus:outline-none">
           <button class="bg-brand-blue px-4" aria-label="Search"><i data-lucide="search" class="w-4 h-4"></i></button>
         </form>
-        ${NAV_LINKS.concat([{ page: 'checkout', href: 'checkout.html', label: 'Checkout' }]).map(l => `<a href="${l.href}" class="block text-sm font-semibold ${active === l.page ? 'text-brand-cyan' : 'text-gray-200'}">${l.label}</a>`).join('')}
+        ${NAV_LINKS.map(l => `<a href="${l.href}" class="block text-sm font-semibold ${active === l.page ? 'text-brand-cyan' : 'text-gray-200'}">${l.label}</a>`).join('')}
         <details class="text-sm text-gray-200">
           <summary class="font-semibold cursor-pointer">Categories</summary>
           <div class="mt-2 space-y-2 pl-2">
@@ -146,11 +143,11 @@ function renderFooter() {
             <span class="w-8 h-8 rounded-lg bg-brand-blue flex items-center justify-center text-white"><i data-lucide="zap" class="w-4 h-4"></i></span>
             <span class="text-lg font-extrabold text-white">VEXLOI <span class="text-brand-cyan">LLC</span></span>
           </div>
-          <p class="leading-relaxed max-w-sm">Import, export and wholesale distribution of consumer electronics, pro audio/video, networking, security and industrial technology. Doral / Miami, FL.</p>
-          <p class="mt-3 text-gray-500">sales@vexloi.com</p>
+          <p class="leading-relaxed max-w-sm">Online retailer of ${esc(siteConfig.focusLabel)} products. ${esc(siteConfig.location)}.</p>
+          <p class="mt-3 text-gray-500">${esc(siteConfig.email)}</p>
         </div>
         <div>
-          <h4 class="text-white font-semibold mb-3 text-sm">Top Categories</h4>
+          <h4 class="text-white font-semibold mb-3 text-sm">Categories</h4>
           <ul class="space-y-2">${cats.slice(0, 7).map(c => `<li><a class="hover:text-white" href="catalog.html?cat=${c.slug}">${esc(c.name)}</a></li>`).join('')}</ul>
         </div>
         <div>
@@ -158,8 +155,8 @@ function renderFooter() {
           <ul class="space-y-2">
             <li><a class="hover:text-white" href="about.html">About Us</a></li>
             <li><a class="hover:text-white" href="brands.html">All Brands</a></li>
-            <li><a class="hover:text-white" href="contact.html">Wholesale Inquiries</a></li>
-            <li><a class="hover:text-white" href="login.html">B2B Account</a></li>
+            <li><a class="hover:text-white" href="partners.html">For Suppliers</a></li>
+            <li><a class="hover:text-white" href="contact.html">Contact</a></li>
           </ul>
         </div>
         <div>
@@ -175,7 +172,7 @@ function renderFooter() {
       <div class="border-t border-white border-opacity-10">
         <div class="container-custom py-5 flex flex-col md:flex-row justify-between gap-2 text-gray-500">
           <span>&copy; 2026 Vexloi LLC. All rights reserved.</span>
-          <span>All trademarks belong to their respective owners. Prices shown are reference prices in USD.</span>
+          <span>All trademarks belong to their respective owners and are used for product identification only. Prices are reference prices in USD; availability is confirmed on each quote.</span>
         </div>
       </div>
     </footer>
@@ -183,22 +180,22 @@ function renderFooter() {
     <div id="cart-overlay" onclick="closeCartDrawer()" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden"></div>
     <aside id="cart-drawer" class="fixed top-0 right-0 w-full sm:w-96 h-full bg-white z-50 shadow-2xl flex flex-col transform translate-x-full transition-transform duration-300">
       <div class="p-4 flex items-center justify-between bg-brand-navy text-white">
-        <h3 class="font-semibold text-sm flex items-center gap-2"><i data-lucide="shopping-cart" class="w-4 h-4"></i> Your Wholesale Cart</h3>
+        <h3 class="font-semibold text-sm flex items-center gap-2"><i data-lucide="clipboard-list" class="w-4 h-4"></i> Your Quote List</h3>
         <button onclick="closeCartDrawer()" class="text-gray-400 hover:text-white" aria-label="Close cart"><i data-lucide="x" class="w-5 h-5"></i></button>
       </div>
       <div id="cart-drawer-items" class="flex-1 overflow-y-auto p-4 space-y-3 scrollbar-thin"></div>
       <div class="p-4 border-t border-gray-200 bg-gray-50 space-y-3">
         <div class="flex justify-between items-center text-sm font-semibold">
-          <span>Subtotal</span>
+          <span>Reference total</span>
           <span id="cart-total" class="text-lg font-extrabold text-brand-ink">$0.00</span>
         </div>
-        <a href="checkout.html" class="btn-primary w-full">Proceed to B2B Checkout <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+        <a href="contact.html?quote=1" class="btn-primary w-full">Request a Quote <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
       </div>
     </aside>
   `;
 }
 
-// --- CARRITO ---
+// --- LISTA DE COTIZACIÓN (se guarda en el navegador) ---
 function getCart() { return storageGet(CART_KEY, []); }
 
 function saveCart(cart) {
@@ -263,7 +260,7 @@ function renderCartDrawer() {
     drawerItems.innerHTML = `
       <div class="text-center py-12 text-gray-400 text-xs">
         <i data-lucide="package-open" class="w-10 h-10 mx-auto mb-3 text-gray-300"></i>
-        Your wholesale cart is empty.
+        Your quote list is empty.
         <a href="catalog.html" class="block mt-3 text-brand-blue font-semibold">Browse the catalog &rarr;</a>
       </div>`;
     if (cartTotal) cartTotal.innerText = '$0.00 USD';
@@ -317,7 +314,6 @@ function createProductCardHTML(p) {
         <div class="product-img p-2">
           <img src="${esc(p.image)}" alt="${esc(p.name)}" loading="lazy" onerror="this.src='${imgFallback(p.brand)}'">
         </div>
-        ${p.rank <= 3 ? `<span class="badge badge-dark absolute top-1 left-1"><i data-lucide="flame" class="w-3 h-3"></i> #${p.rank} ${esc(p.brand)}</span>` : ''}
       </a>
       <div class="mt-3 flex-1 flex flex-col">
         <a href="catalog.html?brand=${p.brandId}" class="text-3xs font-bold text-brand-blue uppercase tracking-wider hover:underline">${esc(p.brand)}</a>
@@ -331,7 +327,7 @@ function createProductCardHTML(p) {
             <div class="text-base font-extrabold text-brand-ink leading-none">${money(p.price)}</div>
             <div class="text-3xs text-gray-400 mt-0.5 font-mono">${p.sku}</div>
           </div>
-          <button onclick="addToCart('${p.id}')" class="w-9 h-9 rounded-lg bg-brand-blue hover-bg-brand-blue-dark text-white flex items-center justify-center shrink-0" title="Add to cart" aria-label="Add to cart">
+          <button onclick="addToCart('${p.id}')" class="w-9 h-9 rounded-lg bg-brand-blue hover-bg-brand-blue-dark text-white flex items-center justify-center shrink-0" title="Add to quote list" aria-label="Add to quote list">
             <i data-lucide="plus" class="w-4 h-4"></i>
           </button>
         </div>
@@ -339,48 +335,25 @@ function createProductCardHTML(p) {
     </div>`;
 }
 
-// --- USUARIOS B2B (sesión local de demostración) ---
-function getUsers() { return storageGet(USERS_KEY, []); }
-function getActiveUser() { return storageGet(ACTIVE_USER_KEY, null); }
 
-function registerUser(userData) {
-  const users = getUsers();
-  if (users.some(u => u.email === userData.email)) {
-    return { success: false, message: 'This email is already registered.' };
-  }
-  users.push(userData);
-  storageSet(USERS_KEY, users);
-  storageSet(ACTIVE_USER_KEY, userData);
-  return { success: true };
+// --- PERFILES DE EXPANSIÓN (para proveedores) ---
+function getProfile(slug) {
+  return profilesData.find(p => p.slug === slug) || profilesData.find(p => p.slug === activeProfileSlug) || profilesData[0] || null;
 }
 
-function loginUser(email, password) {
-  const user = getUsers().find(u => u.email === email && u.password === password);
-  if (user) {
-    storageSet(ACTIVE_USER_KEY, user);
-    return { success: true };
-  }
-  return { success: false, message: 'Invalid credentials. Please check your email and password.' };
-}
-
-function logoutUser() {
-  try { localStorage.removeItem(ACTIVE_USER_KEY); } catch (e) { /* noop */ }
-  window.location.reload();
-}
-
-function updateHeaderUserNav() {
-  const nav = document.getElementById('user-header-nav');
-  if (!nav) return;
-  const user = getActiveUser();
-  nav.innerHTML = user
-    ? `<div class="flex items-center gap-2 text-xs">
-         <i data-lucide="building-2" class="w-4 h-4 text-brand-cyan"></i>
-         <span class="font-semibold hidden sm:inline">${esc(user.company || user.name)}</span>
-         <button onclick="logoutUser()" class="text-gray-400 hover:text-white underline text-3xs uppercase">Logout</button>
-       </div>`
-    : `<a href="login.html" class="flex items-center gap-1.5 text-xs font-semibold hover:text-blue-300">
-         <i data-lucide="user" class="w-5 h-5"></i><span class="hidden sm:inline">Account</span>
-       </a>`;
+function expansionBannerHTML(profile) {
+  if (!profile) return '';
+  return `
+    <div class="hero-tech rounded-2xl p-8 md:p-10 text-white grid md:grid-cols-3 gap-6 items-center">
+      <div class="md:col-span-2">
+        <span class="text-2xs font-bold text-brand-cyan uppercase tracking-widest-2">${esc(profile.eyebrow || 'Category expansion')}</span>
+        <h2 class="text-2xl md:text-3xl font-extrabold mt-1">${esc(profile.headline)}</h2>
+        <p class="text-gray-300 text-sm mt-2 leading-relaxed">${esc(profile.pitch)}</p>
+      </div>
+      <div class="flex md:justify-end gap-3 flex-wrap">
+        <a href="partners/${profile.slug}/" class="btn-primary"><i data-lucide="${esc(profile.icon || 'handshake')}" class="w-4 h-4"></i> Supplier information</a>
+      </div>
+    </div>`;
 }
 
 // --- MENÚ MÓVIL ---
@@ -396,6 +369,5 @@ renderFooter();
 document.addEventListener('DOMContentLoaded', () => {
   updateCartCounter();
   renderCartDrawer();
-  updateHeaderUserNav();
   if (window.lucide) lucide.createIcons();
 });

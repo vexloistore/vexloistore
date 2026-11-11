@@ -1,0 +1,117 @@
+{
+  "site": {
+    "company": "Vexloi LLC",
+    "email": "sales@vexloi.com",
+    "location": "Doral, Florida, USA",
+    "languages": "English · Español",
+    "focusLabel": "Car Audio & 12V",
+    "heroTitle": "Car Audio & 12V",
+    "heroHighlight": "for drivers, installers and shops",
+    "heroText": "Vexloi LLC is an online retailer based in Doral, Florida. We focus on mobile electronics for the car owner: head units, amplifiers, speakers, subwoofers and 12V accessories, and we are growing into the products the same customer needs next.",
+    "formEndpoint": "https://formsubmit.co/ajax/sales@vexloi.com"
+  },
+  "sources": [
+    "../vexloi_tech_ecommerce/products.js",
+    "source/extra_products.json"
+  ],
+  "maxPerBrand": 10,
+  "categories": [
+    {
+      "slug": "car-audio-12v",
+      "enabled": true,
+      "name": "Car Audio & 12V",
+      "icon": "car",
+      "desc": "Head units, amplifiers, speakers, subwoofers and 12V accessories.",
+      "fromSourceCategory": "car-audio-12v"
+    }
+  ],
+  "brands": {
+    "Alpine": true,
+    "American Bass": true,
+    "Audiopipe": true,
+    "BLAUPUNKT": true,
+    "HERTZ": true,
+    "Hifonics": true,
+    "Infinity": true,
+    "Jensen": true,
+    "Kenwood": true,
+    "Memphis": true,
+    "PAC": true,
+    "Planet Audio": true,
+    "Power Acoustik": true,
+    "PowerBass": true,
+    "Q Power": true,
+    "Rockford Fosgate": true,
+    "Stetsom": true,
+    "Sundown Audio": true,
+    "NORCOLD INC": false,
+    "Power Watchdog": false,
+    "TERUNSOUl": false,
+    "Krunia": false
+  },
+  "excludeSubcategories": [
+    "RV Refrigerator Parts",
+    "RV Plugs, Inlets & Receptacles",
+    "Surge Protectors",
+    "Baby Changing Stations",
+    "Safety Earmuffs",
+    "Cable & Chain Locks",
+    "Stereo Shelf Systems"
+  ],
+  "activeProfile": "lubricants",
+  "profiles": [
+    {
+      "slug": "lubricants",
+      "enabled": true,
+      "name": "Automotive Fluids & Lubricants",
+      "icon": "droplets",
+      "eyebrow": "Category expansion",
+      "headline": "Expanding into Automotive Fluids & Lubricants",
+      "pitch": "Our customers already come to us for their car. Engine oil, transmission fluid, additives and car care are the next purchase for the same driver, installer and shop. We are looking for authorized supply partners to add these lines to our catalog.",
+      "fit": [
+        [
+          "users",
+          "Same customer",
+          "Car owners, enthusiasts, installers and small repair shops already buy their audio and 12V gear from us."
+        ],
+        [
+          "refresh-cw",
+          "Repeat purchase",
+          "Oil and fluids are consumables bought every few months, which complements one-time electronics purchases."
+        ],
+        [
+          "shopping-bag",
+          "Natural bundles",
+          "Install day, maintenance day and road-trip kits combine electronics, fluids and car care in one order."
+        ],
+        [
+          "shield-check",
+          "Brand protection",
+          "We buy only through authorized channels, respect MAP policies and keep traceable invoices for every unit."
+        ]
+      ],
+      "productTypes": [
+        "Full synthetic & conventional engine oil",
+        "Motorcycle & powersports oil",
+        "Transmission, brake & power-steering fluid",
+        "Coolant & antifreeze",
+        "Fuel & oil additives",
+        "Greases & specialty lubricants",
+        "Car care: cleaners, wax & detailing"
+      ],
+      "targetBrands": [
+        "Motul",
+        "Shell",
+        "Castrol",
+        "Mobil 1",
+        "Valvoline",
+        "Pennzoil",
+        "Liqui Moly",
+        "Royal Purple",
+        "Lucas Oil",
+        "Red Line"
+      ],
+      "ask": "If you distribute any of these lines, we would like to open an account. We can share our business documents (EIN, resale certificate, W-9) on request."
+    }
+  ]
+}
