@@ -6,15 +6,15 @@
   <title>All Brands | Vexloi LLC</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20261007">
-  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://unpkg.com/lucide@0.460.0/dist/umd/lucide.min.js"></script>
 </head>
 <body data-page="brands" class="flex flex-col min-h-screen">
   <div id="site-header"></div>
 
   <section class="hero-tech text-white">
     <div class="container-custom py-10">
-      <span class="text-2xs font-bold text-brand-cyan uppercase tracking-widest-2">Featured Brands</span>
+      <span class="text-2xs font-bold text-brand-cyan uppercase tracking-widest-2">Brands in our catalog</span>
       <h1 class="text-3xl md:text-4xl font-extrabold mt-1">Shop by Brand</h1>
       <p id="brands-intro" class="text-sm text-gray-300 mt-2 max-w-2xl"></p>
       <div class="mt-5 max-w-md relative">
@@ -28,8 +28,8 @@
 
   <div id="site-footer"></div>
 
-  <script src="products.js?v=20261007"></script>
-  <script src="script.js?v=20261007"></script>
+  <script src="data.js"></script>
+  <script src="script.js"></script>
   <script>
     function renderBrands(term = '') {
       const t = term.trim().toLowerCase();
@@ -51,7 +51,7 @@
               ${ids.map(id => `
                 <a href="catalog.html?brand=${id}" class="card card-hover px-3 py-4 text-center">
                   <span class="block text-sm font-extrabold text-brand-ink uppercase line-clamp-1">${esc(brandsDict[id].name)}</span>
-                  <span class="text-3xs text-gray-400">${counts[id]} top products</span>
+                  <span class="text-3xs text-gray-400">${counts[id]} products</span>
                 </a>`).join('')}
             </div>
           </section>`;
@@ -62,7 +62,7 @@
 
     document.addEventListener('DOMContentLoaded', () => {
       document.getElementById('brands-intro').innerText =
-        `${Object.keys(brandsDict).length} brands organized in ${Object.keys(categoriesDict).length} categories. Each brand page shows its 10 best-selling products.`;
+        `${Object.keys(brandsDict).length} brands organized in ${Object.keys(categoriesDict).length} categories. Select a brand to see its products.`;
       document.getElementById('brand-filter').addEventListener('input', e => renderBrands(e.target.value));
       renderBrands();
     });
